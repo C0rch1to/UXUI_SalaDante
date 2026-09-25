@@ -8,7 +8,7 @@
 
 ## 📋 Descripción General
 
-Este repositorio contiene la resolución integral de los **20 ejercicios** correspondientes al Trabajo Práctico N° 3 de HTML y CSS. Cada ejercicio fue resuelto de forma modular y desacoplada en su propia carpeta con sus respectivos archivos `index.html` y `styles.css`, priorizando el uso de **HTML5 semántico**, **CSS3 moderno** (Flexbox, Grid, Custom Properties, `@keyframes`, Pseudo-clases), altos estándares de **accesibilidad web (a11y)** y **diseño responsivo**.
+Este repositorio contiene la resolución integral de los **20 ejercicios** correspondientes al Trabajo Práctico N° 3 de HTML y CSS. Cada ejercicio fue resuelto de forma modular y desacoplada en su propia carpeta con sus respectivos archivos `index.html` y `styles.css`, priorizando el uso de **HTML5 semántico**, **CSS3 moderno** (Flexbox, Grid, Custom Properties, `@keyframes`, Pseudo-clases), altos estándares de **accesibilidad web (a11y)** y **diseño responsivo**. Todos puedes ser vistos a partir del siguiente indice: https://c0rch1to.github.io/UXUI_SalaDante/TP3_UXUI_Sala/
 
 Además, en la raíz del repositorio se dispone de un archivo [`index.html`](index.html) que funciona como un **portal interactivo de navegación** para explorar visualmente cada uno de los 20 ejercicios resueltos.
 
@@ -210,7 +210,7 @@ TP3_UXUI_Sala/
 ---
 
 ## 🖥️ Cómo visualizar el trabajo práctico
-
 1. Clona o descarga este repositorio en tu equipo.
 2. Abre el archivo [`index.html`](index.html) ubicado en la raíz del proyecto con cualquier navegador moderno (Chrome, Edge, Firefox, Safari).
 3. Desde el panel interactivo podrás ingresar y probar directamente cada uno de los 20 ejercicios resueltos.
+4. Tambien se encuentra publico en github pages: https://c0rch1to.github.io/UXUI_SalaDante/TP3_UXUI_Sala/
