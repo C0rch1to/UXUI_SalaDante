@@ -15,12 +15,16 @@
       </a>
 
       <!-- Menú responsivo con checkbox hack -->
-      <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Abrir navegación">
-      <label for="nav-toggle" class="nav-toggle-btn" aria-hidden="true">
-        <span class="line"></span>
-        <span class="line"></span>
-        <span class="line"></span>
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Abrir y cerrar menú de navegación">
+      <label for="nav-toggle" class="nav-toggle-btn" aria-label="Alternar menú de navegación" title="Menú">
+        <span class="line line-top"></span>
+        <span class="line line-middle"></span>
+        <span class="line line-bottom"></span>
+        <span class="sr-only">Menú</span>
       </label>
+
+      <!-- Telón de fondo para cerrar al hacer clic afuera en móvil -->
+      <label for="nav-toggle" class="nav-backdrop" aria-hidden="true"></label>
 
       <nav class="main-navigation">
         <ul class="nav-links">
