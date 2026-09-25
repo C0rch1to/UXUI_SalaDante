@@ -1,7 +1,17 @@
-/* =========================================================
-   EJERCICIO 17: MENÚ HAMBURGUESA SOLO CSS
-   input[type="checkbox"] oculto, selector ~ o +, transición
-   ========================================================= */
+/* ==========================================================================
+   EJERCICIO 17: MENÚ RESPONSIVO TIPO "HAMBURGUESA" (SOLO CSS)
+   - Sin JavaScript (Técnica Checkbox Hack :checked)
+   - Selector de hermanos generales (~)
+   - Transiciones suaves de apertura / cierre
+   - Accesibilidad con <label for="..."> y :focus-visible
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. RESET Y CONFIGURACIÓN BASE
+   -------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   box-sizing: border-box;
@@ -10,12 +20,13 @@
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background-color: #f8fafc;
-  color: #1e293b;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #0b0f19;
+  color: #f1f5f9;
   line-height: 1.6;
 }
 
+/* Ocultamiento accesible para lectores de pantalla */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -24,39 +35,52 @@ body {
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
   border: 0;
 }
 
-/* HEADER Y CONTENEDOR */
+/* --------------------------------------------------------------------------
+   2. HEADER Y ESTRUCTURA DE NAVEGACIÓN
+   -------------------------------------------------------------------------- */
 .header {
-  background-color: #0f172a;
   position: sticky;
   top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0f172a;
+  border-bottom: 1px solid #1e293b;
   z-index: 1000;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
-.nav-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 1rem 1.5rem;
+.header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
+  padding: 1rem 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.brand a {
+.brand {
   color: #ffffff;
   text-decoration: none;
   font-size: 1.35rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* ---------------------------------------------------------
-   1. CHECKBOX OCULTO
-   --------------------------------------------------------- */
+.brand-icon {
+  color: #38bdf8;
+  font-size: 1.4rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. CHECKBOX OCULTO (CONTROLADOR DE ESTADO CSS)
+   -------------------------------------------------------------------------- */
 .menu-checkbox {
   position: absolute;
   opacity: 0;
@@ -65,16 +89,25 @@ body {
   height: 0;
 }
 
-/* ---------------------------------------------------------
-   2. BOTÓN HAMBURGUESA (LABEL)
-   --------------------------------------------------------- */
+/* Foco accesible para usuarios que navegan con teclado (Tab + Espacio) */
+.menu-checkbox:focus-visible ~ .header-inner .hamburger-btn {
+  outline: 2px solid #38bdf8;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   4. BOTÓN HAMBURGUESA (<LABEL>) Y ANIMACIÓN DE BARRAS A "X"
+   -------------------------------------------------------------------------- */
 .hamburger-btn {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 32px;
-  height: 24px;
+  justify-content: space-between;
+  width: 30px;
+  height: 22px;
   cursor: pointer;
+  background: transparent;
+  user-select: none;
   z-index: 1010;
 }
 
@@ -83,54 +116,86 @@ body {
   width: 100%;
   height: 3px;
   background-color: #ffffff;
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+  border-radius: 3px;
+  transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.25s ease, background-color 0.3s ease;
 }
 
-/* Animación del ícono a una 'X' al estar :checked */
-.menu-checkbox:checked ~ .hamburger-btn .bar-top {
-  transform: translateY(8px) rotate(45deg);
+/* Transformación de barras a 'X' cuando el checkbox está :checked */
+.menu-checkbox:checked ~ .header-inner .hamburger-btn .bar-top {
+  transform: translateY(9.5px) rotate(45deg);
   background-color: #38bdf8;
 }
 
-.menu-checkbox:checked ~ .hamburger-btn .bar-middle {
+.menu-checkbox:checked ~ .header-inner .hamburger-btn .bar-middle {
   opacity: 0;
+  transform: scaleX(0);
 }
 
-.menu-checkbox:checked ~ .hamburger-btn .bar-bottom {
-  transform: translateY(-8px) rotate(-45deg);
+.menu-checkbox:checked ~ .header-inner .hamburger-btn .bar-bottom {
+  transform: translateY(-9.5px) rotate(-45deg);
   background-color: #38bdf8;
 }
 
-/* ---------------------------------------------------------
-   3. MENÚ DE NAVEGACIÓN MÓVIL Y TRANSICIÓN CON SELECTOR ~
-   --------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   5. TELÓN DE FONDO (BACKDROP PARA CERRAR EL MENÚ AL CLICLEAR FUERA)
+   -------------------------------------------------------------------------- */
+.menu-backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-checkbox:checked ~ .menu-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* --------------------------------------------------------------------------
+   6. MENÚ DE NAVEGACIÓN DESPLEGABLE Y TRANSICIÓN (MOBILE)
+   -------------------------------------------------------------------------- */
 .nav-menu {
   position: absolute;
   top: 100%;
   left: 0;
   width: 100%;
-  background-color: #1e293b;
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
+  box-shadow: 0 16px 24px -4px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  
+  /* Estado cerrado inicial */
   max-height: 0;
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-              opacity 0.3s ease,
-              visibility 0.4s;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  
+  /* Transición fluida de apertura/cierre */
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.35s;
 }
 
-/* SELECTOR CLAVE: Al estar checked el checkbox, se despliega el menú hermano */
+/* Selector ~ al activar el checkbox */
 .menu-checkbox:checked ~ .nav-menu {
-  max-height: 360px;
+  max-height: 420px;
   opacity: 1;
   visibility: visible;
+  transform: translateY(0);
 }
 
 .nav-list {
   list-style: none;
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -142,12 +207,14 @@ body {
   font-size: 1.05rem;
   font-weight: 500;
   display: block;
-  padding: 0.5rem 0;
-  transition: color 0.2s ease, transform 0.2s ease;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
 }
 
 .nav-list a:hover {
   color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.1);
   transform: translateX(6px);
 }
 
@@ -155,93 +222,176 @@ body {
   display: inline-block !important;
   background-color: #2563eb;
   color: #ffffff !important;
-  padding: 0.5rem 1.25rem !important;
-  border-radius: 6px;
+  padding: 0.65rem 1.25rem !important;
+  border-radius: 8px;
   text-align: center;
+  font-weight: 600 !important;
   margin-top: 0.5rem;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
-/* CONTENIDO DEMO */
-.content {
-  max-width: 800px;
-  margin: 3.5rem auto;
+.btn-highlight:hover {
+  background-color: #1d4ed8 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* --------------------------------------------------------------------------
+   7. CONTENIDO PRINCIPAL Y SECCIONES ANCLA
+   -------------------------------------------------------------------------- */
+.main-content {
+  max-width: 900px;
+  margin: 2.5rem auto;
   padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
 }
 
-.info-card {
-  background: #ffffff;
-  padding: 2.5rem;
+/* Evita que el header fijo tape el título al hacer clic en un enlace ancla */
+.content-section {
+  scroll-margin-top: 90px;
+}
+
+.card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
   border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  padding: 2.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
-.info-card h1 {
-  font-size: 1.85rem;
-  color: #0f172a;
+.card h2 {
+  color: #38bdf8;
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  color: #94a3b8;
+  font-size: 1rem;
+}
+
+.intro-card h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
   margin-bottom: 1rem;
 }
 
-.feature-box {
-  margin-top: 1.5rem;
-  background-color: #f1f5f9;
-  border-left: 4px solid #2563eb;
-  padding: 1.25rem;
-  border-radius: 6px;
-}
-
-.feature-box h3 {
-  margin-bottom: 0.5rem;
-  color: #1e293b;
-}
-
-.feature-box p {
-  margin-bottom: 0.75rem;
-  font-size: 0.95rem;
-  color: #475569;
+.lead {
+  color: #cbd5e1 !important;
+  font-size: 1.1rem !important;
+  margin-bottom: 1.75rem;
 }
 
 code {
-  background: #e2e8f0;
-  padding: 2px 5px;
+  background-color: #0f172a;
+  color: #38bdf8;
+  padding: 2px 6px;
   border-radius: 4px;
   font-family: monospace;
 }
 
-/* ---------------------------------------------------------
-   4. PANTALLAS GRANDES: DESKTOP (min-width: 768px)
-   --------------------------------------------------------- */
+kbd {
+  background-color: #334155;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  border: 1px solid #475569;
+  font-family: monospace;
+}
+
+.demo-instructions {
+  background-color: #0f172a;
+  border-left: 4px solid #2563eb;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.demo-instructions h3 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.demo-instructions ul {
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.demo-instructions li {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+
+.demo-instructions strong {
+  color: #f1f5f9;
+}
+
+/* --------------------------------------------------------------------------
+   8. MEDIA QUERY DESKTOP (PANTALLAS >= 768px)
+   -------------------------------------------------------------------------- */
 @media (min-width: 768px) {
-  /* Se oculta el botón hamburguesa */
-  .hamburger-btn {
-    display: none;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
   }
 
-  /* El menú se muestra siempre en horizontal */
+  .header-inner {
+    padding: 0;
+    margin: 0;
+  }
+
+  /* El botón hamburguesa y el backdrop se ocultan */
+  .hamburger-btn,
+  .menu-backdrop {
+    display: none !important;
+  }
+
+  /* El menú se sitúa en el flujo normal horizontal */
   .nav-menu {
     position: static;
-    max-height: none;
-    opacity: 1;
-    visibility: visible;
     width: auto;
     background-color: transparent;
+    border-bottom: none;
     box-shadow: none;
+    max-height: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    overflow: visible;
   }
 
   .nav-list {
     flex-direction: row;
     padding: 0;
-    align-items: center;
     gap: 1.5rem;
+    align-items: center;
   }
 
   .nav-list a {
     font-size: 0.95rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.85rem;
   }
 
   .nav-list a:hover {
     transform: none;
-    color: #ffffff;
   }
 
   .btn-highlight {
