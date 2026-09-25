@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 17 - Menú Responsivo Tipo Hamburguesa (Solo CSS)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- HEADER PRINCIPAL -->
+  <header class="header">
+    <!-- 1. CHECKBOX OCULTO (CONTROLADOR DE ESTADO SIN JS) -->
+    <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-label="Abrir y cerrar menú de navegación">
+
+    <div class="header-inner">
+      <!-- LOGO -->
+      <a href="#inicio" class="brand">
+        <span class="brand-icon">✦</span> ApexDesign
+      </a>
+
+      <!-- 2. BOTÓN HAMBURGUESA ASOCIADO AL CHECKBOX MEDIANTE FOR/ID -->
+      <label for="menu-toggle" class="hamburger-btn" aria-label="Alternar menú de navegación" title="Abrir/Cerrar Menú">
+        <span class="bar bar-top"></span>
+        <span class="bar bar-middle"></span>
+        <span class="bar bar-bottom"></span>
+        <span class="sr-only">Menú</span>
+      </label>
+    </div>
+
+    <!-- 3. TELÓN DE FONDO (BACKDROP) PARA CERRAR EL MENÚ AL HACER CLIC FUERA EN MÓVIL -->
+    <label for="menu-toggle" class="menu-backdrop" aria-hidden="true"></label>
+
+    <!-- 4. MENÚ DE NAVEGACIÓN DESPLEGABLE -->
+    <nav class="nav-menu" aria-label="Navegación principal">
+      <ul class="nav-list">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#soluciones">Soluciones</a></li>
+        <li><a href="#portafolio">Portafolio</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contacto" class="btn-highlight">Contactar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL CON SECCIONES DESTINO -->
+  <main class="main-content">
+    <section id="inicio" class="content-section">
+      <div class="card intro-card">
+        <span class="badge">Técnica CSS Avanzada</span>
+        <h1>Menú Hamburguesa Responsivo 100% CSS</h1>
+        <p class="lead">
+          Implementación completa sin JavaScript cumpliendo los requisitos técnicos de la consigna:
+          <code>input[type="checkbox"]</code> oculto, selector de hermanos <code>~</code>, transición fluida de apertura/cierre y accesibilidad mediante <code>&lt;label for="..."&gt;</code>.
+        </p>
+
+        <div class="demo-instructions">
+          <h3>📌 ¿Cómo probar este ejercicio?</h3>
+          <ul>
+            <li><strong>En pantallas móviles (&lt; 768px):</strong> Haz clic en el ícono de las tres barras en la esquina superior derecha. Observa la transformación de las barras en una "X" y el despliegue animado del menú.</li>
+            <li><strong>Cierre intuitivo:</strong> Puedes cerrar el menú volviendo a hacer clic en la "X" o haciendo clic en el área oscura exterior (backdrop).</li>
+            <li><strong>Navegación por teclado:</strong> Pulsa la tecla <kbd>Tab</kbd> hasta alcanzar el botón y presiona <kbd>Espacio</kbd> para abrir o cerrar.</li>
+            <li><strong>En escritorio (&ge; 768px):</strong> El menú se expande horizontalmente en la cabecera y el botón hamburguesa se oculta automáticamente.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="soluciones" class="content-section">
+      <div class="card">
+        <h2>Nuestras Soluciones UX/UI</h2>
+        <p>Desarrollo de interfaces intuitivas, sistemas de diseño atómicos y experiencias web adaptables con estándares modernos de usabilidad y rendimiento.</p>
+      </div>
+    </section>
+
+    <section id="portafolio" class="content-section">
+      <div class="card">
+        <h2>Portafolio de Proyectos</h2>
+        <p>Explora nuestras soluciones digitales concebidas para plataformas educativas, sistemas de administración y aplicaciones web de gran escala.</p>
+      </div>
+    </section>
+
+    <section id="blog" class="content-section">
+      <div class="card">
+        <h2>Artículos & Novedades</h2>
+        <p>Guías sobre maquetación CSS moderna, accesibilidad según directrices WCAG y optimización del flujo de interacción del usuario.</p>
+      </div>
+    </section>
+
+    <section id="contacto" class="content-section">
+      <div class="card">
+        <h2>Contacto</h2>
+        <p>Ponte en comunicación con nuestro equipo de desarrollo para iniciar tu próximo proyecto digital.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
