@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 03 - Tabla de Horario Semanal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Horario Semanal de Cursada</h1>
+    <p>Licenciatura en Sistemas de Información - Ciclo Lectivo 2026</p>
+  </header>
+
+  <main>
+    <div class="table-container">
+      <table>
+        <caption>Cronograma de Materias y Aulas Semanales</caption>
+        <thead>
+          <tr>
+            <th scope="col">Hora</th>
+            <th scope="col">Lunes</th>
+            <th scope="col">Martes</th>
+            <th scope="col">Miércoles</th>
+            <th scope="col">Jueves</th>
+            <th scope="col">Viernes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">08:00 - 10:00</th>
+            <td rowspan="2" class="subject ds">Diseño UX-UI<br><small>Aula Magna (4hs)</small></td>
+            <td class="subject bd">Bases de Datos<br><small>Lab 1</small></td>
+            <td class="subject alg">Algoritmos II<br><small>Lab 3</small></td>
+            <td class="subject ing">Ingeniería de Software<br><small>Aula 12</small></td>
+            <td class="subject red">Redes y Comunicaciones<br><small>Lab 2</small></td>
+          </tr>
+          <tr>
+            <th scope="row">10:00 - 12:00</th>
+            <td class="subject bd">Bases de Datos<br><small>Lab 1</small></td>
+            <td class="subject alg">Algoritmos II<br><small>Lab 3</small></td>
+            <td class="subject ing">Ingeniería de Software<br><small>Aula 12</small></td>
+            <td class="subject red">Redes y Comunicaciones<br><small>Lab 2</small></td>
+          </tr>
+          <tr class="break-row">
+            <th scope="row">12:00 - 13:00</th>
+            <td colspan="5">Receso / Almuerzo Universitario</td>
+          </tr>
+          <tr>
+            <th scope="row">13:00 - 15:00</th>
+            <td class="subject mat">Matemática Discreta<br><small>Aula 4</small></td>
+            <td class="subject free">Taller de Proyecto<br><small>Lab 4</small></td>
+            <td class="subject mat">Matemática Discreta<br><small>Aula 4</small></td>
+            <td class="subject opt">Seminario Optativo<br><small>Aula 8</small></td>
+            <td class="subject free">Consulta Libre<br><small>Tutorías</small></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row">Resumen</th>
+            <td colspan="5">Total: 20 horas semanales de carga horaria presencial obligatoria</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

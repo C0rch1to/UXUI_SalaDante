@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 15 - Diseño Responsivo con Media Queries</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-layout">
+    <!-- Header -->
+    <header class="layout-header">
+      <div class="logo">✦ Dashboard Responsivo</div>
+      <div class="viewport-indicator">
+        <span class="view-tag mobile-tag">Vista Móvil (&lt; 768px)</span>
+        <span class="view-tag tablet-tag">Vista Tablet (768px - 1023px)</span>
+        <span class="view-tag desktop-tag">Vista Desktop (&ge; 1024px)</span>
+      </div>
+    </header>
+
+    <!-- Sidebar (oculto en móvil < 768px, visible en tablet/desktop) -->
+    <aside class="layout-sidebar">
+      <h3>Navegación</h3>
+      <ul>
+        <li><a href="#" class="active">Resumen</a></li>
+        <li><a href="#">Métricas</a></li>
+        <li><a href="#">Reportes</a></li>
+        <li><a href="#">Configuración</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="layout-main">
+      <section class="banner-justification">
+        <h1>Diseño Responsivo: Enfoque Mobile-First</h1>
+        <p>
+          <strong>Justificación del enfoque Mobile-First:</strong> Se diseña primero la experiencia base para pantallas móviles (1 columna fluida, sin sidebar para priorizar el contenido esencial y evitar scroll horizontal innecesario). 
+          Mediante dos breakpoints progresivos (<code>@media (min-width: 768px)</code> y <code>@media (min-width: 1024px)</code>), se incorporan gradualmente el sidebar y la distribución multi-columna de widgets aprovechando pantallas de mayor tamaño.
+        </p>
+      </section>
+
+      <div class="widgets-grid">
+        <div class="widget">
+          <h4>Ventas</h4>
+          <p class="stat">$45,280</p>
+          <span class="badge positive">+12.5%</span>
+        </div>
+        <div class="widget">
+          <h4>Clientes</h4>
+          <p class="stat">1,240</p>
+          <span class="badge positive">+8.1%</span>
+        </div>
+        <div class="widget">
+          <h4>Conversión</h4>
+          <p class="stat">3.85%</p>
+          <span class="badge neutral">Estable</span>
+        </div>
+      </div>
+
+      <article class="data-section">
+        <h3>Comportamiento según el ancho de pantalla</h3>
+        <ul>
+          <li><strong>&lt; 768px (Móvil):</strong> El sidebar se oculta con <code>display: none</code>, el grid pasa a una sola columna (<code>1fr</code>), y los elementos se apilan naturalmente sin desbordamiento horizontal.</li>
+          <li><strong>&ge; 768px (Tablet):</strong> El sidebar se hace visible (<code>display: block</code>) con ancho de 200px, y el grid adopta áreas estructuradas.</li>
+          <li><strong>&ge; 1024px (Desktop):</strong> El sidebar se expande a 250px con tipografía optimizada y los widgets se distribuyen en 3 columnas independientes.</li>
+        </ul>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="layout-footer">
+      <p>&copy; 2026 Layout Responsivo Adaptable - Diseño UX-UI</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 16 - Animaciones con @keyframes</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Animaciones CSS con @keyframes</h1>
+      <p>Demostración de spinner de carga continuo y animación de aparición gradual (fade-in + slide-up) con control de duración, función de temporización y número de iteraciones.</p>
+    </header>
+
+    <!-- 1. SPINNER DE CARGA -->
+    <section class="section-demo">
+      <h2>1. Spinner de Carga (Animación Continua)</h2>
+      <p class="desc">Uso de <code>animation: spin 1s linear infinite</code></p>
+      <div class="spinner-box">
+        <div class="spinner" role="status" aria-label="Cargando contenido"></div>
+        <span class="loading-label">Procesando solicitud...</span>
+      </div>
+    </section>
+
+    <!-- 2. APARICIÓN DE TARJETAS (FADE-IN + SLIDE-UP) -->
+    <section class="section-demo">
+      <h2>2. Tarjetas con Fade-In + Slide-Up Escalonado</h2>
+      <p class="desc">Uso de <code>animation-duration</code>, <code>animation-timing-function</code> y <code>animation-fill-mode: forwards</code> con retardos progresivos.</p>
+      
+      <div class="cards-grid">
+        <article class="animated-card delay-1">
+          <div class="card-icon">⚡</div>
+          <h3>Rendimiento Óptimo</h3>
+          <p>Animado mediante transformaciones y opacidad aceleradas por GPU sin provocar repaint.</p>
+        </article>
+
+        <article class="animated-card delay-2">
+          <div class="card-icon">🎯</div>
+          <h3>Timing Preciso</h3>
+          <p>La curva <code>cubic-bezier(0.16, 1, 0.3, 1)</code> genera una desaceleración suave y natural.</p>
+        </article>
+
+        <article class="animated-card delay-3">
+          <div class="card-icon">🎨</div>
+          <h3>Experiencia Fluida</h3>
+          <p>El escalonamiento visual aporta ritmo jerárquico a la carga de la interfaz de usuario.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

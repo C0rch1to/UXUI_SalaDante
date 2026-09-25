@@ -1,0 +1,196 @@
+/* =========================================================
+   EJERCICIO 10: CSS GRID - LAYOUT DE PÁGINA
+   grid-template-areas, grid-template-columns / rows
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1e293b;
+  background-color: #f1f5f9;
+}
+
+/* CONTENEDOR PRINCIPAL GRID */
+.site-layout {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 70px 1fr 60px;
+  grid-template-areas:
+    "header  header"
+    "sidebar main"
+    "footer  footer";
+  gap: 0;
+}
+
+/* ÁREA 1: HEADER */
+.layout-header {
+  grid-area: header;
+  background-color: #0f172a;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  border-bottom: 2px solid #334155;
+}
+
+.layout-header .logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.header-nav a {
+  color: #94a3b8;
+  text-decoration: none;
+  margin-left: 1.25rem;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.header-nav a:hover {
+  color: #ffffff;
+}
+
+/* ÁREA 2: SIDEBAR */
+.layout-sidebar {
+  grid-area: sidebar;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 1.75rem 1.25rem;
+  border-right: 1px solid #334155;
+}
+
+.layout-sidebar h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+.layout-sidebar ul {
+  list-style: none;
+}
+
+.layout-sidebar li {
+  margin-bottom: 0.5rem;
+}
+
+.layout-sidebar a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.layout-sidebar a:hover,
+.layout-sidebar a.active {
+  background-color: #334155;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* ÁREA 3: MAIN */
+.layout-main {
+  grid-area: main;
+  background-color: #f8fafc;
+  padding: 2.5rem;
+  overflow-y: auto;
+}
+
+.layout-main h1 {
+  font-size: 1.85rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+code {
+  background: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.widgets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.widget {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.widget h4 {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.widget .stat {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.positive {
+  font-size: 0.85rem;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.neutral {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.data-section {
+  background-color: #ffffff;
+  padding: 1.75rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.data-section h3 {
+  margin-bottom: 0.75rem;
+  color: #1e293b;
+}
+
+.data-section p {
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ÁREA 4: FOOTER */
+.layout-footer {
+  grid-area: footer;
+  background-color: #0f172a;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  font-size: 0.875rem;
+  border-top: 1px solid #1e293b;
+}

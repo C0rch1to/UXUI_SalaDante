@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 18 - Grid Avanzado: Galería Mosaico (Masonry-Like)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Galería Fotográfica Mosaico</h1>
+    <p>Maquetación avanzada con <code>grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))</code> y <code>grid-auto-flow: dense</code>, combinando elementos estándar con piezas destacadas que ocupan 2 columnas y 2 filas.</p>
+  </header>
+
+  <main>
+    <div class="mosaic-gallery">
+      <!-- Elemento 1: Destacado Grande (2x2) -->
+      <article class="gallery-item span-2x2">
+        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1000&q=80" alt="Paisaje de niebla en las montañas alpinas" loading="lazy">
+        <div class="item-overlay">
+          <h3>Niebla Alpina</h3>
+          <span>Destacado 2x2</span>
+        </div>
+      </article>
+
+      <!-- Elemento 2: Estándar (1x1) -->
+      <article class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=600&q=80" alt="Gatito mirando curiosamente a la cámara" loading="lazy">
+        <div class="item-overlay">
+          <h3>Curiosidad</h3>
+          <span>1x1</span>
+        </div>
+      </article>
+
+      <!-- Elemento 3: Alto (1x2) -->
+      <article class="gallery-item span-row2">
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80" alt="Rayos de sol filtrándose a través de un bosque denso" loading="lazy">
+        <div class="item-overlay">
+          <h3>Luz Forestal</h3>
+          <span>1 col × 2 filas</span>
+        </div>
+      </article>
+
+      <!-- Elemento 4: Estándar (1x1) -->
+      <article class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Reflejo de montañas en un lago cristalino" loading="lazy">
+        <div class="item-overlay">
+          <h3>Espejo Glaciar</h3>
+          <span>1x1</span>
+        </div>
+      </article>
+
+      <!-- Elemento 5: Ancho (2x1) -->
+      <article class="gallery-item span-col2">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" alt="Vista panorámica de lago entre acantilados" loading="lazy">
+        <div class="item-overlay">
+          <h3>Horizonte Costero</h3>
+          <span>2 cols × 1 fila</span>
+        </div>
+      </article>
+
+      <!-- Elemento 6: Estándar (1x1) -->
+      <article class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600&q=80" alt="Atardecer dorado sobre colinas verdes" loading="lazy">
+        <div class="item-overlay">
+          <h3>Colinas Doradas</h3>
+          <span>1x1</span>
+        </div>
+      </article>
+
+      <!-- Elemento 7: Estándar (1x1) -->
+      <article class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=600&q=80" alt="Viajero contemplando la inmensidad de la naturaleza" loading="lazy">
+        <div class="item-overlay">
+          <h3>Exploración</h3>
+          <span>1x1</span>
+        </div>
+      </article>
+
+      <!-- Elemento 8: Destacado Grande (2x2) -->
+      <article class="gallery-item span-2x2">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=80" alt="Espacio de trabajo moderno con código en pantalla" loading="lazy">
+        <div class="item-overlay">
+          <h3>Código y Diseño</h3>
+          <span>Destacado 2x2</span>
+        </div>
+      </article>
+
+      <!-- Elemento 9: Estándar (1x1) -->
+      <article class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=600&q=80" alt="Cielo nocturno estrellado sobre cordillera nevada" loading="lazy">
+        <div class="item-overlay">
+          <h3>Vía Láctea</h3>
+          <span>1x1</span>
+        </div>
+      </article>
+    </div>
+  </main>
+</body>
+</html>

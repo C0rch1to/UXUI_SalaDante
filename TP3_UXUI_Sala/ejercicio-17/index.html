@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 17 - Menú Hamburguesa Solo CSS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="nav-container">
+      <div class="brand">
+        <a href="#">✦ ApexDesign</a>
+      </div>
+
+      <!-- TRUCO DEL CHECKBOX OCULTO (SIN JS) -->
+      <input type="checkbox" id="menu-toggle" class="menu-checkbox" aria-label="Abrir menú de navegación">
+
+      <!-- BOTÓN HAMBURGUESA ASOCIADO AL CHECKBOX MEDIANTE FOR/ID -->
+      <label for="menu-toggle" class="hamburger-btn" aria-hidden="true">
+        <span class="bar bar-top"></span>
+        <span class="bar bar-middle"></span>
+        <span class="bar bar-bottom"></span>
+        <span class="sr-only">Menú</span>
+      </label>
+
+      <!-- MENÚ DE NAVEGACIÓN DESPLEGABLE -->
+      <nav class="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#soluciones">Soluciones</a></li>
+          <li><a href="#portafolio">Portafolio</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contacto" class="btn-highlight">Contactar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="info-card">
+      <h1>Menú Hamburguesa Responsivo 100% CSS</h1>
+      <p>
+        Este patrón de navegación móvil no requiere una sola línea de JavaScript. 
+        Utiliza un <code>&lt;input type="checkbox"&gt;</code> visualmente oculto y un <code>&lt;label for="menu-toggle"&gt;</code> accesible.
+      </p>
+      <div class="feature-box">
+        <h3>¿Cómo funciona la técnica?</h3>
+        <p>Al hacer clic en el botón de hamburguesa, el estado del checkbox cambia a <code>:checked</code>. Mediante el selector de hermano general <code>#menu-toggle:checked ~ .nav-menu</code>, se aplica una transición fluida modificando la altura y transformaciones del menú, a la par que las barras del ícono se transforman en una cruz (X).</p>
+        <p><em>En pantallas de escritorio (&ge; 768px), el botón hamburguesa se oculta y los enlaces se disponen horizontalmente de forma permanente.</em></p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

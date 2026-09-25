@@ -1,0 +1,159 @@
+/* =========================================================
+   EJERCICIO 12: POSICIONAMIENTO
+   position: fixed, position: relative, position: absolute, z-index
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  line-height: 1.7;
+  padding: 2.5rem 1.5rem;
+}
+
+header {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.85rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #64748b;
+}
+
+code {
+  background: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.card {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  font-size: 1.3rem;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+.placeholder-block {
+  margin-top: 1rem;
+  padding: 4rem 1rem;
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  text-align: center;
+  color: #94a3b8;
+  font-weight: 500;
+  border-radius: 6px;
+}
+
+/* ---------------------------------------------------------
+   1. TOOLTIP (position: relative + position: absolute + z-index)
+   --------------------------------------------------------- */
+
+/* Contenedor relativo para servir de sistema de coordenadas al tooltip */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.term {
+  color: #2563eb;
+  border-bottom: 1px dashed #2563eb;
+  padding-bottom: 1px;
+}
+
+/* Tooltip posicionado absolutamente */
+.tooltip {
+  position: absolute;
+  bottom: 125%;             /* Ubicado justo arriba del término */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 0.5rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.825rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  pointer-events: none;     /* Evita interferir con clics del usuario */
+  opacity: 0;
+  visibility: hidden;
+  z-index: 50;              /* Asegura flotar por encima de otros componentes */
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.25);
+}
+
+/* Triangulito decorativo inferior del tooltip usando pseudo-elemento */
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #0f172a transparent transparent transparent;
+}
+
+/* Mostrar tooltip en hover */
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* ---------------------------------------------------------
+   2. BOTÓN VOLVER ARRIBA (position: fixed)
+   --------------------------------------------------------- */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #2563eb;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  z-index: 1000;             /* Máxima prioridad visual fija en ventana */
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.back-to-top:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.45);
+}

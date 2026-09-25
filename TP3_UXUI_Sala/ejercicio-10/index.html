@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 10 - CSS Grid: Layout de Página</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-layout">
+    <!-- Header -->
+    <header class="layout-header">
+      <div class="logo">✦ Dashboard Grid</div>
+      <nav class="header-nav">
+        <a href="#">Perfil</a>
+        <a href="#">Configuración</a>
+        <a href="#">Salir</a>
+      </nav>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="layout-sidebar">
+      <h3>Menú Lateral</h3>
+      <ul>
+        <li><a href="#" class="active">Resumen</a></li>
+        <li><a href="#">Métricas</a></li>
+        <li><a href="#">Reportes</a></li>
+        <li><a href="#">Usuarios</a></li>
+        <li><a href="#">Seguridad</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="layout-main">
+      <h1>Panel de Administración</h1>
+      <p class="subtitle">Estructura maquetada mediante <code>display: grid</code> y <code>grid-template-areas</code> con áreas explícitas para encabezado, barra lateral, contenido y pie de página.</p>
+
+      <div class="widgets-grid">
+        <div class="widget">
+          <h4>Ventas Totales</h4>
+          <p class="stat">$45,280</p>
+          <span class="positive">+12.5% vs mes anterior</span>
+        </div>
+        <div class="widget">
+          <h4>Nuevos Clientes</h4>
+          <p class="stat">1,240</p>
+          <span class="positive">+8.1% vs mes anterior</span>
+        </div>
+        <div class="widget">
+          <h4>Tasa de Conversión</h4>
+          <p class="stat">3.85%</p>
+          <span class="neutral">Sin variación</span>
+        </div>
+      </div>
+
+      <article class="data-section">
+        <h3>Actividad Reciente del Sistema</h3>
+        <p>Este layout garantiza una separación limpia entre las diferentes áreas estructurales de la página, aprovechando <code>grid-template-columns: 240px 1fr</code> y <code>grid-template-rows: auto 1fr auto</code>.</p>
+      </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="layout-footer">
+      <p>&copy; 2026 Plataforma de Gestión - Todos los derechos reservados. Licenciatura en Sistemas de Información.</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+/* Estilos para el Ejercicio 03: Tabla de Datos */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1f2937;
+  background-color: #f3f4f6;
+  padding: 2rem 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+
+header p {
+  color: #6b7280;
+}
+
+.table-container {
+  max-width: 960px;
+  margin: 0 auto;
+  overflow-x: auto;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+caption {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #374151;
+}
+
+th, td {
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+thead th {
+  background-color: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
+}
+
+tbody th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.break-row td {
+  background-color: #fef3c7;
+  color: #92400e;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.subject {
+  font-weight: 500;
+}
+
+.subject small {
+  color: #6b7280;
+  display: block;
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.ds { background-color: #e0f2fe; }
+.bd { background-color: #ecfdf5; }
+.alg { background-color: #fef2f2; }
+.ing { background-color: #f5f3ff; }
+.red { background-color: #fdf4ff; }
+.mat { background-color: #fffbeb; }
+.free { background-color: #f0fdf4; }
+.opt { background-color: #fff7ed; }
+
+tfoot {
+  background-color: #f8fafc;
+  font-weight: 600;
+  color: #475569;
+}
+
+tfoot th, tfoot td {
+  border-top: 2px solid #cbd5e1;
+  padding: 1rem;
+}

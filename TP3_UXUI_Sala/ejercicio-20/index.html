@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 20 - Proyecto Integrador: Aura UX Studio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <!-- 1. NAVBAR FIJA CON SCROLL SUAVE -->
+  <header class="navbar-wrapper">
+    <div class="container nav-content">
+      <a href="#top" class="brand-logo">
+        <span class="logo-symbol">✦</span> Aura<span class="highlight">UX</span>
+      </a>
+
+      <!-- Menú responsivo con checkbox hack -->
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-input" aria-label="Abrir navegación">
+      <label for="nav-toggle" class="nav-toggle-btn" aria-hidden="true">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </label>
+
+      <nav class="main-navigation">
+        <ul class="nav-links">
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#contacto" class="btn btn-primary nav-cta">Comenzar</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. SECCIÓN HERO CON IMAGEN DE FONDO -->
+    <section id="hero" class="hero-section">
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <span class="badge hero-badge">Diseño UX/UI & Estrategia Digital</span>
+        <h1 class="hero-title">Diseñamos experiencias digitales que potencian tu negocio</h1>
+        <p class="hero-description">
+          Combinamos investigación de usuarios, arquitectura de información y desarrollo frontend moderno para crear productos memorables, accesibles y de alto impacto.
+        </p>
+        <div class="hero-actions">
+          <a href="#servicios" class="btn btn-primary">Explorar Servicios</a>
+          <a href="#contacto" class="btn btn-secondary">Solicitar Consulta</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SECCIÓN DE SERVICIOS EN GRID -->
+    <section id="servicios" class="section services-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Nuestras Capacidades</span>
+          <h2 class="section-title">Servicios Especializados</h2>
+          <p class="section-subtitle">Soluciones de punta a punta adaptadas a las exigencias de la interacción humana.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="card-icon">🎯</div>
+            <h3 class="card-title">Investigación & UX</h3>
+            <p class="card-text">Entrevistas a usuarios, pruebas de usabilidad, mapas de empatía y definición de journeys para fundamentar decisiones.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon">✨</div>
+            <h3 class="card-title">Diseño UI & Design Systems</h3>
+            <p class="card-text">Interfaces limpias y escalables con sistemas de diseño unificados, tokens de diseño y componentes consistentes.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon">⚡</div>
+            <h3 class="card-title">Prototipado Interactivo</h3>
+            <p class="card-text">Validación ágil mediante prototipos navegables de alta fidelidad con microinteracciones y feedback en tiempo real.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon">💻</div>
+            <h3 class="card-title">Frontend Semántico</h3>
+            <p class="card-text">Maquetación HTML5 semántica y CSS3 modular (Grid, Flexbox, Variables), priorizando rendimiento y accesibilidad W3C.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon">♿</div>
+            <h3 class="card-title">Accesibilidad Web (a11y)</h3>
+            <p class="card-text">Auditorías y adecuación estricta a directrices WCAG 2.1 AA/AAA para garantizar inclusión y accesibilidad universal.</p>
+          </article>
+
+          <article class="service-card">
+            <div class="card-icon">📈</div>
+            <h3 class="card-title">Optimización & CRO</h3>
+            <p class="card-text">Análisis de métricas, pruebas A/B y optimización continua de tasas de conversión basadas en comportamiento real.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SECCIÓN DE TESTIMONIOS CON SCROLL-SNAP -->
+    <section id="testimonios" class="section testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Opinión de Clientes</span>
+          <h2 class="section-title">Lo que dicen nuestros colaboradores</h2>
+          <p class="section-subtitle">Desliza horizontalmente por el carrusel con tecnología nativa <code>scroll-snap</code>.</p>
+        </div>
+
+        <div class="carousel-container" tabindex="0" aria-label="Carrusel de testimonios de clientes">
+          <!-- Testimonio 1 -->
+          <div class="carousel-slide">
+            <blockquote class="testimonial-card">
+              <p class="testimonial-quote">"El rediseño integral de nuestra plataforma redujo la tasa de rebote en un 42% y duplicó las conversiones en los primeros dos meses."</p>
+              <footer class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&h=120&q=80" alt="Retrato de Sofia Benítez" class="author-avatar" width="60" height="60">
+                <div>
+                  <cite class="author-name">Sofía Benítez</cite>
+                  <span class="author-role">Directora de Producto, FinTech Global</span>
+                </div>
+              </footer>
+            </blockquote>
+          </div>
+
+          <!-- Testimonio 2 -->
+          <div class="carousel-slide">
+            <blockquote class="testimonial-card">
+              <p class="testimonial-quote">"La arquitectura CSS modular y la accesibilidad impecable nos permitieron acelerar los tiempos de desarrollo en un 60%."</p>
+              <footer class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&h=120&q=80" alt="Retrato de Martín Castro" class="author-avatar" width="60" height="60">
+                <div>
+                  <cite class="author-name">Martín Castro</cite>
+                  <span class="author-role">Tech Lead en SaaS Nexus</span>
+                </div>
+              </footer>
+            </blockquote>
+          </div>
+
+          <!-- Testimonio 3 -->
+          <div class="carousel-slide">
+            <blockquote class="testimonial-card">
+              <p class="testimonial-quote">"Pocas veces encontramos un equipo que domine con tanta solvencia tanto la empatía con el usuario como la perfección técnica en CSS."</p>
+              <footer class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&h=120&q=80" alt="Retrato de Lucía Méndez" class="author-avatar" width="60" height="60">
+                <div>
+                  <cite class="author-name">Lucía Méndez</cite>
+                  <span class="author-role">VP de Innovación, E-Commerce Hub</span>
+                </div>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SECCIÓN FORMULARIO DE CONTACTO -->
+    <section id="contacto" class="section contact-section">
+      <div class="container contact-container">
+        <div class="contact-info">
+          <span class="section-tag">Conversemos</span>
+          <h2 class="section-title">Iniciemos tu próximo proyecto</h2>
+          <p>¿Tienes una idea o necesitas rediseñar la experiencia de tu aplicación? Escríbenos y coordinamos una sesión de consultoría inicial.</p>
+          
+          <ul class="contact-details">
+            <li>📍 Concepción del Uruguay, Entre Ríos</li>
+            <li>✉️ contacto@auraux.studio</li>
+            <li>🕒 Respuesta en menos de 24 horas hábiles</li>
+          </ul>
+        </div>
+
+        <div class="contact-card">
+          <form class="contact-form" action="#" method="post">
+            <div class="form-group">
+              <label for="contact-name">Nombre y Apellido <span class="required">*</span></label>
+              <input type="text" id="contact-name" name="name" required placeholder="Ej. Valentina Ríos" autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Correo Electrónico <span class="required">*</span></label>
+              <input type="email" id="contact-email" name="email" required placeholder="valentina@empresa.com" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="contact-service">Tipo de Proyecto <span class="required">*</span></label>
+              <select id="contact-service" name="service" required>
+                <option value="">Selecciona una opción</option>
+                <option value="ux-research">Investigación & UX</option>
+                <option value="ui-design">Diseño de Interfaz & Design System</option>
+                <option value="frontend">Desarrollo Frontend HTML/CSS</option>
+                <option value="audit">Auditoría de Usabilidad y Accesibilidad</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">Mensaje <span class="required">*</span></label>
+              <textarea id="contact-message" name="message" rows="4" required placeholder="Cuéntanos los objetivos y alcance de tu iniciativa..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit">Enviar Mensaje &rarr;</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 6. FOOTER SEMÁNTICO -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#top" class="brand-logo">
+          <span class="logo-symbol">✦</span> Aura<span class="highlight">UX</span>
+        </a>
+        <p class="footer-desc">Diseño de interfaces intuitivas y código web limpio de alto estándar. Trabajo Práctico N° 3 - Diseño UX-UI 2026.</p>
+      </div>
+
+      <div class="footer-nav">
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#hero">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-legal">
+        <h4>Cátedra</h4>
+        <ul>
+          <li>Licenciatura en Sistemas de Información</li>
+          <li>Diseño UX-UI (2026)</li>
+          <li>Facultad de Ciencia y Tecnología</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-content">
+        <p>&copy; 2026 Aura UX Studio. Todos los derechos reservados.</p>
+        <a href="#top" class="back-link">Subir al inicio &uarr;</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

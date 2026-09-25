@@ -1,0 +1,127 @@
+/* =========================================================
+   EJERCICIO 13: FORMULARIO ESTILIZADO
+   border-radius, :focus diferenciado, botón :hover y :active, transition
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.form-container {
+  background-color: #ffffff;
+  padding: 2.75rem 2.25rem;
+  border-radius: 16px; /* Bordes redondeados */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  max-width: 480px;
+  width: 100%;
+}
+
+header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.75rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #64748b;
+  font-size: 0.925rem;
+  line-height: 1.5;
+}
+
+code {
+  background-color: #f1f5f9;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.form-field {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: #e11d48;
+}
+
+/* 1. INPUTS Y TEXTAREAS: BORDES REDONDEADOS Y TRANSICIONES */
+input, textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  font-size: 0.975rem;
+  font-family: inherit;
+  color: #1e293b;
+  background-color: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px; /* Bordes redondeados explícitos */
+  outline: none;
+  /* Transición suave para todos los cambios de estado */
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #94a3b8;
+}
+
+/* 2. ESTADO :FOCUS DIFERENCIADO */
+input:focus, textarea:focus {
+  background-color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18); /* Anillo de foco visual accesible */
+}
+
+/* 3. BOTÓN CON :HOVER Y :ACTIVE */
+.submit-button {
+  width: 100%;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 0.95rem 1.5rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 10px; /* Bordes redondeados */
+  cursor: pointer;
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.25);
+  /* Transición suave para interacciones */
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+/* Estado Hover */
+.submit-button:hover {
+  background-color: #1d4ed8;
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Estado Active (al presionar/hacer clic) */
+.submit-button:active {
+  background-color: #1e40af;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+  transform: translateY(1px) scale(0.98);
+}

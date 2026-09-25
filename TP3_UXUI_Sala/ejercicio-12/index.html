@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 12 - Posicionamiento Fixed y Absolute (Tooltip)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+  <header>
+    <h1>Demostración de Posicionamiento CSS</h1>
+    <p>Uso de <code>position: fixed</code> para el botón "Volver arriba" y <code>position: absolute</code> dentro de un contenedor <code>position: relative</code> para los tooltips interactivos.</p>
+  </header>
+
+  <main class="content">
+    <section class="card">
+      <h2>Pasa el cursor sobre los términos técnicos</h2>
+      <p>
+        El diseño centrado en el usuario utiliza metodologías como la 
+        <span class="tooltip-container">
+          <strong class="term">arquitectura de información</strong>
+          <span class="tooltip" role="tooltip">Organización estructural y etiquetado de los contenidos digitales.</span>
+        </span> 
+        y el análisis de 
+        <span class="tooltip-container">
+          <strong class="term">heurísticas de Nielsen</strong>
+          <span class="tooltip" role="tooltip">10 principios generales para evaluar la usabilidad en interfaces.</span>
+        </span>
+        para garantizar interfaces intuitivas.
+      </p>
+    </section>
+
+    <!-- Secciones adicionales para generar scroll vertical -->
+    <section class="card scroll-demo">
+      <h2>Sección 1: Fundamentos de UX</h2>
+      <p>Haz scroll hacia abajo para verificar cómo el botón de regreso permanece anclado de forma fija (<code>position: fixed</code>) en la esquina inferior derecha de la ventana visual.</p>
+      <div class="placeholder-block">Espacio de lectura continua...</div>
+    </section>
+
+    <section class="card scroll-demo">
+      <h2>Sección 2: Jerarquía Visual y CSS</h2>
+      <p>El tooltip utiliza <code>z-index: 10</code> para flotar por encima de cualquier otro elemento sin alterar el flujo de caja del documento.</p>
+      <div class="placeholder-block">Espacio de lectura continua...</div>
+    </section>
+
+    <section class="card scroll-demo">
+      <h2>Sección 3: Pruebas de Usabilidad</h2>
+      <p>Has llegado al final de la página. Puedes presionar el botón fijo flotante para retornar al inicio.</p>
+      <div class="placeholder-block">Fin del contenido demostrativo.</div>
+    </section>
+  </main>
+
+  <!-- BOTÓN FIXED VOLVER ARRIBA -->
+  <a href="#top" class="back-to-top" title="Volver al inicio" aria-label="Volver arriba">
+    ↑ Volver arriba
+  </a>
+</body>
+</html>

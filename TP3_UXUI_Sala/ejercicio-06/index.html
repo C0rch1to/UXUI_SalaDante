@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 06 - Selectores CSS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="main-banner">
+    <h1>Portal de Aprendizaje Tecnológico</h1>
+    <p>Demostración de selectores de <span class="tag">Clase</span>, de <span class="tag">ID</span> y <span class="tag">Descendientes</span>.</p>
+  </div>
+
+  <div class="content-container">
+    <div class="card" id="featured-card">
+      <h2 class="card-title">Módulo Destacado</h2>
+      <p>Este párrafo está estilizado mediante un selector descendente: <code>.card p</code>. La tarjeta posee además un ID para resaltar con mayor especificidad.</p>
+      <span class="badge">Nivel Avanzado</span>
+    </div>
+
+    <div class="card">
+      <h2 class="card-title">Fundamentos de CSS</h2>
+      <p>Los selectores descendientes permiten aplicar estilos a elementos anidados dentro de una clase contenedora sin afectar a otros párrafos del documento.</p>
+      <span class="badge">Nivel Básico</span>
+    </div>
+
+    <div class="alert-box">
+      <p>Aviso general: Los selectores de ID tienen mayor especificidad que los selectores de clase y de tipo.</p>
+      <span id="urgent-status">Prioridad Alta</span>
+    </div>
+  </div>
+</body>
+</html>

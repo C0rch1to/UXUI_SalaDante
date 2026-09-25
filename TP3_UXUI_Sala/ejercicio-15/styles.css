@@ -1,0 +1,277 @@
+/* =========================================================
+   EJERCICIO 15: DISEÑO RESPONSIVO CON MEDIA QUERIES
+   Enfoque: Mobile First (2 Breakpoints: 768px y 1024px)
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1e293b;
+  background-color: #f1f5f9;
+  line-height: 1.5;
+  overflow-x: hidden; /* Garantiza ausencia total de overflow horizontal */
+}
+
+/* ---------------------------------------------------------
+   1. ESTILOS BASE: MOBILE-FIRST (< 768px)
+   Layout a una sola columna, sidebar oculto
+   --------------------------------------------------------- */
+
+.site-layout {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  gap: 0;
+}
+
+.layout-header {
+  grid-area: header;
+  background-color: #0f172a;
+  color: #ffffff;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 2px solid #334155;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.viewport-indicator {
+  font-size: 0.75rem;
+}
+
+.view-tag {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.mobile-tag {
+  background-color: #22c55e;
+  color: #052e16;
+}
+.tablet-tag { display: none; }
+.desktop-tag { display: none; }
+
+/* En móvil, el sidebar DESAPARECE según la consigna */
+.layout-sidebar {
+  display: none;
+  grid-area: sidebar;
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 1.5rem 1rem;
+}
+
+.layout-sidebar h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: #94a3b8;
+  margin-bottom: 0.75rem;
+}
+
+.layout-sidebar ul {
+  list-style: none;
+}
+
+.layout-sidebar a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 0.25rem;
+}
+
+.layout-sidebar a.active {
+  background-color: #334155;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.layout-main {
+  grid-area: main;
+  padding: 1.5rem 1rem;
+}
+
+.banner-justification {
+  background-color: #ffffff;
+  border-left: 4px solid #2563eb;
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.banner-justification h1 {
+  font-size: 1.35rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.banner-justification p {
+  color: #475569;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+code {
+  background: #f1f5f9;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #2563eb;
+}
+
+.widgets-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 columna en móvil */
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.widget {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.widget h4 {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.widget .stat {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.positive { background-color: #dcfce7; color: #166534; }
+.neutral { background-color: #f1f5f9; color: #475569; }
+
+.data-section {
+  background: #ffffff;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.data-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.data-section ul {
+  padding-left: 1.25rem;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.data-section li {
+  margin-bottom: 0.5rem;
+}
+
+.layout-footer {
+  grid-area: footer;
+  background-color: #0f172a;
+  color: #94a3b8;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+/* ---------------------------------------------------------
+   2. BREAKPOINT 1: TABLET (min-width: 768px)
+   El sidebar reaparece y el grid pasa a 2 columnas
+   --------------------------------------------------------- */
+@media (min-width: 768px) {
+  .site-layout {
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 65px 1fr auto;
+    grid-template-areas:
+      "header  header"
+      "sidebar main"
+      "footer  footer";
+  }
+
+  .layout-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.75rem;
+  }
+
+  .mobile-tag { display: none; }
+  .tablet-tag {
+    display: inline-block;
+    background-color: #3b82f6;
+    color: #ffffff;
+  }
+
+  .layout-sidebar {
+    display: block; /* Se muestra el sidebar */
+  }
+
+  .layout-main {
+    padding: 2rem;
+  }
+
+  .widgets-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+  }
+}
+
+/* ---------------------------------------------------------
+   3. BREAKPOINT 2: DESKTOP (min-width: 1024px)
+   Sidebar expandido a 260px y widgets a 3 columnas
+   --------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .site-layout {
+    grid-template-columns: 260px 1fr;
+  }
+
+  .tablet-tag { display: none; }
+  .desktop-tag {
+    display: inline-block;
+    background-color: #8b5cf6;
+    color: #ffffff;
+  }
+
+  .layout-main {
+    padding: 2.5rem 3rem;
+  }
+
+  .banner-justification h1 {
+    font-size: 1.75rem;
+  }
+
+  .widgets-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en desktop */
+  }
+}

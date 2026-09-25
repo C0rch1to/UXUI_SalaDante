@@ -1,0 +1,174 @@
+/* =========================================================
+   EJERCICIO 16: ANIMACIONES CON @KEYFRAMES
+   Control de duration, timing-function, iteration-count
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+  line-height: 1.6;
+  padding: 3rem 1.5rem;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: #38bdf8;
+  margin-bottom: 0.75rem;
+}
+
+.header p {
+  color: #94a3b8;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+code {
+  background-color: #1e293b;
+  color: #38bdf8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.section-demo {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-demo h2 {
+  font-size: 1.35rem;
+  color: #f1f5f9;
+  margin-bottom: 0.25rem;
+}
+
+.section-demo .desc {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+}
+
+/* ---------------------------------------------------------
+   1. KEYFRAMES Y ANIMACIÓN: SPINNER DE CARGA
+   --------------------------------------------------------- */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #0f172a;
+  border-radius: 8px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(56, 189, 248, 0.2);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  
+  /* PROPIEDADES DE ANIMACIÓN EXPLÍCITAS */
+  animation-name: spin;
+  animation-duration: 0.9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.loading-label {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* ---------------------------------------------------------
+   2. KEYFRAMES Y ANIMACIÓN: FADE-IN + SLIDE-UP
+   --------------------------------------------------------- */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.animated-card {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 1.75rem 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  
+  /* PROPIEDADES DE ANIMACIÓN EXPLÍCITAS */
+  animation-name: fadeInUp;
+  animation-duration: 0.8s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards; /* Mantiene el estado final */
+  opacity: 0; /* Estado inicial invisible antes de comenzar */
+}
+
+/* Retardos escalonados para efecto cascada */
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.45s;
+}
+
+.delay-3 {
+  animation-delay: 0.7s;
+}
+
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.animated-card h3 {
+  font-size: 1.15rem;
+  color: #38bdf8;
+  margin-bottom: 0.5rem;
+}
+
+.animated-card p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}

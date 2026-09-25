@@ -1,0 +1,212 @@
+/* =========================================================
+   EJERCICIO 14: VARIABLES CSS Y TEMAS (MODO OSCURO)
+   :root, var(), conmutación de tema
+   ========================================================= */
+
+/* 1. DEFINICIÓN DE VARIABLES GLOBALES EN :ROOT (MODO CLARO POR DEFECTO) */
+:root {
+  --color-primario: #2563eb;
+  --color-secundario: #0ea5e9;
+  --color-fondo: #f8fafc;
+  --color-superficie: #ffffff;
+  --color-texto-principal: #0f172a;
+  --color-texto-secundario: #64748b;
+  --color-borde: #e2e8f0;
+  
+  --espaciado-sm: 0.5rem;
+  --espaciado-md: 1.25rem;
+  --espaciado-lg: 2.5rem;
+  
+  --radio-borde: 12px;
+  --sombra-card: 0 4px 6px -1px rgba(0, 0, 0, 0.07);
+}
+
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Checkbox oculto para alternar temas sin JS */
+.theme-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 2. REASIGNACIÓN DE VARIABLES AL ACTIVAR EL CHECKBOX (MODO OSCURO) */
+.theme-checkbox:checked ~ .site-wrapper {
+  --color-primario: #38bdf8;
+  --color-secundario: #818cf8;
+  --color-fondo: #0f172a;
+  --color-superficie: #1e293b;
+  --color-texto-principal: #f8fafc;
+  --color-texto-secundario: #94a3b8;
+  --color-borde: #334155;
+  --sombra-card: 0 8px 16px -2px rgba(0, 0, 0, 0.4);
+}
+
+/* 3. APLICACIÓN DE VARIABLES EN MÁS DE 5 PROPIEDADES DISTINTAS */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+.site-wrapper {
+  /* Propiedad 1: background-color */
+  background-color: var(--color-fondo);
+  /* Propiedad 2: color */
+  color: var(--color-texto-principal);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+  background-color: var(--color-superficie);
+  /* Propiedad 3: border-bottom */
+  border-bottom: 1px solid var(--color-borde);
+  /* Propiedad 4: padding */
+  padding: var(--espaciado-md) var(--espaciado-lg);
+}
+
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-title {
+  color: var(--color-primario);
+  font-size: 1.5rem;
+}
+
+/* Botón interactivo de cambio de tema */
+.theme-button {
+  cursor: pointer;
+  background-color: var(--color-fondo);
+  color: var(--color-texto-principal);
+  border: 1px solid var(--color-borde);
+  padding: var(--espaciado-sm) var(--espaciado-md);
+  /* Propiedad 5: border-radius */
+  border-radius: var(--radio-borde);
+  font-size: 0.9rem;
+  font-weight: 600;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.dark-icon { display: none; }
+.light-icon { display: inline; }
+
+.theme-checkbox:checked ~ .site-wrapper .dark-icon {
+  display: inline;
+}
+
+.theme-checkbox:checked ~ .site-wrapper .light-icon {
+  display: none;
+}
+
+/* CONTENIDO PRINCIPAL */
+.main-content {
+  max-width: 1000px;
+  /* Propiedad 6: margin */
+  margin: var(--espaciado-lg) auto;
+  padding: 0 var(--espaciado-md);
+  flex-grow: 1;
+}
+
+.hero-card {
+  background-color: var(--color-superficie);
+  padding: var(--espaciado-lg);
+  border-radius: var(--radio-borde);
+  border: 1px solid var(--color-borde);
+  /* Propiedad 7: box-shadow */
+  box-shadow: var(--sombra-card);
+  margin-bottom: var(--espaciado-lg);
+}
+
+.hero-card h2 {
+  color: var(--color-primario);
+  margin-bottom: var(--espaciado-sm);
+}
+
+.hero-card p {
+  color: var(--color-texto-secundario);
+  margin-bottom: var(--espaciado-md);
+}
+
+code {
+  background-color: var(--color-fondo);
+  color: var(--color-primario);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.badge-group {
+  display: flex;
+  gap: var(--espaciado-sm);
+}
+
+.badge {
+  background-color: var(--color-fondo);
+  color: var(--color-secundario);
+  border: 1px solid var(--color-borde);
+  padding: var(--espaciado-sm) var(--espaciado-md);
+  border-radius: var(--radio-borde);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* GRID DE TARJETAS */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espaciado-md);
+}
+
+.card {
+  background-color: var(--color-superficie);
+  padding: var(--espaciado-md);
+  border-radius: var(--radio-borde);
+  border: 1px solid var(--color-borde);
+  box-shadow: var(--sombra-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card h3 {
+  margin-bottom: var(--espaciado-sm);
+  font-size: 1.15rem;
+}
+
+.card p {
+  color: var(--color-texto-secundario);
+  font-size: 0.95rem;
+  margin-bottom: var(--espaciado-md);
+}
+
+.cta-link {
+  color: var(--color-primario);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.cta-link:hover {
+  text-decoration: underline;
+}
+
+.footer {
+  text-align: center;
+  padding: var(--espaciado-md);
+  color: var(--color-texto-secundario);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--color-borde);
+  background-color: var(--color-superficie);
+}

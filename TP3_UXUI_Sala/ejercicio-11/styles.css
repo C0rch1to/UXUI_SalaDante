@@ -1,0 +1,136 @@
+/* =========================================================
+   EJERCICIO 11: PSEUDO-CLASES Y PSEUDO-ELEMENTOS
+   :hover, :nth-child(), ::before, ::after
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+  max-width: 650px;
+  width: 100%;
+}
+
+header {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 1rem;
+}
+
+h1 {
+  font-size: 1.75rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+code {
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #2563eb;
+}
+
+/* LISTA */
+.styled-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* 1. PSEUDO-CLASE: :nth-child(odd) y :nth-child(even) para alternar fondos */
+.styled-list li:nth-child(odd) a {
+  background-color: #f8fafc;
+}
+
+.styled-list li:nth-child(even) a {
+  background-color: #f1f5f9;
+}
+
+/* ESTILOS DEL ENLACE */
+.styled-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+/* 2. PSEUDO-ELEMENTO: ::before (Ícono decorativo al inicio del enlace) */
+.styled-list a::before {
+  content: "📖";
+  margin-right: 0.85rem;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+
+/* Ícono personalizado para elementos específicos usando nth-child */
+.styled-list li:nth-child(3) a::before {
+  content: "🎨";
+}
+
+.styled-list li:nth-child(4) a::before {
+  content: "🗄️";
+}
+
+.styled-list li:nth-child(6) a::before {
+  content: "💻";
+}
+
+/* 3. PSEUDO-ELEMENTO: ::after (Flecha indicadora interactiva al final) */
+.styled-list a::after {
+  content: "→";
+  margin-left: auto;
+  font-weight: 700;
+  color: #94a3b8;
+  transform: translateX(0);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* 4. PSEUDO-CLASE: :hover (Estado interactivo al pasar el cursor) */
+.styled-list a:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #1d4ed8;
+  transform: translateX(6px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.styled-list a:hover::before {
+  transform: scale(1.15);
+}
+
+.styled-list a:hover::after {
+  color: #ffffff;
+  transform: translateX(4px);
+}

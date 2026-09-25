@@ -1,0 +1,114 @@
+/* =========================================================
+   EJERCICIO 07: MODELO DE CAJA (BOX MODEL)
+   Uso explícito de box-sizing: border-box
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  padding: 3rem 1.5rem;
+  line-height: 1.5;
+}
+
+header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+h1 {
+  font-size: 1.85rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+header p {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+code {
+  background: #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  color: #0f172a;
+}
+
+/* Contenedor en fila */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+/* Regla común para todas las tarjetas */
+.card {
+  /* USO EXPLÍCITO DE BOX-SIZING SEGÚN REQUISITO */
+  box-sizing: border-box;
+  width: 320px;
+  margin: 0 15px; /* Margin aplicado */
+  background-color: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Tarjeta 1: Padding estándar y borde fino */
+.card-1 {
+  padding: 16px;
+  border: 2px solid #cbd5e1;
+}
+
+/* Tarjeta 2: Padding amplio y borde más grueso */
+.card-2 {
+  padding: 28px;
+  border: 4px solid #3b82f6;
+}
+
+/* Tarjeta 3: Padding intermedio y borde mediano */
+.card-3 {
+  padding: 20px 12px;
+  border: 3px solid #8b5cf6;
+}
+
+.card h2 {
+  font-size: 1.35rem;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+button {
+  background-color: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}

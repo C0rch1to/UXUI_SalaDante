@@ -1,0 +1,299 @@
+/* =========================================================
+   EJERCICIO 19: FORMULARIO MULTI-STEP CON VALIDACIÓN VISUAL
+   Radio buttons, :invalid, :valid, :required, transiciones
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+}
+
+.form-container {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  max-width: 540px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  overflow: hidden;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-header h1 {
+  font-size: 1.6rem;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: #64748b;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+code {
+  background-color: #f1f5f9;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ---------------------------------------------------------
+   1. CONTROLADORES RADIO OCULTOS
+   --------------------------------------------------------- */
+.step-controller {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   2. INDICADOR DE PASOS Y PESTAÑAS
+   --------------------------------------------------------- */
+.step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.25rem;
+  gap: 1rem;
+}
+
+.step-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.step-number {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #e2e8f0;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.step-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  transition: color 0.3s ease;
+}
+
+.step-divider {
+  width: 40px;
+  height: 2px;
+  background-color: #e2e8f0;
+}
+
+/* Resaltado del paso activo con selector de hermanos */
+#radio-step1:checked ~ .step-indicator .tab-1 .step-number {
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+#radio-step1:checked ~ .step-indicator .tab-1 .step-text {
+  color: #2563eb;
+}
+
+#radio-step2:checked ~ .step-indicator .tab-2 .step-number {
+  background-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+#radio-step2:checked ~ .step-indicator .tab-2 .step-text {
+  color: #2563eb;
+}
+
+/* ---------------------------------------------------------
+   3. VISIBILIDAD DE SECCIONES (MOSTRAR / OCULTAR)
+   --------------------------------------------------------- */
+.step-section {
+  display: none;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.step-section h2 {
+  font-size: 1.25rem;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.5rem;
+}
+
+/* Mostrar sección 1 cuando radio 1 está activo */
+#radio-step1:checked ~ .section-1 {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Mostrar sección 2 cuando radio 2 está activo */
+#radio-step2:checked ~ .section-2 {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------------------------------------------------------
+   4. VALIDACIÓN VISUAL NATIVA: :required, :valid, :invalid
+   --------------------------------------------------------- */
+.input-field {
+  margin-bottom: 1.35rem;
+  position: relative;
+}
+
+label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.4rem;
+}
+
+.required {
+  color: #dc2626;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  outline: none;
+  border: 2px solid #cbd5e1;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Mensajes de validación */
+.validation-message {
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  display: none;
+}
+
+.error-msg {
+  color: #dc2626;
+}
+
+.success-msg {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* Feedback visual: VÁLIDO (borde verde) */
+input:required:valid,
+select:required:valid {
+  border-color: #16a34a;
+  background-color: #f0fdf4;
+}
+
+input:required:valid ~ .success-msg,
+select:required:valid ~ .success-msg {
+  display: block;
+}
+
+/* Feedback visual: INVÁLIDO (borde rojo cuando no está vacío o se interactúa) */
+input:required:user-invalid,
+select:required:user-invalid {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+input:required:user-invalid ~ .error-msg,
+select:required:user-invalid ~ .error-msg {
+  display: block;
+}
+
+/* Fallback de foco para invalid */
+input:focus:invalid {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+}
+
+input:focus:valid {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+}
+
+/* ---------------------------------------------------------
+   5. BOTONES DE ACCIÓN ENTRE PASOS
+   --------------------------------------------------------- */
+.step-actions {
+  margin-top: 2rem;
+  display: flex;
+}
+
+.dual-actions {
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.85rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn-next {
+  width: 100%;
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.btn-next:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-prev {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.btn-prev:hover {
+  background-color: #cbd5e1;
+}
+
+.btn-submit {
+  flex-grow: 1;
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.btn-submit:hover {
+  background-color: #15803d;
+}

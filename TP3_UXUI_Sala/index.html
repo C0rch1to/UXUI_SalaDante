@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabajo Práctico N° 3: HTML y CSS - Hub de Ejercicios</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 3rem 1.5rem;
+    }
+    .header {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 3.5rem;
+    }
+    .badge {
+      display: inline-block;
+      background-color: rgba(37, 99, 235, 0.2);
+      color: #60a5fa;
+      border: 1px solid rgba(37, 99, 235, 0.4);
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      color: #ffffff;
+    }
+    .header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .block-title {
+      font-size: 1.4rem;
+      color: #38bdf8;
+      margin: 2.5rem 0 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.5);
+    }
+    .card-num {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+    .card h3 {
+      font-size: 1.15rem;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background-color: var(--primary);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.65rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+    .btn-link:hover {
+      background-color: var(--primary-dark);
+    }
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="badge">Licenciatura en Sistemas de Información — Diseño UX-UI 2026</span>
+    <h1>Trabajo Práctico N° 3: HTML y CSS</h1>
+    <p>Portal interactivo con acceso a las soluciones completas de los 20 ejercicios, organizados por bloques de complejidad.</p>
+  </div>
+
+  <main class="container">
+    <!-- BLOQUE 1 -->
+    <h2 class="block-title">Bloque 1: Nivel Básico (Ejercicios 1 a 7)</h2>
+    <div class="grid">
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 01</span>
+          <h3>Estructura HTML básica</h3>
+          <p>Documento HTML5 válido con doctype, meta tags, h1, párrafo e imagen con texto alternativo descriptivo.</p>
+        </div>
+        <a href="ejercicio-01/index.html" class="btn-link">Abrir Ejercicio 01 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 02</span>
+          <h3>Listas y enlaces</h3>
+          <p>Lista ordenada &lt;ol&gt; de 5 pasos para preparar café y lista desordenada &lt;ul&gt; con enlaces externos seguros.</p>
+        </div>
+        <a href="ejercicio-02/index.html" class="btn-link">Abrir Ejercicio 02 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 03</span>
+          <h3>Tabla de datos</h3>
+          <p>Horario semanal de cursada universitaria estructurado con thead, tbody, tfoot, rowspan y colspan.</p>
+        </div>
+        <a href="ejercicio-03/index.html" class="btn-link">Abrir Ejercicio 03 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 04</span>
+          <h3>Formulario simple</h3>
+          <p>Formulario de contacto accesible con vinculación estricta de labels mediante for/id y validación requerida.</p>
+        </div>
+        <a href="ejercicio-04/index.html" class="btn-link">Abrir Ejercicio 04 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 05</span>
+          <h3>Primeros estilos CSS</h3>
+          <p>Estilización externa con selectores de etiqueta puros: cambio de color, fondo, font-family y tamaño de h1.</p>
+        </div>
+        <a href="ejercicio-05/index.html" class="btn-link">Abrir Ejercicio 05 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 06</span>
+          <h3>Selectores CSS</h3>
+          <p>Demostración y organización de selectores de clase, de ID y descendientes con especificidad calculada.</p>
+        </div>
+        <a href="ejercicio-06/index.html" class="btn-link">Abrir Ejercicio 06 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 07</span>
+          <h3>Modelo de caja (Box Model)</h3>
+          <p>Tres tarjetas en fila con margin, padding y border diferentes pero igual tamaño visual gracias a box-sizing.</p>
+        </div>
+        <a href="ejercicio-07/index.html" class="btn-link">Abrir Ejercicio 07 &rarr;</a>
+      </article>
+    </div>
+
+    <!-- BLOQUE 2 -->
+    <h2 class="block-title">Bloque 2: Nivel Intermedio (Ejercicios 8 a 14)</h2>
+    <div class="grid">
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 08</span>
+          <h3>Flexbox: barra de navegación</h3>
+          <p>Barra horizontal con logo a la izquierda y 4 enlaces con display: flex, justify-content y align-items.</p>
+        </div>
+        <a href="ejercicio-08/index.html" class="btn-link">Abrir Ejercicio 08 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 09</span>
+          <h3>Flexbox: galería de tarjetas</h3>
+          <p>Catálogo de 6 productos reordenables automáticamente con flex-wrap, gap y flex-basis/flex-grow.</p>
+        </div>
+        <a href="ejercicio-09/index.html" class="btn-link">Abrir Ejercicio 09 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 10</span>
+          <h3>CSS Grid: layout de página</h3>
+          <p>Dashboard maquetado con display: grid y grid-template-areas para header, sidebar, main y footer.</p>
+        </div>
+        <a href="ejercicio-10/index.html" class="btn-link">Abrir Ejercicio 10 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 11</span>
+          <h3>Pseudo-clases y pseudo-elementos</h3>
+          <p>Lista interactiva estilizada con :hover, :nth-child() y adornos visuales mediante ::before y ::after.</p>
+        </div>
+        <a href="ejercicio-11/index.html" class="btn-link">Abrir Ejercicio 11 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 12</span>
+          <h3>Posicionamiento</h3>
+          <p>Botón fixed de volver arriba y tooltip absolute con contenedor relativo y z-index flotante.</p>
+        </div>
+        <a href="ejercicio-12/index.html" class="btn-link">Abrir Ejercicio 12 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 13</span>
+          <h3>Formulario estilizado</h3>
+          <p>Inputs redondeados, estados :focus destacados con glow, botón con :hover y :active y transiciones suaves.</p>
+        </div>
+        <a href="ejercicio-13/index.html" class="btn-link">Abrir Ejercicio 13 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 14</span>
+          <h3>Variables CSS y temas</h3>
+          <p>Design tokens en :root aplicados a más de 5 propiedades y simulación interactiva de modo oscuro.</p>
+        </div>
+        <a href="ejercicio-14/index.html" class="btn-link">Abrir Ejercicio 14 &rarr;</a>
+      </article>
+    </div>
+
+    <!-- BLOQUE 3 -->
+    <h2 class="block-title">Bloque 3: Nivel Medio/Avanzado (Ejercicios 15 a 20)</h2>
+    <div class="grid">
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 15</span>
+          <h3>Diseño responsivo con Media Queries</h3>
+          <p>Adaptación del layout Grid con enfoque Mobile-First, ocultando el sidebar y pasando a 1 columna bajo 768px.</p>
+        </div>
+        <a href="ejercicio-15/index.html" class="btn-link">Abrir Ejercicio 15 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 16</span>
+          <h3>Animaciones con @keyframes</h3>
+          <p>Spinner rotatorio continuo y tarjetas con animación secuencial escalonada de fade-in + slide-up.</p>
+        </div>
+        <a href="ejercicio-16/index.html" class="btn-link">Abrir Ejercicio 16 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 17</span>
+          <h3>Menú hamburguesa (solo CSS)</h3>
+          <p>Navegación responsiva con el truco del checkbox :checked, transición animada de barras a X sin JavaScript.</p>
+        </div>
+        <a href="ejercicio-17/index.html" class="btn-link">Abrir Ejercicio 17 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 18</span>
+          <h3>Grid avanzado: galería mosaico</h3>
+          <p>Composición fotográfica masonry-like con repeat(auto-fill, minmax), grid-auto-flow: dense y spans 2x2.</p>
+        </div>
+        <a href="ejercicio-18/index.html" class="btn-link">Abrir Ejercicio 18 &rarr;</a>
+      </article>
+
+      <article class="card">
+        <div>
+          <span class="card-num">Ejercicio 19</span>
+          <h3>Formulario multi-step con validación visual</h3>
+          <p>Formulario de 2 etapas con radio buttons, validación nativa :valid/:invalid con feedback visual verde/rojo.</p>
+        </div>
+        <a href="ejercicio-19/index.html" class="btn-link">Abrir Ejercicio 19 &rarr;</a>
+      </article>
+
+      <article class="card" style="border-color: #38bdf8;">
+        <div>
+          <span class="card-num" style="color: #60a5fa;">Ejercicio 20 — Integrador</span>
+          <h3>Landing Page completa</h3>
+          <p>Landing page profesional de Aura UX Studio: navbar fija, scroll suave, hero con fondo, grid de servicios, carrusel testimonios scroll-snap, contacto y footer.</p>
+        </div>
+        <a href="ejercicio-20/index.html" class="btn-link" style="background-color: #38bdf8; color: #0f172a;">Abrir Proyecto Integrador &rarr;</a>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <p>Trabajo Práctico N° 3: HTML y CSS — Licenciatura en Sistemas de Información, Diseño UX-UI 2026.</p>
+  </footer>
+</body>
+</html>

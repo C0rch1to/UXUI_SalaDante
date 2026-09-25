@@ -1,0 +1,143 @@
+/* =========================================================
+   EJERCICIO 18: GRID AVANZADO - GALERÍA MOSAICO (MASONRY-LIKE)
+   repeat(auto-fill, minmax(...)), grid-auto-flow: dense, span
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+  line-height: 1.6;
+  padding: 3rem 1.5rem;
+}
+
+header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  color: #38bdf8;
+  margin-bottom: 0.75rem;
+}
+
+header p {
+  color: #94a3b8;
+  font-size: 1.05rem;
+}
+
+code {
+  background-color: #1e293b;
+  color: #38bdf8;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ---------------------------------------------------------
+   1. CONTENEDOR GRID CON AUTO-FILL Y GRID-AUTO-FLOW: DENSE
+   --------------------------------------------------------- */
+.mosaic-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense; /* Rellena automáticamente los huecos con elementos posteriores */
+  gap: 1.25rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---------------------------------------------------------
+   2. ELEMENTO BASE Y VARIANTES CON SPAN
+   --------------------------------------------------------- */
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  background-color: #1e293b;
+  cursor: pointer;
+}
+
+/* REQUISITO: Al menos un elemento que ocupe 2 columnas y 2 filas */
+.span-2x2 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Variante que ocupa 2 columnas */
+.span-col2 {
+  grid-column: span 2;
+}
+
+/* Variante que ocupa 2 filas */
+.span-row2 {
+  grid-row: span 2;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+/* Overlay interactivo */
+.item-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.1) 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.item-overlay h3 {
+  color: #ffffff;
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem;
+}
+
+.item-overlay span {
+  color: #38bdf8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Hover effects */
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.gallery-item:hover .item-overlay {
+  opacity: 1;
+}
+
+/* Regla responsiva para pantallas pequeñas donde no entran 2 columnas */
+@media (max-width: 520px) {
+  .mosaic-gallery {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 240px;
+  }
+
+  .span-2x2,
+  .span-col2,
+  .span-row2 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}

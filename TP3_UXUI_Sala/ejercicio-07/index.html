@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 07 - Modelo de Caja (Box Model)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Demostración del Modelo de Caja (Box Model)</h1>
+    <p>Tres tarjetas con distintos paddings y bordes pero con <code>box-sizing: border-box</code> explícito para garantizar exactamente el mismo ancho y consistencia visual.</p>
+  </header>
+
+  <main>
+    <div class="cards-container">
+      <div class="card card-1">
+        <h2>Plan Básico</h2>
+        <p class="price">$19 / mes</p>
+        <p class="description">Padding moderado (16px) y borde estándar (2px). Ideal para proyectos individuales.</p>
+        <button type="button">Seleccionar</button>
+      </div>
+
+      <div class="card card-2">
+        <h2>Plan Profesional</h2>
+        <p class="price">$49 / mes</p>
+        <p class="description">Padding amplio (28px) y borde grueso (4px). Recomendado para equipos y pymes.</p>
+        <button type="button">Seleccionar</button>
+      </div>
+
+      <div class="card card-3">
+        <h2>Plan Empresa</h2>
+        <p class="price">$99 / mes</p>
+        <p class="description">Padding asimétrico (20px 12px) y borde resaltado (3px). Soporte 24/7 e infraestructura dedicada.</p>
+        <button type="button">Seleccionar</button>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 14 - Variables CSS y Temas (Dark Mode)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Checkbox oculto para alternar modo claro / modo oscuro sin JavaScript -->
+  <input type="checkbox" id="theme-toggle" class="theme-checkbox" aria-label="Cambiar a Modo Oscuro">
+
+  <div class="site-wrapper">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="brand-title">Sistema de Tokens CSS</h1>
+        <label for="theme-toggle" class="theme-button">
+          <span class="theme-icon light-icon">🌙 Modo Oscuro</span>
+          <span class="theme-icon dark-icon">☀️ Modo Claro</span>
+        </label>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="hero-card">
+        <h2>Demostración de Custom Properties (Variables CSS)</h2>
+        <p>
+          Las variables CSS definidas en <code>:root</code> se aplican de manera dinámica en múltiples propiedades: 
+          colores de fondo, colores de texto, tamaños de espaciado, radio de bordes y sombras.
+        </p>
+        <div class="badge-group">
+          <span class="badge">Reutilización</span>
+          <span class="badge">Consistencia</span>
+          <span class="badge">Mantenibilidad</span>
+        </div>
+      </section>
+
+      <section class="grid-cards">
+        <article class="card">
+          <h3>Token: Color Primario</h3>
+          <p>Se aplica a titulares, bordes de acento y botones con <code>var(--color-primario)</code>.</p>
+          <a href="#" class="cta-link">Ver especificación &rarr;</a>
+        </article>
+
+        <article class="card">
+          <h3>Token: Superficie y Fondo</h3>
+          <p>Al activar el switch superior, <code>--color-fondo</code> y <code>--color-superficie</code> se reasignan instantáneamente.</p>
+          <a href="#" class="cta-link">Ver especificación &rarr;</a>
+        </article>
+
+        <article class="card">
+          <h3>Token: Espaciados</h3>
+          <p>Márgenes y paddings calibrados con variables homogéneas <code>--espaciado-sm</code>, <code>--espaciado-md</code> y <code>--espaciado-lg</code>.</p>
+          <a href="#" class="cta-link">Ver especificación &rarr;</a>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2026 Variables CSS en Diseño UX-UI. Implementación sin dependencias.</p>
+    </footer>
+  </div>
+</body>
+</html>
