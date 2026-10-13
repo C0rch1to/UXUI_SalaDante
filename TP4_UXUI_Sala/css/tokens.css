@@ -1,0 +1,62 @@
+@layer tokens {
+  :root {
+    /* Colores oficiales extraídos de Figma */
+    --color-espresso: #30261C;
+    --color-maroon: #2A0000;
+    --color-sand: #E2D9C8;
+    --color-sand-20: rgba(226, 217, 200, 0.2);
+    --color-sand-40: rgba(226, 217, 200, 0.4);
+    --color-bg: #F1F0EE;
+    --color-muted: #544A3E;
+    --color-border-soft: rgba(48, 38, 28, 0.1);
+    --color-text-soft: rgba(48, 38, 28, 0.7);
+    --color-white: #FFFFFF;
+    --color-star: #FFB921;
+
+    /* Familias tipográficas */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-ui: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-accent: 'Reggae One', cursive, sans-serif;
+
+    /* Escala tipográfica fluida con rem y clamp() */
+    --fs-hero: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem);       /* 72px / 82px line-height */
+    --fs-h2: clamp(1.75rem, 1.4rem + 1vw, 2rem);             /* 32px */
+    --fs-cta: clamp(2rem, 1.5rem + 1.25vw, 2.5rem);          /* 40px / 50px */
+    --fs-card-title: clamp(1.75rem, 1.5rem + 1vw, 2.375rem); /* 38px */
+    --fs-logo: 2rem;                                         /* 32px */
+    --fs-footer-h: 1.5rem;                                   /* 24px */
+    --fs-lg: 1.25rem;                                        /* 20px */
+    --fs-md: 1.125rem;                                       /* 18px */
+    --fs-base: 1rem;                                         /* 16px */
+    --fs-sm: 0.875rem;                                       /* 14px */
+    --fs-xs: 0.75rem;                                        /* 12px */
+
+    /* Tracking */
+    --tracking-hero-eyebrow: 4px;
+    --tracking-h2: 1.28px;
+
+    /* Radios */
+    --radius-pill: 100px;
+    --radius-card: 18px;
+    --radius-img: 12px;
+    --radius-btn: 8px;
+
+    /* Contenedores */
+    --container: 1444px;
+
+    /* Espaciados */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-7: 28px;
+    --space-10: 40px;
+    --space-14: 56px;
+    --space-16: 64px;
+
+    /* Transiciones */
+    --transition-fast: 200ms ease;
+  }
+}

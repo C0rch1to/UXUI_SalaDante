@@ -1,0 +1,192 @@
+@layer components {
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    max-height: 1000px;
+    height: 1000px;
+    background-color: #1a181b;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Imagen de fondo del hero (foto original de Figma a escala completa) */
+  .hero__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+  }
+
+  /* Overlay para garantizar contraste AA (RNF WCAG 2.2) y legibilidad del texto */
+  .hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(180deg, rgba(20, 18, 20, 0.45) 0%, transparent 120px),
+      linear-gradient(90deg, rgba(20, 18, 20, 0.92) 0%, rgba(20, 18, 20, 0.7) 45%, rgba(20, 18, 20, 0) 75%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .hero__container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__content {
+    width: 100%;
+    max-width: 557px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 120px;
+  }
+
+  .hero__eyebrow {
+    font-family: var(--font-body);
+    font-size: var(--fs-lg);
+    font-weight: 500;
+    letter-spacing: var(--tracking-hero-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-white);
+    margin-bottom: var(--space-10);
+  }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-hero);
+    font-weight: 700;
+    line-height: 1.14;
+    color: var(--color-white);
+    margin-bottom: var(--space-14);
+  }
+
+  .hero__description {
+    font-family: var(--font-body);
+    font-size: var(--fs-md);
+    font-weight: 400;
+    line-height: 26px;
+    max-width: 431px;
+    color: rgba(255, 255, 255, 0.88);
+    margin-bottom: var(--space-14);
+  }
+
+  .hero__btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white);
+    color: var(--color-espresso);
+    font-family: var(--font-body);
+    font-size: var(--fs-md);
+    font-weight: 500;
+    padding: 16px 40px;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .hero__btn:hover {
+    transform: translateY(-2px);
+    background-color: #faf8f5;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Desktop ≥ 1440px: Medidas exactas de diseño Figma */
+  @media (min-width: 1440px) {
+    .hero__content {
+      padding-top: 160px;
+    }
+  }
+
+  /* Tablet (768px - 1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero {
+      height: 750px;
+      max-height: 750px;
+    }
+
+    .hero__bg {
+      top: 100px;
+      height: calc(100% - 100px);
+    }
+
+    .hero__overlay {
+      background: linear-gradient(90deg, rgba(20, 18, 20, 0.92) 0%, rgba(20, 18, 20, 0.75) 60%, rgba(20, 18, 20, 0.2) 100%);
+    }
+
+    .hero__eyebrow {
+      margin-bottom: var(--space-6);
+    }
+
+    .hero__title {
+      margin-bottom: var(--space-7);
+    }
+
+    .hero__description {
+      margin-bottom: var(--space-7);
+    }
+  }
+
+  /* Mobile (< 768px) */
+  @media (max-width: 767px) {
+    .hero {
+      height: auto;
+      min-height: 620px;
+      max-height: none;
+      padding-top: 100px;
+      padding-bottom: 60px;
+    }
+
+    .hero__bg {
+      top: 80px;
+      height: calc(100% - 80px);
+    }
+
+    .hero__overlay {
+      background: rgba(18, 16, 18, 0.85);
+    }
+
+    .hero__content {
+      padding-top: 0;
+      max-width: 100%;
+    }
+
+    .hero__eyebrow {
+      margin-bottom: var(--space-4);
+    }
+
+    .hero__title {
+      margin-bottom: var(--space-6);
+    }
+
+    .hero__description {
+      margin-bottom: var(--space-6);
+    }
+
+    .hero__btn {
+      width: 100%;
+      min-height: 48px;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+@layer components {
+  .promo {
+    position: relative;
+    background-color: var(--color-sand);
+    min-height: 335px;
+    height: 335px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Imágenes laterales decorativas */
+  .promo__image-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: auto;
+    max-width: 520px;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .promo__image-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: auto;
+    max-width: 503px;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Contenido central */
+  .promo__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 372px;
+    margin: 0 auto;
+  }
+
+  .promo__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-cta);
+    font-weight: 600;
+    line-height: 1.25; /* 50px line-height */
+    color: #000000;
+    margin-bottom: var(--space-6);
+  }
+
+  .promo__btn {
+    width: 258px;
+    height: 51px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    background-color: var(--color-espresso);
+    color: var(--color-bg);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(48, 38, 28, 0.2);
+    transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .promo__btn:hover {
+    transform: translateY(-2px);
+    background-color: #241c14;
+    box-shadow: 0 6px 18px rgba(48, 38, 28, 0.28);
+  }
+
+  .promo__btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-fast);
+  }
+
+  .promo__btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* Tablet (768px - 1023px): Imagen izquierda reducida, derecha oculta */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .promo__image-left {
+      max-width: 280px;
+      opacity: 0.8;
+    }
+
+    .promo__image-right {
+      display: none;
+    }
+  }
+
+  /* Mobile (< 768px): Imágenes decorativas ocultas, texto y botón centrados */
+  @media (max-width: 767px) {
+    .promo {
+      height: auto;
+      min-height: 280px;
+      padding: var(--space-10) var(--space-4);
+    }
+
+    .promo__image-left,
+    .promo__image-right {
+      display: none;
+    }
+
+    .promo__title {
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .promo__btn {
+      width: 100%;
+      max-width: 258px;
+      min-height: 48px;
+    }
+  }
+}

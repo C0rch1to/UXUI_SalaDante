@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.wrapper .btn { display: none; }
+.wrapper .btn-1 { display: block; }
+
+.wrapper:has(#card-2:target) .btn-1 { display: none; }
+.wrapper:has(#card-2:target) .btn-2 { display: block; }
+</style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='btn btn-1'>Button 1</div>
+  <div class='btn btn-2'>Button 2</div>
+  <div id='card-1'>Card 1</div>
+  <div id='card-2'>Card 2</div>
+</div>
+</body>
+</html>

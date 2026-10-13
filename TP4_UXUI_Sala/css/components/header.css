@@ -1,0 +1,190 @@
+@layer components {
+  .header {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .header__logo {
+    font-family: var(--font-display);
+    font-size: var(--fs-logo);
+    font-weight: 700;
+    color: var(--color-white);
+    letter-spacing: -0.5px;
+    text-transform: lowercase;
+    transition: opacity var(--transition-fast);
+  }
+
+  .header__logo:hover {
+    opacity: 0.85;
+  }
+
+  /* Navegación Desktop */
+  .header__nav {
+    display: none;
+  }
+
+  .header__list {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+  }
+
+  .header__link {
+    font-family: var(--font-ui);
+    font-size: var(--fs-md);
+    font-weight: 500;
+    color: var(--color-white);
+    text-transform: uppercase;
+    transition: opacity var(--transition-fast), transform var(--transition-fast);
+    padding: var(--space-2) 0;
+    display: inline-block;
+  }
+
+  .header__link:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+  }
+
+  .header__link--login {
+    font-weight: 600;
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  /* Botón de Búsqueda */
+  .header__search {
+    width: 61px;
+    height: 61px;
+    border-radius: var(--radius-pill);
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .header__search:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Menú hamburguesa mobile (<details>/<summary>) */
+  .header__menu {
+    position: relative;
+    display: block;
+  }
+
+  .header__toggle {
+    list-style: none;
+    width: 48px;
+    height: 48px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-btn);
+    padding: 10px;
+  }
+
+  .header__toggle::-webkit-details-marker {
+    display: none;
+  }
+
+  .header__bar {
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-white);
+    border-radius: 2px;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+  }
+
+  .header__menu[open] .header__toggle .header__bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .header__menu[open] .header__toggle .header__bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__menu[open] .header__toggle .header__bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .header__mobile-nav {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 260px;
+    background: var(--color-espresso);
+    border: 1px solid var(--color-border-soft);
+    border-radius: var(--radius-card);
+    padding: var(--space-4);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .header__mobile-link {
+    font-family: var(--font-ui);
+    font-size: var(--fs-md);
+    font-weight: 500;
+    color: var(--color-white);
+    text-transform: uppercase;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-btn);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    transition: background var(--transition-fast);
+  }
+
+  .header__mobile-link:hover {
+    background: rgba(226, 217, 200, 0.15);
+  }
+
+  /* Desktop (≥ 1024px) */
+  @media (min-width: 1024px) {
+    .header__nav {
+      display: block;
+    }
+
+    .header__menu {
+      display: none;
+    }
+  }
+
+  /* Mobile adjustment */
+  @media (max-width: 767px) {
+    .header {
+      top: 24px;
+    }
+
+    .header__search {
+      width: 48px;
+      height: 48px;
+    }
+  }
+}
