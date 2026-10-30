@@ -5,9 +5,14 @@
  * Cada función recibe un valor y devuelve un string con el mensaje de error o null si es válido.
  */
 
-export function validarMarca(marca) {
+export function validarMarca(marca, marcaOtro = '') {
   if (!marca || String(marca).trim() === '') {
     return 'Elegí una marca';
+  }
+  if (marca === 'Otro') {
+    if (!marcaOtro || String(marcaOtro).trim().length < 2) {
+      return 'Especificá la marca (mínimo 2 letras)';
+    }
   }
   return null;
 }
@@ -75,7 +80,7 @@ export function validarFechaNacimiento(fecha) {
     return 'Ingresá tu fecha de nacimiento';
   }
 
-  // Soporta tanto YYYY-MM-DD (input date nativo) como DD/MM/AAAA
+  // Soporta tanto DD/MM/AAAA (input texto formateado) como YYYY-MM-DD
   let anio, mes, dia;
   if (fecha.includes('-')) {
     const partes = fecha.split('-');
@@ -84,16 +89,23 @@ export function validarFechaNacimiento(fecha) {
     dia = parseInt(partes[2], 10);
   } else if (fecha.includes('/')) {
     const partes = fecha.split('/');
+    if (partes.length !== 3 || partes[0].length !== 2 || partes[1].length !== 2 || partes[2].length !== 4) {
+      return 'Ingresá una fecha completa (DD/MM/AAAA)';
+    }
     dia = parseInt(partes[0], 10);
     mes = parseInt(partes[1], 10) - 1;
     anio = parseInt(partes[2], 10);
   } else {
-    return 'Tenés que ser mayor de edad';
+    return 'Ingresá una fecha válida (DD/MM/AAAA)';
+  }
+
+  if (isNaN(dia) || isNaN(mes) || isNaN(anio) || mes < 0 || mes > 11 || dia < 1 || dia > 31 || anio < 1800) {
+    return 'Ingresá una fecha válida';
   }
 
   const fechaNac = new Date(anio, mes, dia);
-  if (isNaN(fechaNac.getTime())) {
-    return 'Tenés que ser mayor de edad';
+  if (isNaN(fechaNac.getTime()) || fechaNac.getMonth() !== mes || fechaNac.getDate() !== dia) {
+    return 'Fecha inexistente';
   }
 
   const hoy = new Date();
@@ -201,7 +213,7 @@ export function validarTitular(titular) {
 
 // Helpers para evaluar la validez completa de un paso
 export function validarPaso1Completo(equipo) {
-  const eMarca = validarMarca(equipo.marca);
+  const eMarca = validarMarca(equipo.marca, equipo.marcaOtro);
   const eModelo = validarModelo(equipo.modelo);
   const eValor = validarValor(equipo.valor);
   const eAntiguedad = validarAntiguedad(equipo.antiguedad);
@@ -210,6 +222,7 @@ export function validarPaso1Completo(equipo) {
     esValido: !eMarca && !eModelo && !eValor && !eAntiguedad,
     errores: {
       marca: eMarca,
+      marcaOtro: equipo.marca === 'Otro' ? eMarca : null,
       modelo: eModelo,
       valor: eValor,
       antiguedad: eAntiguedad,

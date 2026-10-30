@@ -5,8 +5,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* Regla crítica para asegurar visibilidad precisa por paso */
-[hidden], .hidden {
+/* Regla para asegurar visibilidad precisa por paso basada en atributo nativo */
+[hidden] {
   display: none !important;
 }
 
@@ -85,6 +85,84 @@
   --input: #334155;
   --ring: #6366F1;
 }
+
+/* En modo oscuro, transformar los textos oscuros de la paleta Slate a tonos claros legibles */
+[data-theme="dark"] .text-slate-900,
+[data-theme="dark"] .text-slate-800,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4 {
+  color: #F8FAFC !important; /* slate-50 */
+}
+
+[data-theme="dark"] .text-slate-700 {
+  color: #E2E8F0 !important; /* slate-200 */
+}
+
+[data-theme="dark"] .text-slate-600 {
+  color: #CBD5E1 !important; /* slate-300 */
+}
+
+[data-theme="dark"] .text-slate-500 {
+  color: #94A3B8 !important; /* slate-400 */
+}
+
+[data-theme="dark"] .text-slate-400 {
+  color: #64748B !important; /* slate-500 */
+}
+
+/* Adaptación de superficies y bordes en modo oscuro */
+[data-theme="dark"] .bg-white {
+  background-color: #151D2F !important;
+}
+
+[data-theme="dark"] .bg-slate-50 {
+  background-color: #0F172A !important;
+}
+
+[data-theme="dark"] .border-slate-200,
+[data-theme="dark"] .border-slate-100 {
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] input:not([type="checkbox"]):not([type="radio"]),
+[data-theme="dark"] select {
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] input::placeholder {
+  color: #64748B !important;
+}
+
+[data-theme="dark"] .card {
+  background-color: #151D2F !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .card-deshabilitada {
+  background-color: rgba(21, 29, 47, 0.6) !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .bg-indigo-50 {
+  background-color: rgba(79, 70, 229, 0.15) !important;
+}
+
+[data-theme="dark"] .ring-indigo-50 {
+  --tw-ring-color: rgba(79, 70, 229, 0.25) !important;
+}
+
+[data-theme="dark"] .step-circle.bg-white {
+  background-color: #151D2F !important;
+  border-color: #334155 !important;
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .step-line.bg-slate-200 {
+  background-color: #334155 !important;
 
 body {
   font-family: var(--font-sans);

@@ -8,6 +8,7 @@ export const solicitud = {
   producto: 'celular',
   equipo: {
     marca: '',
+    marcaOtro: '',
     modelo: '',
     valor: 0,
     antiguedad: '',
@@ -61,7 +62,7 @@ export function irAPaso(n) {
 export function reiniciarSolicitud() {
   solicitud.paso = 0;
   solicitud.producto = 'celular';
-  solicitud.equipo = { marca: '', modelo: '', valor: 0, antiguedad: '' };
+  solicitud.equipo = { marca: '', marcaOtro: '', modelo: '', valor: 0, antiguedad: '' };
   solicitud.plan = 'plus';
   solicitud.titular = {
     nombre: '',

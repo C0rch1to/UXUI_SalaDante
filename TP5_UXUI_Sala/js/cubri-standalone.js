@@ -66,6 +66,144 @@ function formatearMoneda(monto) {
 }
 
 
+// ==================== estado.js ====================
+/**
+ * js/estado.js — Único objeto de estado global para todo el flujo
+ * Licenciatura en Sistemas de Información · Diseño UX-UI (2026)
+ */
+
+const solicitud = {
+  paso: 0, // 0 = inicio, 1 = cotizar, 2 = plan, 3 = datos, 4 = pago, 5 = éxito, 6 = error
+  producto: 'celular',
+  equipo: {
+    marca: '',
+    marcaOtro: '',
+    modelo: '',
+    valor: 0,
+    antiguedad: '',
+  },
+  plan: 'plus', // Plus viene preseleccionado
+  titular: {
+    nombre: '',
+    apellido: '',
+    dni: '',
+    nacimiento: '',
+    email: '',
+    celular: '',
+    terminos: false,
+  },
+  pago: {
+    metodo: 'credito', // 'credito' | 'debito'
+    tarjeta: '',
+    vencimiento: '',
+    cvv: '',
+    titular: '',
+  },
+  poliza: null,
+  fechaEmision: null,
+};
+
+let callbackRender = null;
+
+/**
+ * Registra la función render para invocarla tras cada mutación del estado.
+ * @param {Function} fn 
+ */
+function registrarRender(fn) {
+  callbackRender = fn;
+}
+
+/**
+ * Cambia el paso activo del flujo y vuelve a renderizar la vista.
+ * @param {number} n - Nuevo índice de paso (0..6)
+ */
+function irAPaso(n) {
+  solicitud.paso = n;
+  guardarEnStorage();
+  if (typeof callbackRender === 'function') {
+    callbackRender();
+  }
+}
+
+/**
+ * Reinicia la solicitud a los valores predeterminados y vuelve al inicio.
+ */
+function reiniciarSolicitud() {
+  solicitud.paso = 0;
+  solicitud.producto = 'celular';
+  solicitud.equipo = { marca: '', marcaOtro: '', modelo: '', valor: 0, antiguedad: '' };
+  solicitud.plan = 'plus';
+  solicitud.titular = {
+    nombre: '',
+    apellido: '',
+    dni: '',
+    nacimiento: '',
+    email: '',
+    celular: '',
+    terminos: false,
+  };
+  solicitud.pago = {
+    metodo: 'credito',
+    tarjeta: '',
+    vencimiento: '',
+    cvv: '',
+    titular: '',
+  };
+  solicitud.poliza = null;
+  solicitud.fechaEmision = null;
+
+  limpiarStorage();
+  if (typeof callbackRender === 'function') {
+    callbackRender();
+  }
+}
+
+const STORAGE_KEY = 'cubri_solicitud_estado_v1';
+
+/**
+ * Persistencia en localStorage (Bonus)
+ */
+function guardarEnStorage() {
+  try {
+    // No guardamos el CVV por buenas prácticas de seguridad
+    const datosSeguros = {
+      ...solicitud,
+      pago: {
+        ...solicitud.pago,
+        cvv: '',
+      },
+    };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(datosSeguros));
+  } catch (e) {
+    // Ignorar si cookies/storage están deshabilitados
+  }
+}
+
+function cargarDeStorage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    const guardado = JSON.parse(raw);
+    if (guardado && typeof guardado === 'object') {
+      // Fusionar preservando estructura
+      Object.assign(solicitud, guardado);
+      return true;
+    }
+  } catch (e) {
+    // Ignorar error de parsing
+  }
+  return false;
+}
+
+function limpiarStorage() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (e) {
+    // Ignorar
+  }
+}
+
+
 // ==================== validaciones.js ====================
 /**
  * js/validaciones.js — Funciones puras de validación
@@ -74,9 +212,14 @@ function formatearMoneda(monto) {
  * Cada función recibe un valor y devuelve un string con el mensaje de error o null si es válido.
  */
 
-function validarMarca(marca) {
+function validarMarca(marca, marcaOtro = '') {
   if (!marca || String(marca).trim() === '') {
     return 'Elegí una marca';
+  }
+  if (marca === 'Otro') {
+    if (!marcaOtro || String(marcaOtro).trim().length < 2) {
+      return 'Especificá la marca (mínimo 2 letras)';
+    }
   }
   return null;
 }
@@ -144,7 +287,7 @@ function validarFechaNacimiento(fecha) {
     return 'Ingresá tu fecha de nacimiento';
   }
 
-  // Soporta tanto YYYY-MM-DD (input date nativo) como DD/MM/AAAA
+  // Soporta tanto DD/MM/AAAA (input texto formateado) como YYYY-MM-DD
   let anio, mes, dia;
   if (fecha.includes('-')) {
     const partes = fecha.split('-');
@@ -153,16 +296,23 @@ function validarFechaNacimiento(fecha) {
     dia = parseInt(partes[2], 10);
   } else if (fecha.includes('/')) {
     const partes = fecha.split('/');
+    if (partes.length !== 3 || partes[0].length !== 2 || partes[1].length !== 2 || partes[2].length !== 4) {
+      return 'Ingresá una fecha completa (DD/MM/AAAA)';
+    }
     dia = parseInt(partes[0], 10);
     mes = parseInt(partes[1], 10) - 1;
     anio = parseInt(partes[2], 10);
   } else {
-    return 'Tenés que ser mayor de edad';
+    return 'Ingresá una fecha válida (DD/MM/AAAA)';
+  }
+
+  if (isNaN(dia) || isNaN(mes) || isNaN(anio) || mes < 0 || mes > 11 || dia < 1 || dia > 31 || anio < 1800) {
+    return 'Ingresá una fecha válida';
   }
 
   const fechaNac = new Date(anio, mes, dia);
-  if (isNaN(fechaNac.getTime())) {
-    return 'Tenés que ser mayor de edad';
+  if (isNaN(fechaNac.getTime()) || fechaNac.getMonth() !== mes || fechaNac.getDate() !== dia) {
+    return 'Fecha inexistente';
   }
 
   const hoy = new Date();
@@ -270,7 +420,7 @@ function validarTitular(titular) {
 
 // Helpers para evaluar la validez completa de un paso
 function validarPaso1Completo(equipo) {
-  const eMarca = validarMarca(equipo.marca);
+  const eMarca = validarMarca(equipo.marca, equipo.marcaOtro);
   const eModelo = validarModelo(equipo.modelo);
   const eValor = validarValor(equipo.valor);
   const eAntiguedad = validarAntiguedad(equipo.antiguedad);
@@ -279,6 +429,7 @@ function validarPaso1Completo(equipo) {
     esValido: !eMarca && !eModelo && !eValor && !eAntiguedad,
     errores: {
       marca: eMarca,
+      marcaOtro: equipo.marca === 'Otro' ? eMarca : null,
       modelo: eModelo,
       valor: eValor,
       antiguedad: eAntiguedad,
@@ -395,152 +546,11 @@ function obtenerFechaHoyFormateada() {
 }
 
 
-// ==================== estado.js ====================
-/**
- * js/estado.js — Único objeto de estado global para todo el flujo
- * Licenciatura en Sistemas de Información · Diseño UX-UI (2026)
- */
-
-const solicitud = {
-  paso: 0, // 0 = inicio, 1 = cotizar, 2 = plan, 3 = datos, 4 = pago, 5 = éxito, 6 = error
-  producto: 'celular',
-  equipo: {
-    marca: '',
-    modelo: '',
-    valor: 0,
-    antiguedad: '',
-  },
-  plan: 'plus', // Plus viene preseleccionado
-  titular: {
-    nombre: '',
-    apellido: '',
-    dni: '',
-    nacimiento: '',
-    email: '',
-    celular: '',
-    terminos: false,
-  },
-  pago: {
-    metodo: 'credito', // 'credito' | 'debito'
-    tarjeta: '',
-    vencimiento: '',
-    cvv: '',
-    titular: '',
-  },
-  poliza: null,
-  fechaEmision: null,
-};
-
-let callbackRender = null;
-
-/**
- * Registra la función render para invocarla tras cada mutación del estado.
- * @param {Function} fn 
- */
-function registrarRender(fn) {
-  callbackRender = fn;
-}
-
-/**
- * Cambia el paso activo del flujo y vuelve a renderizar la vista.
- * @param {number} n - Nuevo índice de paso (0..6)
- */
-function irAPaso(n) {
-  solicitud.paso = n;
-  guardarEnStorage();
-  if (typeof callbackRender === 'function') {
-    callbackRender();
-  }
-}
-
-/**
- * Reinicia la solicitud a los valores predeterminados y vuelve al inicio.
- */
-function reiniciarSolicitud() {
-  solicitud.paso = 0;
-  solicitud.producto = 'celular';
-  solicitud.equipo = { marca: '', modelo: '', valor: 0, antiguedad: '' };
-  solicitud.plan = 'plus';
-  solicitud.titular = {
-    nombre: '',
-    apellido: '',
-    dni: '',
-    nacimiento: '',
-    email: '',
-    celular: '',
-    terminos: false,
-  };
-  solicitud.pago = {
-    metodo: 'credito',
-    tarjeta: '',
-    vencimiento: '',
-    cvv: '',
-    titular: '',
-  };
-  solicitud.poliza = null;
-  solicitud.fechaEmision = null;
-
-  limpiarStorage();
-  if (typeof callbackRender === 'function') {
-    callbackRender();
-  }
-}
-
-const STORAGE_KEY = 'cubri_solicitud_estado_v1';
-
-/**
- * Persistencia en localStorage (Bonus)
- */
-function guardarEnStorage() {
-  try {
-    // No guardamos el CVV por buenas prácticas de seguridad
-    const datosSeguros = {
-      ...solicitud,
-      pago: {
-        ...solicitud.pago,
-        cvv: '',
-      },
-    };
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(datosSeguros));
-  } catch (e) {
-    // Ignorar si cookies/storage están deshabilitados
-  }
-}
-
-function cargarDeStorage() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return false;
-    const guardado = JSON.parse(raw);
-    if (guardado && typeof guardado === 'object') {
-      // Fusionar preservando estructura
-      Object.assign(solicitud, guardado);
-      return true;
-    }
-  } catch (e) {
-    // Ignorar error de parsing
-  }
-  return false;
-}
-
-function limpiarStorage() {
-  try {
-    localStorage.removeItem(STORAGE_KEY);
-  } catch (e) {
-    // Ignorar
-  }
-}
-
-
 // ==================== render.js ====================
 /**
  * js/render.js — Funciones de renderizado reactivo a partir del estado
  * Licenciatura en Sistemas de Información · Diseño UX-UI (2026)
  */
-
-
-
-
 
 let cachePlanes = [];
 
@@ -623,11 +633,12 @@ function renderStepper() {
       const idx = Number(item.dataset.stepIndex);
       const circle = item.querySelector('.step-circle');
       const label = item.querySelector('.step-label');
+      const desc = item.querySelector('.step-desc');
       const line = item.querySelector('.step-line');
 
       if (idx < solicitud.paso) {
         // Estado: Completo (verde con check)
-        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-emerald-600 text-white shadow-sm transition-all duration-300';
+        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-emerald-600 text-white shadow-sm transition-all duration-300 shrink-0';
         circle.innerHTML = `
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -636,28 +647,37 @@ function renderStepper() {
         if (label) {
           label.className = 'step-label text-xs sm:text-sm font-semibold text-emerald-600 transition-colors duration-300';
         }
+        if (desc) {
+          desc.className = 'step-desc text-[11px] text-emerald-600/70 hidden lg:block';
+        }
         if (line) {
-          line.className = 'step-line flex-1 h-0.5 bg-emerald-600 transition-colors duration-300';
+          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-emerald-600 my-1 hidden lg:block transition-colors duration-300';
         }
       } else if (idx === solicitud.paso) {
         // Estado: Activo (azul índigo)
-        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-indigo-600 text-white shadow-sm ring-4 ring-indigo-100 transition-all duration-300';
+        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-indigo-600 text-white shadow-sm ring-4 ring-indigo-100 transition-all duration-300 shrink-0';
         circle.textContent = idx;
         if (label) {
           label.className = 'step-label text-xs sm:text-sm font-bold text-indigo-600 transition-colors duration-300';
         }
+        if (desc) {
+          desc.className = 'step-desc text-[11px] text-slate-400 hidden lg:block';
+        }
         if (line) {
-          line.className = 'step-line flex-1 h-0.5 bg-slate-200 transition-colors duration-300';
+          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-slate-200 dark:bg-slate-700 my-1 hidden lg:block transition-colors duration-300';
         }
       } else {
         // Estado: Pendiente (gris)
-        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-semibold text-xs sm:text-sm bg-white border border-slate-300 text-slate-400 transition-all duration-300';
+        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-semibold text-xs sm:text-sm bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-400 transition-all duration-300 shrink-0';
         circle.textContent = idx;
         if (label) {
           label.className = 'step-label text-xs sm:text-sm font-medium text-slate-400 transition-colors duration-300';
         }
+        if (desc) {
+          desc.className = 'step-desc text-[11px] text-slate-400 hidden lg:block';
+        }
         if (line) {
-          line.className = 'step-line flex-1 h-0.5 bg-slate-200 transition-colors duration-300';
+          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-slate-200 dark:bg-slate-700 my-1 hidden lg:block transition-colors duration-300';
         }
       }
     });
@@ -681,7 +701,11 @@ function renderResumen() {
     ? calcularCuota(solicitud.equipo.valor, planActual.tasaAnual, solicitud.equipo.antiguedad)
     : 0;
 
-  const nombreEquipo = [solicitud.equipo.marca, solicitud.equipo.modelo]
+  const marcaDisplay = solicitud.equipo.marca === 'Otro'
+    ? (solicitud.equipo.marcaOtro || 'Otro')
+    : solicitud.equipo.marca;
+
+  const nombreEquipo = [marcaDisplay, solicitud.equipo.modelo]
     .filter(Boolean)
     .join(' ') || '—';
 
@@ -825,6 +849,18 @@ function renderPaso1() {
 
   if (selectMarca && selectMarca.value !== solicitud.equipo.marca) {
     selectMarca.value = solicitud.equipo.marca;
+  }
+  const campoMarcaOtro = document.getElementById('campo-marca-otro');
+  const inputMarcaOtro = document.getElementById('marca-otro');
+  if (campoMarcaOtro) {
+    if (solicitud.equipo.marca === 'Otro') {
+      campoMarcaOtro.classList.remove('hidden');
+      if (inputMarcaOtro && inputMarcaOtro.value !== (solicitud.equipo.marcaOtro || '')) {
+        inputMarcaOtro.value = solicitud.equipo.marcaOtro || '';
+      }
+    } else {
+      campoMarcaOtro.classList.add('hidden');
+    }
   }
   if (inputModelo && inputModelo.value !== solicitud.equipo.modelo) {
     inputModelo.value = solicitud.equipo.modelo;
@@ -1073,12 +1109,6 @@ function renderPaso6Error() {
  * Licenciatura en Sistemas de Información · Diseño UX-UI (2026)
  */
 
-
-
-
-
-
-
 // Marcar módulo iniciado para control de compatibilidad
 if (typeof window !== 'undefined') {
   window.__cubriIniciado = true;
@@ -1257,24 +1287,60 @@ function inicializarEventos() {
   // Paso 1: Cotizar
   // --------------------------------------------------------------------------
   const selectMarca = document.getElementById('marca');
+  const campoMarcaOtro = document.getElementById('campo-marca-otro');
+  const inputMarcaOtro = document.getElementById('marca-otro');
   const inputModelo = document.getElementById('modelo');
   const inputValor = document.getElementById('valor');
   const btnPaso1 = document.getElementById('btn-paso1-continuar');
 
   // Marca
   selectMarca?.addEventListener('change', () => {
-    solicitud.equipo.marca = selectMarca.value;
+    const val = selectMarca.value;
+    solicitud.equipo.marca = val;
+    if (val === 'Otro') {
+      campoMarcaOtro?.classList.remove('hidden');
+      inputMarcaOtro?.focus();
+    } else {
+      campoMarcaOtro?.classList.add('hidden');
+      if (inputMarcaOtro) inputMarcaOtro.value = '';
+      solicitud.equipo.marcaOtro = '';
+      limpiarError('marca-otro');
+    }
     guardarEnStorage();
-    const error = validarMarca(solicitud.equipo.marca);
-    if (!error) limpiarError('marca');
+    const error = validarMarca(solicitud.equipo.marca, solicitud.equipo.marcaOtro);
+    if (!error) {
+      limpiarError('marca');
+    }
     actualizarBotonPaso1();
     renderResumen();
   });
 
   selectMarca?.addEventListener('blur', () => {
-    const error = validarMarca(solicitud.equipo.marca);
-    if (error) marcarError('marca', error);
-    else limpiarError('marca');
+    const error = validarMarca(solicitud.equipo.marca, solicitud.equipo.marcaOtro);
+    if (error && solicitud.equipo.marca !== 'Otro') {
+      marcarError('marca', error);
+    } else if (!error) {
+      limpiarError('marca');
+    }
+    actualizarBotonPaso1();
+  });
+
+  // Campo Marca "Otro" especificado por el usuario
+  inputMarcaOtro?.addEventListener('input', (e) => {
+    solicitud.equipo.marcaOtro = e.target.value.trim();
+    guardarEnStorage();
+    if (inputMarcaOtro.getAttribute('aria-invalid') === 'true') {
+      const error = validarMarca(solicitud.equipo.marca, solicitud.equipo.marcaOtro);
+      if (!error) limpiarError('marca-otro');
+    }
+    actualizarBotonPaso1();
+    renderResumen();
+  });
+
+  inputMarcaOtro?.addEventListener('blur', () => {
+    const error = validarMarca(solicitud.equipo.marca, solicitud.equipo.marcaOtro);
+    if (error) marcarError('marca-otro', error);
+    else limpiarError('marca-otro');
     actualizarBotonPaso1();
   });
 
@@ -1353,7 +1419,13 @@ function inicializarEventos() {
     e.preventDefault();
     const val = validarPaso1Completo(solicitud.equipo);
     if (!val.esValido) {
-      if (val.errores.marca) marcarError('marca', val.errores.marca);
+      if (val.errores.marca) {
+        if (solicitud.equipo.marca === 'Otro' && val.errores.marcaOtro) {
+          marcarError('marca-otro', val.errores.marcaOtro);
+        } else {
+          marcarError('marca', val.errores.marca);
+        }
+      }
       if (val.errores.modelo) marcarError('modelo', val.errores.modelo);
       if (val.errores.valor) marcarError('valor', val.errores.valor);
       if (val.errores.antiguedad) marcarError('antiguedad', val.errores.antiguedad);
@@ -1411,6 +1483,16 @@ function inicializarEventos() {
         input.value = val;
       } else if (id === 'dni') {
         val = val.replace(/\D/g, '').slice(0, 8);
+        input.value = val;
+      } else if (id === 'nacimiento') {
+        const raw = val.replace(/\D/g, '').slice(0, 8);
+        if (raw.length > 4) {
+          val = `${raw.slice(0, 2)}/${raw.slice(2, 4)}/${raw.slice(4)}`;
+        } else if (raw.length > 2) {
+          val = `${raw.slice(0, 2)}/${raw.slice(2)}`;
+        } else {
+          val = raw;
+        }
         input.value = val;
       }
 

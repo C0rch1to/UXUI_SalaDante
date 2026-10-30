@@ -92,11 +92,12 @@ export function renderStepper() {
       const idx = Number(item.dataset.stepIndex);
       const circle = item.querySelector('.step-circle');
       const label = item.querySelector('.step-label');
+      const desc = item.querySelector('.step-desc');
       const line = item.querySelector('.step-line');
 
       if (idx < solicitud.paso) {
         // Estado: Completo (verde con check)
-        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-emerald-600 text-white shadow-sm transition-all duration-300';
+        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-emerald-600 text-white shadow-sm transition-all duration-300 shrink-0';
         circle.innerHTML = `
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
@@ -105,28 +106,37 @@ export function renderStepper() {
         if (label) {
           label.className = 'step-label text-xs sm:text-sm font-semibold text-emerald-600 transition-colors duration-300';
         }
+        if (desc) {
+          desc.className = 'step-desc text-[11px] text-emerald-600/70 hidden lg:block';
+        }
         if (line) {
-          line.className = 'step-line flex-1 h-0.5 bg-emerald-600 transition-colors duration-300';
+          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-emerald-600 my-1 hidden lg:block transition-colors duration-300';
         }
       } else if (idx === solicitud.paso) {
         // Estado: Activo (azul índigo)
-        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-indigo-600 text-white shadow-sm ring-4 ring-indigo-100 transition-all duration-300';
+        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm bg-indigo-600 text-white shadow-sm ring-4 ring-indigo-100 transition-all duration-300 shrink-0';
         circle.textContent = idx;
         if (label) {
           label.className = 'step-label text-xs sm:text-sm font-bold text-indigo-600 transition-colors duration-300';
         }
+        if (desc) {
+          desc.className = 'step-desc text-[11px] text-slate-400 hidden lg:block';
+        }
         if (line) {
-          line.className = 'step-line flex-1 h-0.5 bg-slate-200 transition-colors duration-300';
+          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-slate-200 dark:bg-slate-700 my-1 hidden lg:block transition-colors duration-300';
         }
       } else {
         // Estado: Pendiente (gris)
-        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-semibold text-xs sm:text-sm bg-white border border-slate-300 text-slate-400 transition-all duration-300';
+        circle.className = 'step-circle w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center font-semibold text-xs sm:text-sm bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-400 transition-all duration-300 shrink-0';
         circle.textContent = idx;
         if (label) {
           label.className = 'step-label text-xs sm:text-sm font-medium text-slate-400 transition-colors duration-300';
         }
+        if (desc) {
+          desc.className = 'step-desc text-[11px] text-slate-400 hidden lg:block';
+        }
         if (line) {
-          line.className = 'step-line flex-1 h-0.5 bg-slate-200 transition-colors duration-300';
+          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-slate-200 dark:bg-slate-700 my-1 hidden lg:block transition-colors duration-300';
         }
       }
     });
@@ -150,7 +160,11 @@ export function renderResumen() {
     ? calcularCuota(solicitud.equipo.valor, planActual.tasaAnual, solicitud.equipo.antiguedad)
     : 0;
 
-  const nombreEquipo = [solicitud.equipo.marca, solicitud.equipo.modelo]
+  const marcaDisplay = solicitud.equipo.marca === 'Otro'
+    ? (solicitud.equipo.marcaOtro || 'Otro')
+    : solicitud.equipo.marca;
+
+  const nombreEquipo = [marcaDisplay, solicitud.equipo.modelo]
     .filter(Boolean)
     .join(' ') || '—';
 
@@ -294,6 +308,18 @@ function renderPaso1() {
 
   if (selectMarca && selectMarca.value !== solicitud.equipo.marca) {
     selectMarca.value = solicitud.equipo.marca;
+  }
+  const campoMarcaOtro = document.getElementById('campo-marca-otro');
+  const inputMarcaOtro = document.getElementById('marca-otro');
+  if (campoMarcaOtro) {
+    if (solicitud.equipo.marca === 'Otro') {
+      campoMarcaOtro.classList.remove('hidden');
+      if (inputMarcaOtro && inputMarcaOtro.value !== (solicitud.equipo.marcaOtro || '')) {
+        inputMarcaOtro.value = solicitud.equipo.marcaOtro || '';
+      }
+    } else {
+      campoMarcaOtro.classList.add('hidden');
+    }
   }
   if (inputModelo && inputModelo.value !== solicitud.equipo.modelo) {
     inputModelo.value = solicitud.equipo.modelo;

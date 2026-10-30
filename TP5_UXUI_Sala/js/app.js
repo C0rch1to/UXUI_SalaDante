@@ -218,24 +218,60 @@ function inicializarEventos() {
   // Paso 1: Cotizar
   // --------------------------------------------------------------------------
   const selectMarca = document.getElementById('marca');
+  const campoMarcaOtro = document.getElementById('campo-marca-otro');
+  const inputMarcaOtro = document.getElementById('marca-otro');
   const inputModelo = document.getElementById('modelo');
   const inputValor = document.getElementById('valor');
   const btnPaso1 = document.getElementById('btn-paso1-continuar');
 
   // Marca
   selectMarca?.addEventListener('change', () => {
-    solicitud.equipo.marca = selectMarca.value;
+    const val = selectMarca.value;
+    solicitud.equipo.marca = val;
+    if (val === 'Otro') {
+      campoMarcaOtro?.classList.remove('hidden');
+      inputMarcaOtro?.focus();
+    } else {
+      campoMarcaOtro?.classList.add('hidden');
+      if (inputMarcaOtro) inputMarcaOtro.value = '';
+      solicitud.equipo.marcaOtro = '';
+      limpiarError('marca-otro');
+    }
     guardarEnStorage();
-    const error = validarMarca(solicitud.equipo.marca);
-    if (!error) limpiarError('marca');
+    const error = validarMarca(solicitud.equipo.marca, solicitud.equipo.marcaOtro);
+    if (!error) {
+      limpiarError('marca');
+    }
     actualizarBotonPaso1();
     renderResumen();
   });
 
   selectMarca?.addEventListener('blur', () => {
-    const error = validarMarca(solicitud.equipo.marca);
-    if (error) marcarError('marca', error);
-    else limpiarError('marca');
+    const error = validarMarca(solicitud.equipo.marca, solicitud.equipo.marcaOtro);
+    if (error && solicitud.equipo.marca !== 'Otro') {
+      marcarError('marca', error);
+    } else if (!error) {
+      limpiarError('marca');
+    }
+    actualizarBotonPaso1();
+  });
+
+  // Campo Marca "Otro" especificado por el usuario
+  inputMarcaOtro?.addEventListener('input', (e) => {
+    solicitud.equipo.marcaOtro = e.target.value.trim();
+    guardarEnStorage();
+    if (inputMarcaOtro.getAttribute('aria-invalid') === 'true') {
+      const error = validarMarca(solicitud.equipo.marca, solicitud.equipo.marcaOtro);
+      if (!error) limpiarError('marca-otro');
+    }
+    actualizarBotonPaso1();
+    renderResumen();
+  });
+
+  inputMarcaOtro?.addEventListener('blur', () => {
+    const error = validarMarca(solicitud.equipo.marca, solicitud.equipo.marcaOtro);
+    if (error) marcarError('marca-otro', error);
+    else limpiarError('marca-otro');
     actualizarBotonPaso1();
   });
 
@@ -314,7 +350,13 @@ function inicializarEventos() {
     e.preventDefault();
     const val = validarPaso1Completo(solicitud.equipo);
     if (!val.esValido) {
-      if (val.errores.marca) marcarError('marca', val.errores.marca);
+      if (val.errores.marca) {
+        if (solicitud.equipo.marca === 'Otro' && val.errores.marcaOtro) {
+          marcarError('marca-otro', val.errores.marcaOtro);
+        } else {
+          marcarError('marca', val.errores.marca);
+        }
+      }
       if (val.errores.modelo) marcarError('modelo', val.errores.modelo);
       if (val.errores.valor) marcarError('valor', val.errores.valor);
       if (val.errores.antiguedad) marcarError('antiguedad', val.errores.antiguedad);
@@ -372,6 +414,16 @@ function inicializarEventos() {
         input.value = val;
       } else if (id === 'dni') {
         val = val.replace(/\D/g, '').slice(0, 8);
+        input.value = val;
+      } else if (id === 'nacimiento') {
+        const raw = val.replace(/\D/g, '').slice(0, 8);
+        if (raw.length > 4) {
+          val = `${raw.slice(0, 2)}/${raw.slice(2, 4)}/${raw.slice(4)}`;
+        } else if (raw.length > 2) {
+          val = `${raw.slice(0, 2)}/${raw.slice(2)}`;
+        } else {
+          val = raw;
+        }
         input.value = val;
       }
 
