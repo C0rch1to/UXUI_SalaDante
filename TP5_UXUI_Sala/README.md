@@ -28,9 +28,8 @@ Replicación fiel del diseño de Figma (**Cubrí Seguros**), adaptable tanto par
 TP5_UXUI_Sala/
 ├── index.html                   # Documento principal con las 7 pantallas del flujo
 ├── README.md                    # Documentación técnica, decisiones y criterios de aceptación
-├── test_verify.js               # Script de pruebas automatizadas (casos de negocio y validación)
 ├── css/
-│   └── tokens.css               # Design Tokens, variables CSS de Basecoat UI y modo oscuro
+│   └── tokens.css               # Design Tokens, variables CSS de Basecoat UI, cinta de peligro y tema
 ├── data/
 │   └── planes.json              # Datos oficiales de los planes (tasas anuales y coberturas)
 ├── js/
@@ -142,25 +141,26 @@ Todas las validaciones están programadas como funciones puras en `js/validacion
 
 ---
 
-## 8. Cómo Correr el Proyecto en Local
+## 8. Despliegue en GitHub Pages y Ejecución Local
 
-No se requieren herramientas de compilación pesadas ni dependencias de Node para levantar la web:
+Este proyecto es un **sitio 100% estático** (sin backend, sin Node.js y sin necesidad de compilación previa). Cumple de forma estricta con la **Opción 3.2 (sin build / CDN)** de la consigna.
 
-### Opción A: Servidor HTTP con Python
+### Despliegue Directo a GitHub Pages
+1. Subir los archivos del repositorio a la rama `main` en GitHub.
+2. En el repositorio de GitHub, ir a **Settings** > **Pages**.
+3. En **Branch**, seleccionar `main` y la carpeta `/(root)`.
+4. Guardar. El sitio quedará publicado inmediatamente en `https://<usuario>.github.io/<repositorio>/`.
+
+### Ejecución Local
+Al ser una aplicación puramente estática, se puede abrir con cualquier servidor web simple:
 ```bash
-# Ubicarse en la carpeta del proyecto
-cd TP5_UXUI_Sala
-
-# Iniciar servidor local en el puerto 8000
+# Opción 1: Servidor HTTP con Python
 python -m http.server 8000
+
+# Opción 2: Extensión Live Server de VS Code / IDE
+# Clic derecho en index.html -> "Open with Live Server"
 ```
 Abrir en el navegador: [http://localhost:8000](http://localhost:8000)
-
-### Opción B: Ejecutar la Suite de Pruebas Automatizadas
-Para verificar de forma instantánea todos los casos de prueba matemáticos, validaciones y simulación de pago:
-```bash
-node test_verify.js
-```
 
 ---
 

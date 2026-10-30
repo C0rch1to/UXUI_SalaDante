@@ -285,7 +285,58 @@ body {
   color: #FCA5A5;
 }
 
-/* Toast container for bonus */
+/* Cinta de peligro / construcción transversal (Paso 0) */
+.card-deshabilitada {
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+}
+
+.cinta-peligro-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.cinta-peligro {
+  position: absolute;
+  top: 24px;
+  right: -42px;
+  width: 165px;
+  transform: rotate(45deg);
+  background-color: #FACC15; /* Amarillo advertencia */
+  background-image: repeating-linear-gradient(
+    45deg,
+    #FACC15,
+    #FACC15 8px,
+    #EAB308 8px,
+    #EAB308 16px
+  );
+  color: #09090B;
+  font-weight: 900;
+  font-size: 0.625rem; /* 10px */
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 3px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.22);
+  border-top: 2px dashed #09090B;
+  border-bottom: 2px dashed #09090B;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+[data-theme="dark"] .cinta-peligro {
+  background-color: #FBBF24;
+  color: #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
 #toast-container {
   position: fixed;
   bottom: 1.5rem;
