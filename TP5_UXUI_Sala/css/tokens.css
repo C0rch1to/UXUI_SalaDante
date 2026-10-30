@@ -5,6 +5,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
+/* Regla crítica para asegurar visibilidad precisa por paso */
+[hidden], .hidden {
+  display: none !important;
+}
+
 :root {
   /* Design Tokens - Figma Specs */
   --primary: #4F46E5;            /* indigo-600: botones, selección, paso activo */

@@ -40,6 +40,14 @@ import {
 import { formatearMoneda } from './cotizador.js';
 import { simularPago, generarPoliza, obtenerFechaHoyFormateada } from './pago.js';
 
+// Marcar módulo iniciado para control de compatibilidad
+if (typeof window !== 'undefined') {
+  window.__cubriIniciado = true;
+  window.solicitud = solicitud;
+  window.irAPaso = irAPaso;
+  window.reiniciarSolicitud = reiniciarSolicitud;
+}
+
 // Fallback de planes en memoria según consigna oficial por si falla fetch en file://
 const PLANES_DEFAULT = [
   {
@@ -66,7 +74,10 @@ const PLANES_DEFAULT = [
 // ============================================================================
 // Inicialización de la aplicación
 // ============================================================================
-document.addEventListener('DOMContentLoaded', async () => {
+async function iniciarApp() {
+  if (window.__cubriYaInicializado) return;
+  window.__cubriYaInicializado = true;
+
   // Registrar callback para que mutaciones de estado llamen a render()
   registrarRender(render);
 
@@ -96,7 +107,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (teniaDatosPrevios && solicitud.paso > 0) {
     mostrarToast('Continuando con tu solicitud anterior guardada', 'info');
   }
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', iniciarApp);
+} else {
+  iniciarApp();
+}
 
 // ============================================================================
 // Manejo de Feedback y Errores en Formularios (en Blur y Submit)

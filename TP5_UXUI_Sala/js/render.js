@@ -41,6 +41,18 @@ export function render() {
     }
   });
 
+  // 1b. Control del contenedor general del checkout (pasos 1 a 4)
+  const checkoutContainer = document.getElementById('contenedor-checkout');
+  if (checkoutContainer) {
+    const enCheckout = solicitud.paso >= 1 && solicitud.paso <= 4;
+    checkoutContainer.hidden = !enCheckout;
+    if (enCheckout) {
+      checkoutContainer.classList.remove('hidden');
+    } else {
+      checkoutContainer.classList.add('hidden');
+    }
+  }
+
   // 2. Control de visibilidad del header y scroll
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
@@ -151,6 +163,7 @@ export function renderResumen() {
   if (aside) {
     if (solicitud.paso >= 1 && solicitud.paso <= 4) {
       aside.classList.remove('hidden');
+      aside.hidden = false;
 
       const elSeguro = aside.querySelector('[data-resumen="seguro"]');
       if (elSeguro) elSeguro.textContent = solicitud.producto === 'bicicleta' ? 'Bicicleta' : 'Celular';
@@ -212,6 +225,7 @@ export function renderResumen() {
       }
     } else {
       aside.classList.add('hidden');
+      aside.hidden = true;
     }
   }
 

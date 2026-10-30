@@ -152,12 +152,14 @@ Este proyecto es un **sitio 100% estático** (sin backend, sin Node.js y sin nec
 4. Guardar. El sitio quedará publicado inmediatamente en `https://<usuario>.github.io/<repositorio>/`.
 
 ### Ejecución Local
-Al ser una aplicación puramente estática, se puede abrir con cualquier servidor web simple:
+Al ser una aplicación puramente estática sin dependencias de Node.js, puede ejecutarse de dos maneras:
+1. **Apertura Directa (Doble Clic):** Hacer doble clic directamente sobre `index.html` en el explorador de archivos de Windows/macOS/Linux. Cuenta con un fallback universal que garantiza interactividad inmediata sin configurar ningún servidor.
+2. **Servidor HTTP Local:**
 ```bash
-# Opción 1: Servidor HTTP con Python
+# Con Python:
 python -m http.server 8000
 
-# Opción 2: Extensión Live Server de VS Code / IDE
+# O con la extensión Live Server de VS Code:
 # Clic derecho en index.html -> "Open with Live Server"
 ```
 Abrir en el navegador: [http://localhost:8000](http://localhost:8000)
