@@ -566,10 +566,15 @@ function getPlanes() {
   return cachePlanes;
 }
 
+let ultimoPasoRenderizado = null;
+
 /**
  * Función principal de renderizado: actualiza vistas, stepper y resúmenes.
  */
 function render() {
+  const pasoCambio = ultimoPasoRenderizado !== solicitud.paso;
+  ultimoPasoRenderizado = solicitud.paso;
+
   // 1. Mostrar/ocultar secciones según solicitud.paso
   document.querySelectorAll('[data-paso]').forEach((sec) => {
     const pasoSec = Number(sec.dataset.paso);
@@ -594,8 +599,10 @@ function render() {
     }
   }
 
-  // 2. Control de visibilidad del header y scroll
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // 2. Control de scroll: solo ir arriba cuando realmente hay un cambio de paso
+  if (pasoCambio) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   // Actualizar etiquetas de producto según selección
   const nombreProducto = solicitud.producto === 'bicicleta' ? 'Bicicleta' : 'Celular';
@@ -634,7 +641,6 @@ function renderStepper() {
       const circle = item.querySelector('.step-circle');
       const label = item.querySelector('.step-label');
       const desc = item.querySelector('.step-desc');
-      const line = item.querySelector('.step-line');
 
       if (idx < solicitud.paso) {
         // Estado: Completo (verde con check)
@@ -648,10 +654,7 @@ function renderStepper() {
           label.className = 'step-label text-xs sm:text-sm font-semibold text-emerald-600 transition-colors duration-300';
         }
         if (desc) {
-          desc.className = 'step-desc text-[11px] text-emerald-600/70 hidden lg:block';
-        }
-        if (line) {
-          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-emerald-600 my-1 hidden lg:block transition-colors duration-300';
+          desc.className = 'step-desc text-[11px] text-emerald-600/70 hidden sm:block';
         }
       } else if (idx === solicitud.paso) {
         // Estado: Activo (azul índigo)
@@ -661,10 +664,7 @@ function renderStepper() {
           label.className = 'step-label text-xs sm:text-sm font-bold text-indigo-600 transition-colors duration-300';
         }
         if (desc) {
-          desc.className = 'step-desc text-[11px] text-slate-400 hidden lg:block';
-        }
-        if (line) {
-          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-slate-200 dark:bg-slate-700 my-1 hidden lg:block transition-colors duration-300';
+          desc.className = 'step-desc text-[11px] text-slate-400 hidden sm:block';
         }
       } else {
         // Estado: Pendiente (gris)
@@ -674,11 +674,18 @@ function renderStepper() {
           label.className = 'step-label text-xs sm:text-sm font-medium text-slate-400 transition-colors duration-300';
         }
         if (desc) {
-          desc.className = 'step-desc text-[11px] text-slate-400 hidden lg:block';
+          desc.className = 'step-desc text-[11px] text-slate-400 hidden sm:block';
         }
-        if (line) {
-          line.className = 'step-line w-0.5 h-6 sm:h-8 bg-slate-200 dark:bg-slate-700 my-1 hidden lg:block transition-colors duration-300';
-        }
+      }
+    });
+
+    // Actualizar líneas conectoras horizontales entre pasos
+    const lines = stepper.querySelectorAll('.step-line');
+    lines.forEach((line, index) => {
+      if (solicitud.paso > index + 1) {
+        line.className = 'step-line flex-1 h-0.5 bg-emerald-600 mx-2 sm:mx-6 transition-colors duration-300';
+      } else {
+        line.className = 'step-line flex-1 h-0.5 bg-slate-200 dark:bg-slate-700 mx-2 sm:mx-6 transition-colors duration-300';
       }
     });
   });
