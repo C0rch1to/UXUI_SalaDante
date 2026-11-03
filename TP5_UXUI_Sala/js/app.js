@@ -665,6 +665,7 @@ function inicializarEventos() {
     const actual = document.documentElement.getAttribute('data-theme');
     const nuevo = actual === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', nuevo);
+    document.documentElement.classList.toggle('dark', nuevo === 'dark');
     localStorage.setItem('cubri_theme', nuevo);
     actualizarIconoTema(nuevo);
   });
@@ -727,6 +728,7 @@ export function mostrarToast(mensaje, tipo = 'info') {
 function inicializarTema() {
   const guardado = localStorage.getItem('cubri_theme') || 'light';
   document.documentElement.setAttribute('data-theme', guardado);
+  document.documentElement.classList.toggle('dark', guardado === 'dark');
   actualizarIconoTema(guardado);
 }
 
