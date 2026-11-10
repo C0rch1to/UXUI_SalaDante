@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <radialGradient id="avatar-glow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#00F5B8" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#6366F1" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#090D14" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="avatar-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161F2E"/>
+      <stop offset="100%" stop-color="#0B0F17"/>
+    </linearGradient>
+    <linearGradient id="accent-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F5B8"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#00F5B8"/>
+    </linearGradient>
+    <linearGradient id="body-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D3B4E"/>
+      <stop offset="100%" stop-color="#141C27"/>
+    </linearGradient>
+    <linearGradient id="skin-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Circular Base -->
+  <circle cx="200" cy="200" r="190" fill="url(#avatar-bg)"/>
+  <circle cx="200" cy="200" r="190" fill="url(#avatar-glow)"/>
+  <circle cx="200" cy="200" r="188" fill="none" stroke="url(#accent-stroke)" stroke-width="3" opacity="0.8"/>
+
+  <!-- Subtle Circular Tech Rings -->
+  <circle cx="200" cy="200" r="160" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-dasharray="6 8"/>
+  <circle cx="200" cy="200" r="130" fill="none" stroke="#FFFFFF" stroke-opacity="0.03"/>
+
+  <!-- Designer/Developer Stylized Silhouette -->
+  <g id="figure">
+    <!-- Shoulders / Torso -->
+    <path d="M 100 370 C 100 290, 140 265, 200 265 C 260 265, 300 290, 300 370 Z" fill="url(#body-grad)" stroke="#38495E" stroke-width="2"/>
+    <!-- Collar / Hoodie V-neck -->
+    <path d="M 175 265 L 200 305 L 225 265" fill="none" stroke="#00F5B8" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Neck -->
+    <rect x="182" y="215" width="36" height="55" rx="6" fill="#E29578"/>
+
+    <!-- Head / Face -->
+    <ellipse cx="200" cy="180" rx="52" ry="62" fill="#F0A88F"/>
+    
+    <!-- Hair Modern Cut -->
+    <path d="M 148 175 C 145 130, 160 110, 200 110 C 240 110, 255 130, 252 175 C 245 145, 230 135, 200 135 C 170 135, 155 145, 148 175 Z" fill="#1E1926"/>
+    <path d="M 148 170 C 145 125, 165 98, 205 98 C 245 98, 260 120, 253 165 C 248 135, 225 120, 195 120 C 168 120, 152 142, 148 170 Z" fill="#2E243B"/>
+
+    <!-- Eyeglasses (Modern tech designer look) -->
+    <rect x="160" y="165" width="32" height="22" rx="5" fill="#00F5B8" fill-opacity="0.1" stroke="#00F5B8" stroke-width="2.5"/>
+    <rect x="208" y="165" width="32" height="22" rx="5" fill="#00F5B8" fill-opacity="0.1" stroke="#00F5B8" stroke-width="2.5"/>
+    <line x1="192" y1="174" x2="208" y2="174" stroke="#00F5B8" stroke-width="2.5"/>
+    <!-- Glasses reflection -->
+    <line x1="164" y1="181" x2="176" y2="169" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+    <line x1="212" y1="181" x2="224" y2="169" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+    <!-- Smile -->
+    <path d="M 188 215 Q 200 225 212 215" fill="none" stroke="#A75D4E" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Floating UI / Code Badges -->
+  <!-- Left UX Pin -->
+  <g transform="translate(42, 140)">
+    <rect width="64" height="28" rx="14" fill="#131B2A" stroke="#00F5B8" stroke-width="1.5"/>
+    <text x="32" y="18" fill="#00F5B8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">UX / UI</text>
+  </g>
+
+  <!-- Right Code Pin -->
+  <g transform="translate(294, 210)">
+    <rect width="66" height="28" rx="14" fill="#131B2A" stroke="#6366F1" stroke-width="1.5"/>
+    <text x="33" y="18" fill="#818CF8" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle">&lt;DEV/&gt;</text>
+  </g>
+</svg>

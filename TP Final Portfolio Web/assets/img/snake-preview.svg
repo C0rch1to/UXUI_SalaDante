@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-snake" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080C14"/>
+      <stop offset="50%" stop-color="#0D131F"/>
+      <stop offset="100%" stop-color="#05080E"/>
+    </linearGradient>
+    <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg-snake)"/>
+
+  <!-- Subtle Matrix dots / grid -->
+  <g fill="#1E293B" opacity="0.6">
+    <pattern id="dot-grid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#334155" opacity="0.4"/>
+    </pattern>
+    <rect width="800" height="500" fill="url(#dot-grid)"/>
+  </g>
+
+  <!-- Browser / Arcade Container -->
+  <g transform="translate(70, 45)">
+    <rect width="660" height="410" rx="16" fill="#0B101B" stroke="#1E293B" stroke-width="1.5"/>
+    
+    <!-- Top Bar -->
+    <rect width="660" height="40" rx="16" fill="#131B2B"/>
+    <rect y="24" width="660" height="16" fill="#131B2B"/>
+    <circle cx="24" cy="20" r="5" fill="#EF4444"/>
+    <circle cx="42" cy="20" r="5" fill="#F59E0B"/>
+    <circle cx="60" cy="20" r="5" fill="#10B981"/>
+    <text x="260" y="25" fill="#64748B" font-family="'Courier New', monospace" font-size="12">c0rch1to.github.io/Snake</text>
+
+    <!-- Score HUD -->
+    <g transform="translate(40, 65)">
+      <text x="0" y="24" fill="#64748B" font-family="'Courier New', monospace" font-size="13" font-weight="700">SCORE: <tspan fill="#00F5B8">1840</tspan></text>
+      <text x="180" y="24" fill="#64748B" font-family="'Courier New', monospace" font-size="13" font-weight="700">HIGH: <tspan fill="#F59E0B">2950</tspan></text>
+      <text x="360" y="24" fill="#64748B" font-family="'Courier New', monospace" font-size="13" font-weight="700">SPEED: <tspan fill="#38BDF8">LEVEL 08</tspan></text>
+      <rect x="500" y="8" width="80" height="22" rx="4" fill="#00F5B8" fill-opacity="0.1" stroke="#00F5B8" stroke-width="1"/>
+      <text x="518" y="23" fill="#00F5B8" font-family="'Courier New', monospace" font-size="11" font-weight="700">ACTIVE</text>
+    </g>
+
+    <!-- Game Board Area -->
+    <rect x="40" y="105" width="580" height="275" rx="8" fill="#05080E" stroke="#1E293B" stroke-width="1"/>
+    
+    <!-- Board internal grid -->
+    <g stroke="#0F172A" stroke-width="1">
+      <line x1="40" y1="140" x2="620" y2="140"/>
+      <line x1="40" y1="175" x2="620" y2="175"/>
+      <line x1="40" y1="210" x2="620" y2="210"/>
+      <line x1="40" y1="245" x2="620" y2="245"/>
+      <line x1="40" y1="280" x2="620" y2="280"/>
+      <line x1="40" y1="315" x2="620" y2="315"/>
+      <line x1="40" y1="350" x2="620" y2="350"/>
+      <line x1="100" y1="105" x2="100" y2="380"/>
+      <line x1="160" y1="105" x2="160" y2="380"/>
+      <line x1="220" y1="105" x2="220" y2="380"/>
+      <line x1="280" y1="105" x2="280" y2="380"/>
+      <line x1="340" y1="105" x2="340" y2="380"/>
+      <line x1="400" y1="105" x2="400" y2="380"/>
+      <line x1="460" y1="105" x2="460" y2="380"/>
+      <line x1="520" y1="105" x2="520" y2="380"/>
+      <line x1="580" y1="105" x2="580" y2="380"/>
+    </g>
+
+    <!-- Snake Body Segments with Neon Glow -->
+    <g filter="url(#glow-green)">
+      <!-- Snake Tail to Body -->
+      <rect x="162" y="282" width="26" height="26" rx="4" fill="#059669"/>
+      <rect x="192" y="282" width="26" height="26" rx="4" fill="#10B981"/>
+      <rect x="222" y="282" width="26" height="26" rx="4" fill="#10B981"/>
+      <rect x="252" y="282" width="26" height="26" rx="4" fill="#10B981"/>
+      <!-- Bend UP -->
+      <rect x="252" y="247" width="26" height="26" rx="4" fill="#10B981"/>
+      <rect x="252" y="212" width="26" height="26" rx="4" fill="#10B981"/>
+      <!-- Bend RIGHT -->
+      <rect x="282" y="212" width="26" height="26" rx="4" fill="#34D399"/>
+      <rect x="312" y="212" width="26" height="26" rx="4" fill="#34D399"/>
+      <rect x="342" y="212" width="26" height="26" rx="4" fill="#34D399"/>
+      <rect x="372" y="212" width="26" height="26" rx="4" fill="#34D399"/>
+      <!-- Bend DOWN -->
+      <rect x="372" y="247" width="26" height="26" rx="4" fill="#6EE7B7"/>
+      <rect x="372" y="282" width="26" height="26" rx="4" fill="#6EE7B7"/>
+      <rect x="402" y="282" width="26" height="26" rx="4" fill="#6EE7B7"/>
+      <!-- Snake Head -->
+      <rect x="432" y="282" width="26" height="26" rx="6" fill="#00F5B8"/>
+      <circle cx="448" cy="289" r="2.5" fill="#05080E"/>
+      <circle cx="448" cy="301" r="2.5" fill="#05080E"/>
+    </g>
+
+    <!-- Food Item with Pulse/Glow -->
+    <g>
+      <circle cx="535" cy="225" r="10" fill="#EF4444" opacity="0.3"/>
+      <circle cx="535" cy="225" r="7" fill="#EF4444"/>
+      <circle cx="533" cy="223" r="2" fill="#FCA5A5"/>
+    </g>
+  </g>
+</svg>

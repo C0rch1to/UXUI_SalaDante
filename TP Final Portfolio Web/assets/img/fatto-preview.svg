@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-fatto" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14110E"/>
+      <stop offset="50%" stop-color="#1E1915"/>
+      <stop offset="100%" stop-color="#0F0C0A"/>
+    </linearGradient>
+    <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#EF4444"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="500" fill="url(#bg-fatto)"/>
+  
+  <!-- Subtle Grid Lines -->
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="500"/>
+    <line x1="400" y1="0" x2="400" y2="500"/>
+    <line x1="600" y1="0" x2="600" y2="500"/>
+  </g>
+
+  <!-- Browser Window Mockup -->
+  <g transform="translate(60, 40)" filter="url(#shadow)">
+    <!-- Browser Frame -->
+    <rect width="680" height="420" rx="16" fill="#1C1814" stroke="#382E25" stroke-width="1.5"/>
+    
+    <!-- Browser Top Bar -->
+    <rect width="680" height="42" rx="16" fill="#251F19"/>
+    <rect y="26" width="680" height="16" fill="#251F19"/>
+    <circle cx="28" cy="21" r="5" fill="#EF4444"/>
+    <circle cx="46" cy="21" r="5" fill="#F59E0B"/>
+    <circle cx="64" cy="21" r="5" fill="#10B981"/>
+    
+    <!-- Search / URL bar -->
+    <rect x="180" y="10" width="320" height="22" rx="6" fill="#14110E" stroke="#382E25" stroke-width="1"/>
+    <text x="280" y="25" fill="#A89F91" font-family="system-ui, sans-serif" font-size="11" font-weight="500">c0rch1to.github.io/Fatto</text>
+    
+    <!-- Hero Content in Mockup -->
+    <rect x="40" y="70" width="120" height="24" rx="12" fill="#F59E0B" fill-opacity="0.15" stroke="#F59E0B" stroke-opacity="0.4"/>
+    <text x="56" y="86" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="11" font-weight="600">🍕 PIZZERÍA ARTESANAL</text>
+    
+    <text x="40" y="135" fill="#FFF8F0" font-family="system-ui, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.5">FATTO PIZZERIA</text>
+    <text x="40" y="165" fill="#D4A373" font-family="system-ui, sans-serif" font-size="15" font-weight="400">Masa madre horneada a leña &amp; auténtica receta napolitana</text>
+    
+    <!-- Product Cards in Mockup -->
+    <g transform="translate(40, 190)">
+      <!-- Card 1 -->
+      <rect width="180" height="180" rx="12" fill="#2A231C" stroke="#423528" stroke-width="1"/>
+      <circle cx="90" cy="65" r="42" fill="#3D3024"/>
+      <circle cx="90" cy="65" r="32" fill="#EF4444" fill-opacity="0.8"/>
+      <circle cx="82" cy="55" r="6" fill="#FFFFFF"/>
+      <circle cx="98" cy="72" r="6" fill="#FFFFFF"/>
+      <circle cx="96" cy="52" r="5" fill="#10B981"/>
+      <text x="20" y="130" fill="#FFF8F0" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Margherita D.O.P</text>
+      <text x="20" y="152" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="13" font-weight="600">$ 9.800</text>
+      
+      <!-- Card 2 -->
+      <g transform="translate(205, 0)">
+        <rect width="180" height="180" rx="12" fill="#2A231C" stroke="#423528" stroke-width="1"/>
+        <circle cx="90" cy="65" r="42" fill="#3D3024"/>
+        <circle cx="90" cy="65" r="32" fill="#F59E0B" fill-opacity="0.8"/>
+        <circle cx="78" cy="68" r="7" fill="#B91C1C"/>
+        <circle cx="102" cy="60" r="7" fill="#B91C1C"/>
+        <text x="20" y="130" fill="#FFF8F0" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Diavola Piccante</text>
+        <text x="20" y="152" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="13" font-weight="600">$ 11.200</text>
+      </g>
+      
+      <!-- Card 3 -->
+      <g transform="translate(410, 0)">
+        <rect width="180" height="180" rx="12" fill="#2A231C" stroke="#423528" stroke-width="1"/>
+        <circle cx="90" cy="65" r="42" fill="#3D3024"/>
+        <circle cx="90" cy="65" r="32" fill="#10B981" fill-opacity="0.8"/>
+        <circle cx="88" cy="64" r="8" fill="#FDE047"/>
+        <text x="20" y="130" fill="#FFF8F0" font-family="system-ui, sans-serif" font-size="14" font-weight="700">Pesto &amp; Burrata</text>
+        <text x="20" y="152" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="13" font-weight="600">$ 12.500</text>
+      </g>
+    </g>
+  </g>
+</svg>
