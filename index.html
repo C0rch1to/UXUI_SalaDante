@@ -17,134 +17,154 @@
     </header>
 
     <main>
-      <nav class="tp-grid" aria-label="Listado de Trabajos Prácticos">
-        <!-- Tarjeta TP Final (Destacada) -->
-        <a href="./TP Final Portfolio Web/index.html" class="tp-card" aria-label="Ir al Trabajo Final: Portfolio Web Personal" style="border-color: rgba(0, 245, 184, 0.4); background: linear-gradient(180deg, rgba(18, 24, 31, 0.95), rgba(10, 12, 16, 0.95));">
-          <div>
-            <div class="card-header">
-              <span class="tp-number" style="color: #00f5b8; font-weight: 700;">★ Trabajo Final Integrador</span>
-              <span class="tp-status" style="color: #00f5b8; background: rgba(0, 245, 184, 0.15); border: 1px solid rgba(0, 245, 184, 0.3);">Completado</span>
-            </div>
-            <h2 class="tp-title" style="color: #ffffff;">Portfolio Web Personal</h2>
-            <p class="tp-description">
-              Sitio web personal con las 9 secciones canónicas, arquitectura one-page con anclas, caso de estudio UX/UI interactivo de <em>Cubrí Seguros</em>, sistema de tokens, modo oscuro y claro con persistencia y cumplimiento integral de accesibilidad WCAG 2.2 AA.
-            </p>
-          </div>
+      <!-- Carrusel de Trabajos Prácticos con Alineación Izquierda y Controles Dinámicos -->
+      <div class="carousel-wrapper">
+        <!-- Botón Prev Dinámico (Cuadrado con esquinas redondeadas) -->
+        <button id="carousel-prev" class="carousel-nav-btn prev-btn is-hidden" type="button" aria-label="Trabajo anterior" title="Trabajo anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
 
-          <div>
-            <div class="tp-tags">
-              <span class="tag" style="border-color: rgba(0, 245, 184, 0.3); color: #00f5b8;">Portfolio Web</span>
-              <span class="tag">9 Secciones</span>
-              <span class="tag">Caso de Estudio UX</span>
-              <span class="tag">Modo Dual</span>
-              <span class="tag">WCAG AA</span>
+        <!-- Contenedor Horizontal del Carrusel -->
+        <nav id="tp-carousel" class="tp-carousel" aria-label="Carrusel de Trabajos Prácticos">
+          <!-- Tarjeta TP Final: Portfolio Web Personal -->
+          <a href="./TP Final Portfolio Web/index.html" class="tp-card" aria-label="Ir al Trabajo Final: Portfolio Web Personal" style="border-color: rgba(0, 245, 184, 0.4); background: linear-gradient(180deg, rgba(18, 24, 31, 0.95), rgba(10, 12, 16, 0.95));">
+            <div>
+              <div class="card-header">
+                <span class="tp-number" style="color: #00f5b8; font-weight: 700;">★ Trabajo Final Integrador</span>
+                <span class="tp-status" style="color: #00f5b8; background: rgba(0, 245, 184, 0.15); border: 1px solid rgba(0, 245, 184, 0.3);">Completado</span>
+              </div>
+              <h2 class="tp-title" style="color: #ffffff;">Portfolio Web Personal</h2>
+              <p class="tp-description">
+                Sitio web personal con las 9 secciones canónicas, arquitectura one-page con anclas, caso de estudio UX/UI interactivo de <em>Cubrí Seguros</em>, sistema de tokens, modo oscuro y claro con persistencia y cumplimiento integral de accesibilidad WCAG 2.2 AA.
+              </p>
             </div>
-            <div class="tp-action" style="color: #00f5b8;">
-              <span>Explorar Portfolio Final</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </div>
-        </a>
 
-        <!-- Tarjeta TP 3 -->
-        <a href="./TP3_UXUI_Sala/index.html" class="tp-card" aria-label="Ir al Trabajo Práctico N° 3: HTML5 y CSS3">
-          <div>
-            <div class="card-header">
-              <span class="tp-number">Práctica Modular</span>
-              <span class="tp-status">Completado</span>
+            <div>
+              <div class="tp-tags">
+                <span class="tag" style="border-color: rgba(0, 245, 184, 0.3); color: #00f5b8;">Portfolio Web</span>
+                <span class="tag">9 Secciones</span>
+                <span class="tag">Caso de Estudio UX</span>
+                <span class="tag">Modo Dual</span>
+                <span class="tag">WCAG AA</span>
+              </div>
+              <div class="tp-action" style="color: #00f5b8;">
+                <span>Explorar Portfolio Final</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
-            <h2 class="tp-title">Trabajo Práctico N° 3</h2>
-            <p class="tp-description">
-              Resolución integral de 20 ejercicios modulares explorando la semántica de HTML5 y las capacidades de CSS3 moderno: selectores avanzados, modelo de caja, Flexbox, CSS Grid, pseudoclases, animaciones y diseño responsivo.
-            </p>
-          </div>
+          </a>
 
-          <div>
-            <div class="tp-tags">
-              <span class="tag">HTML5 Semántico</span>
-              <span class="tag">Flexbox & Grid</span>
-              <span class="tag">20 Ejercicios</span>
-              <span class="tag">Accesibilidad</span>
+          <!-- Tarjeta TP 5 -->
+          <a href="./TP5_UXUI_Sala/index.html" class="tp-card" aria-label="Ir al Trabajo Práctico N° 5: Cubrí Seguros - Contratación Digital">
+            <div>
+              <div class="card-header">
+                <span class="tp-number">Flujo Digital • SPA</span>
+                <span class="tp-status">Completado</span>
+              </div>
+              <h2 class="tp-title">Trabajo Práctico N° 5</h2>
+              <p class="tp-description">
+                Flujo de contratación digital 100% online para la aseguradora <em>Cubrí Seguros</em> maquetado desde Figma. Arquitectura SPA de 7 pantallas con stepper reactivo, cotizador en tiempo real, validación de formularios, simulación de pago, modo oscuro y tokens de diseño con Tailwind CSS y Basecoat UI.
+              </p>
             </div>
-            <div class="tp-action">
-              <span>Explorar TP 3</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </div>
-        </a>
 
-        <!-- Tarjeta TP 4 -->
-        <a href="./TP4_UXUI_Sala/index.html" class="tp-card" aria-label="Ir al Trabajo Práctico N° 4: Coffea Landing Page">
-          <div>
-            <div class="card-header">
-              <span class="tp-number">Proyecto Integrador</span>
-              <span class="tp-status">Completado</span>
+            <div>
+              <div class="tp-tags">
+                <span class="tag">SPA Vanilla JS</span>
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag">Basecoat UI</span>
+                <span class="tag">Modo Oscuro</span>
+                <span class="tag">Cotizador Online</span>
+              </div>
+              <div class="tp-action">
+                <span>Explorar TP 5</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
-            <h2 class="tp-title">Trabajo Práctico N° 4</h2>
-            <p class="tp-description">
-              Landing page comercial de alta fidelidad para la cafetería <em>Coffea</em> maquetada desde Figma. Desarrollo responsivo con tokens de diseño, capas en cascada (@layer), carruseles nativos con scroll-snap y microinteracciones 100% CSS sin JavaScript.
-            </p>
-          </div>
+          </a>
 
-          <div>
-            <div class="tp-tags">
-              <span class="tag">Figma to Code</span>
-              <span class="tag">CSS @layer</span>
-              <span class="tag">Responsive</span>
-              <span class="tag">0% JavaScript</span>
+          <!-- Tarjeta TP 4 -->
+          <a href="./TP4_UXUI_Sala/index.html" class="tp-card" aria-label="Ir al Trabajo Práctico N° 4: Coffea Landing Page">
+            <div>
+              <div class="card-header">
+                <span class="tp-number">Proyecto Integrador</span>
+                <span class="tp-status">Completado</span>
+              </div>
+              <h2 class="tp-title">Trabajo Práctico N° 4</h2>
+              <p class="tp-description">
+                Landing page comercial de alta fidelidad para la cafetería <em>Coffea</em> maquetada desde Figma. Desarrollo responsivo con tokens de diseño, capas en cascada (@layer), carruseles nativos con scroll-snap y microinteracciones 100% CSS sin JavaScript.
+              </p>
             </div>
-            <div class="tp-action">
-              <span>Explorar TP 4</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
-          </div>
-        </a>
 
-        <!-- Tarjeta TP 5 -->
-        <a href="./TP5_UXUI_Sala/index.html" class="tp-card" aria-label="Ir al Trabajo Práctico N° 5: Cubrí Seguros - Contratación Digital">
-          <div>
-            <div class="card-header">
-              <span class="tp-number">Flujo Digital • SPA</span>
-              <span class="tp-status">Completado</span>
+            <div>
+              <div class="tp-tags">
+                <span class="tag">Figma to Code</span>
+                <span class="tag">CSS @layer</span>
+                <span class="tag">Responsive</span>
+                <span class="tag">0% JavaScript</span>
+              </div>
+              <div class="tp-action">
+                <span>Explorar TP 4</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
-            <h2 class="tp-title">Trabajo Práctico N° 5</h2>
-            <p class="tp-description">
-              Flujo de contratación digital 100% online para la aseguradora <em>Cubrí Seguros</em> maquetado desde Figma. Arquitectura SPA de 7 pantallas con stepper reactivo, cotizador en tiempo real, validación de formularios, simulación de pago, modo oscuro y tokens de diseño con Tailwind CSS y Basecoat UI.
-            </p>
-          </div>
+          </a>
 
-          <div>
-            <div class="tp-tags">
-              <span class="tag">SPA Vanilla JS</span>
-              <span class="tag">Tailwind CSS</span>
-              <span class="tag">Basecoat UI</span>
-              <span class="tag">Modo Oscuro</span>
-              <span class="tag">Cotizador Online</span>
+          <!-- Tarjeta TP 3 -->
+          <a href="./TP3_UXUI_Sala/index.html" class="tp-card" aria-label="Ir al Trabajo Práctico N° 3: HTML5 y CSS3">
+            <div>
+              <div class="card-header">
+                <span class="tp-number">Práctica Modular</span>
+                <span class="tp-status">Completado</span>
+              </div>
+              <h2 class="tp-title">Trabajo Práctico N° 3</h2>
+              <p class="tp-description">
+                Resolución integral de 20 ejercicios modulares explorando la semántica de HTML5 y las capacidades de CSS3 moderno: selectores avanzados, modelo de caja, Flexbox, CSS Grid, pseudoclases, animaciones y diseño responsivo.
+              </p>
             </div>
-            <div class="tp-action">
-              <span>Explorar TP 5</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+
+            <div>
+              <div class="tp-tags">
+                <span class="tag">HTML5 Semántico</span>
+                <span class="tag">Flexbox & Grid</span>
+                <span class="tag">20 Ejercicios</span>
+                <span class="tag">Accesibilidad</span>
+              </div>
+              <div class="tp-action">
+                <span>Explorar TP 3</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
             </div>
-          </div>
-        </a>
-      </nav>
+          </a>
+        </nav>
+
+        <!-- Botón Next Dinámico (Cuadrado con esquinas redondeadas) -->
+        <button id="carousel-next" class="carousel-nav-btn next-btn" type="button" aria-label="Siguiente trabajo" title="Siguiente trabajo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
     </main>
 
     <footer class="footer">
       <p>Licenciatura en Sistemas de Información • <span>Dante Sala</span></p>
     </footer>
   </div>
+
+  <script src="main.js"></script>
 </body>
 </html>

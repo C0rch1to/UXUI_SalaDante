@@ -105,16 +105,36 @@ body {
   margin: 0 auto;
 }
 
-/* Grid de Tarjetas */
-.tp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  gap: 1.75rem;
+/* --- Carrusel Interactivo de Trabajos Prácticos --- */
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
   margin-bottom: 3.5rem;
 }
 
-/* Card */
+/* Carrusel Horizontal que alinea cards con el lado izquierdo */
+.tp-carousel {
+  display: flex;
+  gap: 1.75rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-block: 0.75rem;
+  padding-inline: 4px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tp-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card dentro del Carrusel (Snap alineado a la izquierda) */
 .tp-card {
+  flex: 0 0 clamp(300px, 45vw, 490px);
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -127,6 +147,70 @@ body {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+}
+
+/* Botones de Navegación del Carrusel (Cuadrados con esquinas redondeadas, NO Círculos) */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 10px; /* Cuadrado con esquinas redondeadas */
+  background-color: rgba(18, 21, 28, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.25s ease, transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.carousel-nav-btn.prev-btn {
+  left: -22px;
+}
+
+.carousel-nav-btn.next-btn {
+  right: -22px;
+}
+
+@media (max-width: 1160px) and (min-width: 641px) {
+  .carousel-nav-btn.prev-btn {
+    left: 8px;
+  }
+  .carousel-nav-btn.next-btn {
+    right: 8px;
+  }
+}
+
+.carousel-nav-btn:hover {
+  background-color: #00f5b8;
+  color: #0a0c10;
+  border-color: #00f5b8;
+  box-shadow: 0 8px 28px rgba(0, 245, 184, 0.35);
+}
+
+.carousel-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Estado dinámico: se ocultan cuando no se puede desplazar en esa dirección */
+.carousel-nav-btn.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%) scale(0.85);
+}
+
+/* Ocultar en pantallas angostas / celular */
+@media (max-width: 640px) {
+  .carousel-nav-btn {
+    display: none !important;
+  }
 }
 
 .tp-card::before {
