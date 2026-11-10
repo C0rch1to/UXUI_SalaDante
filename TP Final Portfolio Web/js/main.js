@@ -9,11 +9,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initHeaderScroll();
   initMobileMenu();
-  initFloatingControls();
-  initActiveNavObserver();
-  initProjectsCarousel();
-  initCaseStudyModal();
-  initContactForm();
+
+  // Diferir observadores e interactividades secundarias a tiempo ocioso para dejar el hilo principal 100% libre
+  const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 50));
+  scheduleIdle(() => {
+    initFloatingControls();
+    initActiveNavObserver();
+    initProjectsCarousel();
+    initCaseStudyModal();
+    initContactForm();
+  });
 });
 
 /* ==========================================================================
@@ -332,7 +337,12 @@ function initLanguageToggle() {
   ].filter(Boolean);
 
   const savedLang = localStorage.getItem('lang') || 'es';
-  applyLanguage(savedLang);
+  // Si el idioma guardado es español (el predeterminado en el HTML), evitamos reescribir destructivamente el DOM en carga
+  if (savedLang !== 'es') {
+    applyLanguage(savedLang);
+  } else {
+    syncControlButtons('es');
+  }
 
   langBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -343,18 +353,23 @@ function initLanguageToggle() {
     });
   });
 
-  function applyLanguage(lang) {
-    document.documentElement.setAttribute('lang', lang);
-    const dict = translations[lang];
-    if (!dict) return;
-
-    // Actualizar botones de idioma (Header y Drawer)
+  function syncControlButtons(lang) {
+    const dict = translations[lang] || translations.es;
     langBtns.forEach(btn => {
       const textSpan = btn.querySelector('.lang-text');
       if (textSpan) textSpan.textContent = dict.lang_btn_text;
       btn.setAttribute('aria-label', dict.lang_btn_label);
       btn.title = dict.lang_btn_title;
     });
+  }
+
+  function applyLanguage(lang) {
+    document.documentElement.setAttribute('lang', lang);
+    const dict = translations[lang];
+    if (!dict) return;
+
+    // Actualizar botones de idioma (Header y Drawer)
+    syncControlButtons(lang);
 
     // Sincronizar labels de botones de tema según idioma activo
     const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
@@ -369,10 +384,10 @@ function initLanguageToggle() {
       btn.title = isLight ? dict.theme_btn_dark : dict.theme_btn_light;
     });
 
-    // Actualizar elementos con atributo data-i18n
+    // Actualizar elementos con atributo data-i18n solo si cambia su contenido
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
-      if (dict[key] !== undefined) {
+      if (dict[key] !== undefined && el.innerHTML !== dict[key]) {
         el.innerHTML = dict[key];
       }
     });
@@ -380,7 +395,7 @@ function initLanguageToggle() {
     // Actualizar placeholders con data-i18n-ph
     document.querySelectorAll('[data-i18n-ph]').forEach(el => {
       const key = el.getAttribute('data-i18n-ph');
-      if (dict[key] !== undefined) {
+      if (dict[key] !== undefined && el.getAttribute('placeholder') !== dict[key]) {
         el.setAttribute('placeholder', dict[key]);
       }
     });

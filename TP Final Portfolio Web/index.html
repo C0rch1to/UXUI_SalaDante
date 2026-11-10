@@ -27,10 +27,14 @@
 
   <title>Dante Sala | Diseñador UX/UI &amp; Desarrollador Front-end — Portfolio</title>
 
-  <!-- Tipografías de Google con font-display: swap -->
+  <!-- Tipografías de Google Asincrónicas con font-display: swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  </noscript>
 
   <!-- Estilos del Portfolio -->
   <link rel="stylesheet" href="./css/styles.css?v=2.0">
@@ -223,7 +227,7 @@
           <!-- Retrato Vectorial -->
           <div class="about-visual">
             <div class="about-avatar-wrapper">
-              <img src="./assets/img/profile-avatar.svg" alt="Retrato profesional estilizado de Dante Sala en estilo vector tech moderno" width="320" height="320">
+              <img src="./assets/img/profile-avatar.svg" alt="Retrato profesional estilizado de Dante Sala en estilo vector tech moderno" width="320" height="320" loading="lazy" decoding="async">
             </div>
           </div>
 
@@ -378,7 +382,10 @@
             <!-- Proyecto 1: Cubrí Seguros (Captura Real de Referencias) -->
             <article class="project-card">
               <div class="project-media-wrapper">
-                <img src="./assets/img/cubri-preview.png" alt="Captura real de la plataforma digital Cubrí Seguros mostrando el cotizador y el flujo de contratación" class="project-image" width="600" height="375" loading="lazy">
+                <picture>
+                  <source srcset="./assets/img/cubri-preview.webp" type="image/webp">
+                  <img src="./assets/img/cubri-preview.png" alt="Captura real de la plataforma digital Cubrí Seguros mostrando el cotizador y el flujo de contratación" class="project-image" width="600" height="375" loading="lazy" decoding="async">
+                </picture>
                 <span class="project-badge-year">2026</span>
               </div>
               <div class="project-body">
@@ -414,7 +421,7 @@
             <!-- Proyecto 2: Coffea Specialty Coffee -->
             <article class="project-card">
               <div class="project-media-wrapper">
-                <img src="./assets/img/coffea-preview.webp" alt="Landing page comercial de Coffea Specialty Coffee mostrando fotografía de producto y sistema tipográfico" class="project-image" width="600" height="375" loading="lazy">
+                <img src="./assets/img/coffea-preview.webp" alt="Landing page comercial de Coffea Specialty Coffee mostrando fotografía de producto y sistema tipográfico" class="project-image" width="600" height="375" loading="lazy" decoding="async">
                 <span class="project-badge-year">2026</span>
               </div>
               <div class="project-body">
@@ -445,7 +452,10 @@
             <!-- Proyecto 3: Fatto Al Forno (Captura Real de Referencias + Descripción Ajustada) -->
             <article class="project-card">
               <div class="project-media-wrapper">
-                <img src="./assets/img/fatto-preview.png" alt="Captura de la landing page de Fatto Al Forno con su menú artesanal y fotografía de platos" class="project-image" width="600" height="375" loading="lazy">
+                <picture>
+                  <source srcset="./assets/img/fatto-preview.webp" type="image/webp">
+                  <img src="./assets/img/fatto-preview.png" alt="Captura de la landing page de Fatto Al Forno con su menú artesanal y fotografía de platos" class="project-image" width="600" height="375" loading="lazy" decoding="async">
+                </picture>
                 <span class="project-badge-year">2025</span>
               </div>
               <div class="project-body">
@@ -476,7 +486,7 @@
             <!-- Proyecto 4: Minimal Snake Game -->
             <article class="project-card">
               <div class="project-media-wrapper">
-                <img src="./assets/img/snake-preview.svg" alt="Pantalla del juego retro Minimal Snake Game con estética cyberpunk y contador de puntuación" class="project-image" width="600" height="375" loading="lazy">
+                <img src="./assets/img/snake-preview.svg" alt="Pantalla del juego retro Minimal Snake Game con estética cyberpunk y contador de puntuación" class="project-image" width="600" height="375" loading="lazy" decoding="async">
                 <span class="project-badge-year">2024</span>
               </div>
               <div class="project-body">
@@ -705,7 +715,10 @@
 
       <div class="modal-body">
         <div class="case-study-hero">
-          <img src="./assets/img/cubri-preview.png" alt="Pantalla completa del cotizador digital de Cubrí Seguros" width="800" height="450">
+          <picture>
+            <source srcset="./assets/img/cubri-preview.webp" type="image/webp">
+            <img src="./assets/img/cubri-preview.png" alt="Pantalla completa del cotizador digital de Cubrí Seguros" width="800" height="450" loading="lazy" decoding="async">
+          </picture>
         </div>
 
         <section class="case-study-section">
@@ -768,7 +781,7 @@
     </div>
   </dialog>
 
-  <!-- Script Principal -->
-  <script src="./js/main.js?v=2.0"></script>
+  <!-- Script Principal Asíncrono no bloqueante -->
+  <script defer src="./js/main.js?v=2.1"></script>
 </body>
 </html>
