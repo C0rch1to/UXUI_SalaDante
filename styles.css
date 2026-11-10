@@ -31,6 +31,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   color-scheme: dark;
+  overflow-x: clip;
 }
 
 body {
@@ -46,7 +47,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 2.5rem 1.25rem;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .container {
@@ -110,6 +111,8 @@ body {
 .carousel-wrapper {
   position: relative;
   width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
   margin-bottom: 3.5rem;
 }
 
@@ -126,6 +129,7 @@ body {
   scrollbar-width: none;
   -ms-overflow-style: none;
   -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .tp-carousel::-webkit-scrollbar,
