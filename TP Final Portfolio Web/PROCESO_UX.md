@@ -99,7 +99,7 @@ Se realizó un ejercicio de Card Sorting cerrado con 3 participantes para valida
 [ 5. Proyectos & Casos de Estudio ]
   ├── Proyecto 1: Cubrí Seguros (Caso de Estudio Principal + Modal Interactivo)
   ├── Proyecto 2: Coffea Specialty Coffee (Tokens de Diseño + CSS @layer)
-  ├── Proyecto 3: Fatto Pizzeria (E-commerce Gastronómico + Mobile First)
+  ├── Proyecto 3: Fatto Al Forno (Landing Comercial + Menú Digital)
   └── Proyecto 4: Minimal Snake Game (Lógica Vanilla JS + Game Loop)
 
 [ 6. Experiencia & Formación ]

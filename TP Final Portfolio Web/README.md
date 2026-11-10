@@ -20,6 +20,8 @@ Sitio web personal desarrollado como **Trabajo Final Integrador** para la materi
   * Respeto por preferencias de movimiento (`prefers-reduced-motion`).
   * Microinteracciones en CSS: foco visible accesible, elevación de tarjetas y transiciones fluidas.
 * **JavaScript Vanilla (ES6+):**
+  * **Soporte Bilingüe Español / Inglés:** Selector dinámico de idioma con diccionario de traducción completo y persistencia en `localStorage`.
+  * **Carrusel Interactivo de Proyectos:** Desplazamiento horizontal con alineación a la izquierda (`scroll-snap`), botones de navegación dinámicos (cuadrados redondeados que se ocultan cuando no hay más tarjetas hacia ese extremo y en dispositivos móviles) y 4 punticos oscuros indicadores de posición.
   * Control del Drawer / Menú hamburguesa mobile con accesibilidad completa (`aria-expanded`, bloqueo de scroll de fondo y cierre automático al pulsar enlaces o tecla `Escape`).
   * Modal accesible para el caso de estudio de *Cubrí Seguros* con trampa de foco y retorno de foco al elemento disparador.
   * Selector de tema Dark / Light persistente en `localStorage` con detección inicial de `prefers-color-scheme`.

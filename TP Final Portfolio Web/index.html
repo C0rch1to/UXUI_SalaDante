@@ -51,16 +51,21 @@
       <!-- Navegación Desktop Tipo Píldora Flotante -->
       <nav class="desktop-nav" aria-label="Navegación principal">
         <ul class="nav-list">
-          <li><a href="#about" class="nav-link">Sobre mí</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#projects" class="nav-link">Proyectos</a></li>
-          <li><a href="#experience" class="nav-link">Experiencia</a></li>
-          <li><a href="#contact" class="nav-link">Contacto</a></li>
+          <li><a href="#about" class="nav-link" data-i18n="nav_about">Sobre mí</a></li>
+          <li><a href="#skills" class="nav-link" data-i18n="nav_skills">Skills</a></li>
+          <li><a href="#projects" class="nav-link" data-i18n="nav_projects">Proyectos</a></li>
+          <li><a href="#experience" class="nav-link" data-i18n="nav_experience">Experiencia</a></li>
+          <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contacto</a></li>
         </ul>
       </nav>
 
-      <!-- Botonera de Acciones (Theme Toggle + Redes + CTA) -->
+      <!-- Botonera de Acciones (Selector Idioma + Theme Toggle + CTA + Mobile Menu) -->
       <div class="header-actions">
+        <!-- Botón de Traducción ES / EN (Mod 5) -->
+        <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" aria-label="Cambiar a inglés" title="Switch to English">
+          <span class="lang-text" aria-hidden="true">EN</span>
+        </button>
+
         <!-- Toggle Dark/Light Mode (Bonus +10) -->
         <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" aria-pressed="false" aria-label="Cambiar a modo claro" title="Cambiar a modo claro">
           <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
@@ -68,7 +73,7 @@
         </button>
 
         <!-- CTA Principal del Header -->
-        <a href="#contact" class="btn btn-primary header-cta">Hablemos</a>
+        <a href="#contact" class="btn btn-primary header-cta" data-i18n="nav_cta">Hablemos</a>
 
         <!-- Botón Menú Mobile Hamburguesa -->
         <button id="mobile-menu-btn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menú de navegación">
@@ -90,14 +95,14 @@
       </button>
     </div>
     <ul class="mobile-nav-list">
-      <li><a href="#about" class="mobile-nav-link">Sobre mí <span aria-hidden="true">→</span></a></li>
-      <li><a href="#skills" class="mobile-nav-link">Habilidades <span aria-hidden="true">→</span></a></li>
-      <li><a href="#projects" class="mobile-nav-link">Proyectos <span aria-hidden="true">→</span></a></li>
-      <li><a href="#experience" class="mobile-nav-link">Experiencia <span aria-hidden="true">→</span></a></li>
-      <li><a href="#contact" class="mobile-nav-link">Contacto <span aria-hidden="true">→</span></a></li>
+      <li><a href="#about" class="mobile-nav-link"><span data-i18n="nav_about">Sobre mí</span> <span aria-hidden="true">→</span></a></li>
+      <li><a href="#skills" class="mobile-nav-link"><span data-i18n="nav_skills">Skills</span> <span aria-hidden="true">→</span></a></li>
+      <li><a href="#projects" class="mobile-nav-link"><span data-i18n="nav_projects">Proyectos</span> <span aria-hidden="true">→</span></a></li>
+      <li><a href="#experience" class="mobile-nav-link"><span data-i18n="nav_experience">Experiencia</span> <span aria-hidden="true">→</span></a></li>
+      <li><a href="#contact" class="mobile-nav-link"><span data-i18n="nav_contact">Contacto</span> <span aria-hidden="true">→</span></a></li>
     </ul>
     <div class="mobile-nav-footer">
-      <a href="#contact" class="btn btn-primary" style="width: 100%;">Hablemos</a>
+      <a href="#contact" class="btn btn-primary" style="width: 100%;" data-i18n="nav_cta">Hablemos</a>
       <p style="font-size: 0.8125rem; color: var(--text-muted); text-align: center;">Buenos Aires, Argentina (GMT-3)</p>
     </div>
   </nav>
@@ -114,33 +119,33 @@
           <div class="hero-badges-row">
             <span class="status-badge">
               <span class="status-indicator" aria-hidden="true"></span>
-              <span>Disponible para nuevos desafíos</span>
+              <span data-i18n="hero_status">Disponible para nuevos desafíos</span>
             </span>
             <span class="status-badge">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-              <span>Buenos Aires, Argentina (GMT-3)</span>
+              <span data-i18n="hero_location">Buenos Aires, Argentina (GMT-3)</span>
             </span>
           </div>
 
           <!-- Encabezado Principal H1 -->
           <h1 id="hero-title" class="hero-title">
-            Diseñador UX/UI &amp; <br>
-            <span class="accent-text">Desarrollador Front-end</span>
+            <span data-i18n="hero_title_1">Diseñador UX/UI &amp;</span> <br>
+            <span class="accent-text" data-i18n="hero_title_2">Desarrollador Front-end</span>
           </h1>
 
           <!-- Propuesta de Valor en 2 líneas -->
-          <p class="hero-description">
+          <p class="hero-description" data-i18n="hero_desc">
             Hola, soy <strong>Dante Sala</strong>. Diseño productos digitales intuitivos y accesibles, uniendo el rigor de la arquitectura de sistemas con una cuidada sensibilidad estética moderna.
           </p>
 
           <!-- 2 CTAs Obligatorios -->
           <div class="hero-ctas">
             <a href="#projects" class="btn btn-primary">
-              <span>Explorar Proyectos</span>
+              <span data-i18n="hero_cta_projects">Explorar Proyectos</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
             <a href="#contact" class="btn btn-secondary">
-              <span>Contactar</span>
+              <span data-i18n="hero_cta_contact">Contactar</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </a>
           </div>
@@ -153,20 +158,20 @@
       <div class="container">
         <div class="metrics-grid">
           <article class="metric-card">
-            <p class="metric-number">+3</p>
-            <p class="metric-label">Años de formación en Sistemas</p>
+            <p class="metric-number" data-i18n="metric_study_num">+3</p>
+            <p class="metric-label" data-i18n="metric_study_lbl">Años de formación en Sistemas</p>
           </article>
           <article class="metric-card">
-            <p class="metric-number">5+</p>
-            <p class="metric-label">Proyectos digitales desarrollados</p>
+            <p class="metric-number" data-i18n="metric_proj_num">5+</p>
+            <p class="metric-label" data-i18n="metric_proj_lbl">Proyectos digitales desarrollados</p>
           </article>
           <article class="metric-card">
-            <p class="metric-number">100%</p>
-            <p class="metric-label">Accesibilidad WCAG 2.2 AA</p>
+            <p class="metric-number" data-i18n="metric_wcag_num">100%</p>
+            <p class="metric-label" data-i18n="metric_wcag_lbl">Accesibilidad WCAG 2.2 AA</p>
           </article>
           <article class="metric-card">
-            <p class="metric-number">15+</p>
-            <p class="metric-label">Herramientas y tecnologías dominadas</p>
+            <p class="metric-number" data-i18n="metric_tools_num">15+</p>
+            <p class="metric-label" data-i18n="metric_tools_lbl">Herramientas y tecnologías dominadas</p>
           </article>
         </div>
       </div>
@@ -178,13 +183,13 @@
         <div class="section-header">
           <span class="section-tag">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
-            Sobre mí
+            <span data-i18n="about_tag">Sobre mí</span>
           </span>
-          <h2 id="about-title" class="section-title">Tecnología con propósito humano</h2>
+          <h2 id="about-title" class="section-title" data-i18n="about_title">Tecnología con propósito humano</h2>
         </div>
 
         <div class="about-grid">
-          <!-- Retrato / Ilustración Vectorial con Alt Significativo -->
+          <!-- Retrato Vectorial -->
           <div class="about-visual">
             <div class="about-avatar-wrapper">
               <img src="./assets/img/profile-avatar.svg" alt="Retrato profesional estilizado de Dante Sala en estilo vector tech moderno" width="320" height="320">
@@ -193,10 +198,10 @@
 
           <!-- Párrafo de Presentación + 3 Principios -->
           <div class="about-content">
-            <p class="about-lead">
+            <p class="about-lead" data-i18n="about_lead">
               Soy estudiante de la <strong>Licenciatura en Sistemas de Información</strong> con un marcado perfil integrador entre el <strong>diseño de experiencia de usuario (UX/UI)</strong> y la <strong>arquitectura front-end</strong>.
             </p>
-            <p>
+            <p data-i18n="about_desc">
               Entiendo el diseño no como un mero adorno estético, sino como una herramienta estratégica para resolver problemas complejos de interacción, reducir la fricción cognitiva y garantizar que cualquier persona, independientemente de sus capacidades o dispositivo, pueda interactuar de forma intuitiva.
             </p>
 
@@ -204,20 +209,20 @@
             <div class="principles-grid">
               <article class="principle-card">
                 <svg class="principle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                <h3 class="principle-title">Diseño Humano</h3>
-                <p class="principle-desc">La investigación empírica y los tests de usabilidad superan a las suposiciones teóricas.</p>
+                <h3 class="principle-title" data-i18n="principle_1_title">Diseño Humano</h3>
+                <p class="principle-desc" data-i18n="principle_1_desc">La investigación empírica y los tests de usabilidad superan a las suposiciones teóricas.</p>
               </article>
 
               <article class="principle-card">
                 <svg class="principle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-                <h3 class="principle-title">Simplicidad Clara</h3>
-                <p class="principle-desc">Menos sobrecarga visual, mayor rapidez de decisión y accesibilidad estricta WCAG AA.</p>
+                <h3 class="principle-title" data-i18n="principle_2_title">Simplicidad Clara</h3>
+                <p class="principle-desc" data-i18n="principle_2_desc">Menos sobrecarga visual, mayor rapidez de decisión y accesibilidad estricta WCAG AA.</p>
               </article>
 
               <article class="principle-card">
                 <svg class="principle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                <h3 class="principle-title">Diseño a Código</h3>
-                <p class="principle-desc">Diseñar entendiendo la viabilidad técnica garantiza fidelidad exacta en producción.</p>
+                <h3 class="principle-title" data-i18n="principle_3_title">Diseño a Código</h3>
+                <p class="principle-desc" data-i18n="principle_3_desc">Diseñar entendiendo la viabilidad técnica garantiza fidelidad exacta en producción.</p>
               </article>
             </div>
           </div>
@@ -231,10 +236,10 @@
         <div class="section-header">
           <span class="section-tag">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-            Habilidades
+            <span data-i18n="skills_tag">Habilidades</span>
           </span>
-          <h2 id="skills-title" class="section-title">Ecosistema técnico y metodológico</h2>
-          <p class="section-description">Herramientas y disciplinas aplicadas en cada fase del ciclo de vida del producto.</p>
+          <h2 id="skills-title" class="section-title" data-i18n="skills_title">Ecosistema técnico y metodológico</h2>
+          <p class="section-description" data-i18n="skills_desc">Herramientas y disciplinas aplicadas en cada fase del ciclo de vida del producto.</p>
         </div>
 
         <div class="skills-grid">
@@ -244,9 +249,9 @@
               <div class="skill-cat-icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               </div>
-              <h3 class="skill-cat-title">Investigación &amp; Estrategia UX</h3>
+              <h3 class="skill-cat-title" data-i18n="cat_1_title">Investigación &amp; Estrategia UX</h3>
             </div>
-            <p class="skill-cat-desc">Descubrimiento de necesidades de usuarios, evaluación heurística y modelado de flujos.</p>
+            <p class="skill-cat-desc" data-i18n="cat_1_desc">Descubrimiento de necesidades de usuarios, evaluación heurística y modelado de flujos.</p>
             <div class="chips-container">
               <span class="skill-chip">Proto-personas</span>
               <span class="skill-chip">User Journey Mapping</span>
@@ -263,9 +268,9 @@
               <div class="skill-cat-icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
               </div>
-              <h3 class="skill-cat-title">Diseño UI &amp; Prototipado</h3>
+              <h3 class="skill-cat-title" data-i18n="cat_2_title">Diseño UI &amp; Prototipado</h3>
             </div>
-            <p class="skill-cat-desc">Construcción de sistemas de diseño visual, prototipos de alta fidelidad y pautas WCAG.</p>
+            <p class="skill-cat-desc" data-i18n="cat_2_desc">Construcción de sistemas de diseño visual, prototipos de alta fidelidad y pautas WCAG.</p>
             <div class="chips-container">
               <span class="skill-chip">Figma</span>
               <span class="skill-chip">Design Systems</span>
@@ -282,9 +287,9 @@
               <div class="skill-cat-icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
               </div>
-              <h3 class="skill-cat-title">Maquetación &amp; Front-end</h3>
+              <h3 class="skill-cat-title" data-i18n="cat_3_title">Maquetación &amp; Front-end</h3>
             </div>
-            <p class="skill-cat-desc">Implementación fiel de interfaces interactivas con tecnologías web estándares y código limpio.</p>
+            <p class="skill-cat-desc" data-i18n="cat_3_desc">Implementación fiel de interfaces interactivas con tecnologías web estándares y código limpio.</p>
             <div class="chips-container">
               <span class="skill-chip">HTML5 Semántico</span>
               <span class="skill-chip">CSS3 (Grid &amp; Flexbox)</span>
@@ -301,9 +306,9 @@
               <div class="skill-cat-icon" aria-hidden="true">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
               </div>
-              <h3 class="skill-cat-title">Herramientas &amp; Calidad</h3>
+              <h3 class="skill-cat-title" data-i18n="cat_4_title">Herramientas &amp; Calidad</h3>
             </div>
-            <p class="skill-cat-desc">Control de versiones colaborativo, auditorías de performance y despliegue continuo.</p>
+            <p class="skill-cat-desc" data-i18n="cat_4_desc">Control de versiones colaborativo, auditorías de performance y despliegue continuo.</p>
             <div class="chips-container">
               <span class="skill-chip">Git &amp; GitHub</span>
               <span class="skill-chip">GitHub Pages &amp; Actions</span>
@@ -317,166 +322,191 @@
       </div>
     </section>
 
-    <!-- 6. Proyectos Destacados (Con Caso de Estudio Modal) -->
+    <!-- 6. Proyectos Destacados (Carrusel Interactivo con Snap Izquierdo y 4 Punticos) -->
     <section id="projects" class="section" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-            Proyectos destacados
+            <span data-i18n="projects_tag">Proyectos destacados</span>
           </span>
-          <h2 id="projects-title" class="section-title">Casos de estudio y desarrollos</h2>
-          <p class="section-description">Soluciones digitales que combinan investigación de usuarios, diseño visual riguroso y código optimizado.</p>
+          <h2 id="projects-title" class="section-title" data-i18n="projects_title">Casos de estudio y desarrollos</h2>
+          <p class="section-description" data-i18n="projects_desc">Soluciones digitales que combinan investigación de usuarios, diseño visual riguroso y código optimizado.</p>
         </div>
 
-        <div class="projects-grid">
-          <!-- Proyecto 1: Cubrí Seguros (Caso de Estudio Principal) -->
-          <article class="project-card">
-            <div class="project-media-wrapper">
-              <img src="./assets/img/cubri-preview.png" alt="Captura de pantallas de la plataforma digital Cubrí Seguros mostrando el cotizador y el flujo de contratación" class="project-image" width="600" height="375" loading="lazy">
-              <span class="project-badge-year">2026</span>
-            </div>
-            <div class="project-body">
-              <span class="project-type-tag">Caso de Estudio UX/UI · Proyecto Estrella</span>
-              <h3 class="project-title">Cubrí Seguros — Contratación Digital</h3>
-              <p class="project-desc">
-                Flujo de contratación digital 100% online para aseguradora automotriz. Arquitectura SPA de 7 pantallas con stepper reactivo, cotizador en tiempo real, validación de formularios y modo oscuro optimizado.
-              </p>
-              <p class="project-learning">
-                <strong>Resultado clave:</strong> Reducción del tiempo de cotización a 50 segundos y tasa de completitud de formulario del 88% en pruebas de usabilidad.
-              </p>
-              <div class="project-tags-row">
-                <span class="project-tag">UX Research</span>
-                <span class="project-tag">Figma</span>
-                <span class="project-tag">SPA Vanilla JS</span>
-                <span class="project-tag">Tailwind CSS</span>
-                <span class="project-tag">Stepper UI</span>
-              </div>
-              <div class="project-actions">
-                <button type="button" class="btn btn-primary btn-card open-case-study-btn" aria-haspopup="dialog">
-                  <span>Ver Caso de Estudio</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                </button>
-                <a href="../TP5_UXUI_Sala/index.html" class="btn btn-secondary btn-card" target="_blank" rel="noopener noreferrer">
-                  <span>Demo en vivo</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
-                </a>
-              </div>
-            </div>
-          </article>
+        <!-- Wrapper del Carrusel con Controles Dinámicos (Mod 6) -->
+        <div class="projects-carousel-wrapper">
+          <!-- Botón Prev Dinámico (Cuadrado Redondeado) -->
+          <button id="carousel-prev" class="carousel-nav-btn prev-btn is-hidden" type="button" aria-label="Proyecto anterior" title="Proyecto anterior">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
 
-          <!-- Proyecto 2: Coffea Specialty Coffee -->
-          <article class="project-card">
-            <div class="project-media-wrapper">
-              <img src="./assets/img/coffea-preview.webp" alt="Landing page comercial de Coffea Specialty Coffee mostrando fotografía de producto y sistema tipográfico" class="project-image" width="600" height="375" loading="lazy">
-              <span class="project-badge-year">2026</span>
-            </div>
-            <div class="project-body">
-              <span class="project-type-tag">Figma to Code · Landing Comercial</span>
-              <h3 class="project-title">Coffea — Specialty Coffee Shop</h3>
-              <p class="project-desc">
-                Landing page comercial de alta fidelidad maquetada desde especificaciones en Figma. Desarrollo responsivo estructurado con tokens de diseño, capas en cascada (`@layer`), carruseles nativos con `scroll-snap` y cero dependencias de JavaScript.
-              </p>
-              <p class="project-learning">
-                <strong>Aprendizaje:</strong> Implementación de microinteracciones fluidas y componentes interactivos 100% CSS, logrando 99 en rendimiento móvil.
-              </p>
-              <div class="project-tags-row">
-                <span class="project-tag">Figma to Code</span>
-                <span class="project-tag">CSS @layer</span>
-                <span class="project-tag">Scroll-Snap</span>
-                <span class="project-tag">0% JavaScript</span>
+          <!-- Contenedor Horizontal del Carrusel -->
+          <div id="projects-carousel" class="projects-carousel" role="region" aria-label="Carrusel de proyectos destacados">
+            
+            <!-- Proyecto 1: Cubrí Seguros (Captura Real de Referencias) -->
+            <article class="project-card">
+              <div class="project-media-wrapper">
+                <img src="./assets/img/cubri-preview.png" alt="Captura real de la plataforma digital Cubrí Seguros mostrando el cotizador y el flujo de contratación" class="project-image" width="600" height="375" loading="lazy">
+                <span class="project-badge-year">2026</span>
               </div>
-              <div class="project-actions">
-                <a href="../TP4_UXUI_Sala/index.html" class="btn btn-primary btn-card" target="_blank" rel="noopener noreferrer">
-                  <span>Explorar Sitio</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
-                </a>
+              <div class="project-body">
+                <span class="project-type-tag" data-i18n="p1_type">Caso de Estudio UX/UI · Proyecto Estrella</span>
+                <h3 class="project-title" data-i18n="p1_title">Cubrí Seguros — Contratación Digital</h3>
+                <p class="project-desc" data-i18n="p1_desc">
+                  Flujo de contratación digital 100% online para aseguradora automotriz. Arquitectura SPA de 7 pantallas con stepper reactivo, cotizador en tiempo real, validación de formularios y modo oscuro optimizado.
+                </p>
+                <p class="project-learning" data-i18n="p1_learning">
+                  <strong>Resultado clave:</strong> Reducción del tiempo de cotización a 50 segundos y tasa de completitud de formulario del 88% en pruebas de usabilidad.
+                </p>
+                <div class="project-tags-row">
+                  <span class="project-tag">UX Research</span>
+                  <span class="project-tag">Figma</span>
+                  <span class="project-tag">SPA Vanilla JS</span>
+                  <span class="project-tag">Tailwind CSS</span>
+                  <span class="project-tag">Stepper UI</span>
+                </div>
+                <div class="project-actions">
+                  <button type="button" class="btn btn-primary btn-card open-case-study-btn" aria-haspopup="dialog">
+                    <span data-i18n="p1_btn_case">Ver Caso de Estudio</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                  </button>
+                  <a href="../TP5_UXUI_Sala/index.html" class="btn btn-secondary btn-card" target="_blank" rel="noopener noreferrer">
+                    <span data-i18n="btn_live_demo">Demo en vivo</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <!-- Proyecto 3: Fatto Pizzeria -->
-          <article class="project-card">
-            <div class="project-media-wrapper">
-              <img src="./assets/img/fatto-preview.svg" alt="Mockup de la plataforma gastronómica Fatto Pizzeria con catálogo interactivo" class="project-image" width="600" height="375" loading="lazy">
-              <span class="project-badge-year">2025</span>
-            </div>
-            <div class="project-body">
-              <span class="project-type-tag">E-commerce Gastronómico · Trabajo Real</span>
-              <h3 class="project-title">Fatto Pizzeria — Menú &amp; Pedidos Online</h3>
-              <p class="project-desc">
-                Solución web diseñada y desarrollada para pizzería artesanal italiana. Enfoque mobile-first para optimizar la experiencia de pedido ágil, catálogo visual con fotografía gastronómica y derivación directa a WhatsApp con el pedido pre-armado.
-              </p>
-              <p class="project-learning">
-                <strong>Impacto:</strong> Aumento del 40% en pedidos digitales durante fines de semana respecto al canal telefónico tradicional.
-              </p>
-              <div class="project-tags-row">
-                <span class="project-tag">Mobile First</span>
-                <span class="project-tag">HTML5 &amp; CSS3</span>
-                <span class="project-tag">WhatsApp API</span>
-                <span class="project-tag">Cliente Real</span>
+            <!-- Proyecto 2: Coffea Specialty Coffee -->
+            <article class="project-card">
+              <div class="project-media-wrapper">
+                <img src="./assets/img/coffea-preview.webp" alt="Landing page comercial de Coffea Specialty Coffee mostrando fotografía de producto y sistema tipográfico" class="project-image" width="600" height="375" loading="lazy">
+                <span class="project-badge-year">2026</span>
               </div>
-              <div class="project-actions">
-                <a href="https://c0rch1to.github.io/Fatto/" class="btn btn-primary btn-card" target="_blank" rel="noopener noreferrer">
-                  <span>Visitar Proyecto</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
-                </a>
+              <div class="project-body">
+                <span class="project-type-tag" data-i18n="p2_type">Figma to Code · Landing Comercial</span>
+                <h3 class="project-title" data-i18n="p2_title">Coffea — Specialty Coffee Shop</h3>
+                <p class="project-desc" data-i18n="p2_desc">
+                  Landing page comercial de alta fidelidad maquetada desde especificaciones en Figma. Desarrollo responsivo estructurado con tokens de diseño, capas en cascada (@layer), carruseles nativos con scroll-snap y cero dependencias de JavaScript.
+                </p>
+                <p class="project-learning" data-i18n="p2_learning">
+                  <strong>Aprendizaje:</strong> Implementación de microinteracciones fluidas y componentes interactivos 100% CSS, logrando 99 en rendimiento móvil.
+                </p>
+                <div class="project-tags-row">
+                  <span class="project-tag">Figma to Code</span>
+                  <span class="project-tag">CSS @layer</span>
+                  <span class="project-tag">Scroll-Snap</span>
+                  <span class="project-tag">0% JavaScript</span>
+                </div>
+                <div class="project-actions">
+                  <a href="../TP4_UXUI_Sala/index.html" class="btn btn-primary btn-card" target="_blank" rel="noopener noreferrer">
+                    <span data-i18n="btn_explore">Explorar Sitio</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
 
-          <!-- Proyecto 4: Minimal Snake Game -->
-          <article class="project-card">
-            <div class="project-media-wrapper">
-              <img src="./assets/img/snake-preview.svg" alt="Pantalla del juego retro Minimal Snake Game con estética cyberpunk y contador de puntuación" class="project-image" width="600" height="375" loading="lazy">
-              <span class="project-badge-year">2024</span>
-            </div>
-            <div class="project-body">
-              <span class="project-type-tag">Desarrollo Web · Lógica Vanilla JS</span>
-              <h3 class="project-title">Minimal Snake Game — Arcade Moderno</h3>
-              <p class="project-desc">
-                Reinterpretación minimalista del clásico videojuego de la serpiente, desarrollado como primer desafío de programación web en JavaScript. Bucle de animación (Game Loop), detección precisa de colisiones matriciales y registro de puntaje máximo local.
-              </p>
-              <p class="project-learning">
-                <strong>Aprendizaje:</strong> Comprensión profunda de la máquina de estados, renderizado en Canvas/DOM y manipulación de eventos de teclado.
-              </p>
-              <div class="project-tags-row">
-                <span class="project-tag">JavaScript Puro</span>
-                <span class="project-tag">Game Loop</span>
-                <span class="project-tag">DOM &amp; Canvas</span>
-                <span class="project-tag">Retro UI</span>
+            <!-- Proyecto 3: Fatto Al Forno (Captura Real de Referencias + Descripción Ajustada) -->
+            <article class="project-card">
+              <div class="project-media-wrapper">
+                <img src="./assets/img/fatto-preview.png" alt="Captura de la landing page de Fatto Al Forno con su menú artesanal y fotografía de platos" class="project-image" width="600" height="375" loading="lazy">
+                <span class="project-badge-year">2025</span>
               </div>
-              <div class="project-actions">
-                <a href="https://c0rch1to.github.io/Snake/" class="btn btn-primary btn-card" target="_blank" rel="noopener noreferrer">
-                  <span>Jugar Online</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                  <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
-                </a>
-                <a href="https://github.com/C0rch1to/Snake" class="btn btn-secondary btn-card" target="_blank" rel="noopener noreferrer">
-                  <span>GitHub</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                  <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
-                </a>
+              <div class="project-body">
+                <span class="project-type-tag" data-i18n="p3_type">Landing Comercial · Menú Digital</span>
+                <h3 class="project-title" data-i18n="p3_title">Fatto Al Forno — Pizzería Artesanal</h3>
+                <p class="project-desc" data-i18n="p3_desc">
+                  Landing page comercial para la pizzería artesanal Fatto Al Forno (Concepción del Uruguay). Diseño y desarrollo web con catálogo digital de productos (pizzas a la piedra, empanadas y tartas), información del local, horarios y enlaces de pedido.
+                </p>
+                <p class="project-learning" data-i18n="p3_learning">
+                  <strong>Experiencia:</strong> Trabajo real de maquetación web independiente: diseño visual adaptado al rubro gastronómico, optimización de recursos y estructura responsive.
+                </p>
+                <div class="project-tags-row">
+                  <span class="project-tag">HTML5 &amp; CSS3</span>
+                  <span class="project-tag">Mobile First</span>
+                  <span class="project-tag">Gastronomía</span>
+                  <span class="project-tag">Trabajo Real</span>
+                </div>
+                <div class="project-actions">
+                  <a href="https://c0rch1to.github.io/Fatto/" class="btn btn-primary btn-card" target="_blank" rel="noopener noreferrer">
+                    <span data-i18n="btn_visit">Visitar Proyecto</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
+                  </a>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+
+            <!-- Proyecto 4: Minimal Snake Game -->
+            <article class="project-card">
+              <div class="project-media-wrapper">
+                <img src="./assets/img/snake-preview.svg" alt="Pantalla del juego retro Minimal Snake Game con estética cyberpunk y contador de puntuación" class="project-image" width="600" height="375" loading="lazy">
+                <span class="project-badge-year">2024</span>
+              </div>
+              <div class="project-body">
+                <span class="project-type-tag" data-i18n="p4_type">Desarrollo Web · Lógica Vanilla JS</span>
+                <h3 class="project-title" data-i18n="p4_title">Minimal Snake Game — Arcade Moderno</h3>
+                <p class="project-desc" data-i18n="p4_desc">
+                  Reinterpretación minimalista del clásico videojuego de la serpiente, desarrollado como primer desafío de programación web en JavaScript. Bucle de animación (Game Loop), detección precisa de colisiones matriciales y registro de puntaje máximo local.
+                </p>
+                <p class="project-learning" data-i18n="p4_learning">
+                  <strong>Aprendizaje:</strong> Comprensión profunda de la máquina de estados, renderizado en Canvas/DOM y manipulación de eventos de teclado.
+                </p>
+                <div class="project-tags-row">
+                  <span class="project-tag">JavaScript Puro</span>
+                  <span class="project-tag">Game Loop</span>
+                  <span class="project-tag">DOM &amp; Canvas</span>
+                  <span class="project-tag">Retro UI</span>
+                </div>
+                <div class="project-actions">
+                  <a href="https://c0rch1to.github.io/Snake/" class="btn btn-primary btn-card" target="_blank" rel="noopener noreferrer">
+                    <span data-i18n="btn_play">Jugar Online</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                    <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
+                  </a>
+                  <a href="https://github.com/C0rch1to/Snake" class="btn btn-secondary btn-card" target="_blank" rel="noopener noreferrer">
+                    <span>GitHub</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+          </div>
+
+          <!-- Botón Next Dinámico (Cuadrado Redondeado) -->
+          <button id="carousel-next" class="carousel-nav-btn next-btn" type="button" aria-label="Siguiente proyecto" title="Siguiente proyecto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
         </div>
+
+        <!-- 4 Punticos Oscuros que representan cada proyecto (Mod 6) -->
+        <div class="carousel-dots" role="tablist" aria-label="Indicadores de proyectos">
+          <button class="carousel-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Proyecto 1: Cubrí Seguros" data-index="0"></button>
+          <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Proyecto 2: Coffea Specialty Coffee" data-index="1"></button>
+          <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Proyecto 3: Fatto Al Forno" data-index="2"></button>
+          <button class="carousel-dot" type="button" role="tab" aria-selected="false" aria-label="Proyecto 4: Minimal Snake Game" data-index="3"></button>
+        </div>
+
       </div>
     </section>
 
-    <!-- 7. Experiencia / Formación (Timeline) -->
+    <!-- 7. Experiencia / Formación (Timeline con Enlaces a la Cátedra) -->
     <section id="experience" class="section" aria-labelledby="experience-title">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-            Trayectoria
+            <span data-i18n="exp_tag">Trayectoria</span>
           </span>
-          <h2 id="experience-title" class="section-title">Experiencia y formación</h2>
-          <p class="section-description">Evolución académica y proyectos prácticos que consolidan mi perfil profesional.</p>
+          <h2 id="experience-title" class="section-title" data-i18n="exp_title">Experiencia y formación</h2>
+          <p class="section-description" data-i18n="exp_desc">Evolución académica y proyectos prácticos que consolidan mi perfil profesional.</p>
         </div>
 
         <div class="timeline-wrapper">
@@ -484,27 +514,40 @@
           <div class="timeline-item">
             <span class="timeline-node" aria-hidden="true"></span>
             <article class="timeline-card">
-              <p class="timeline-period">2024 — Presente</p>
-              <h3 class="timeline-role">Licenciatura en Sistemas de Información</h3>
-              <p class="timeline-institution">Facultad de Ciencias Exactas y Tecnología</p>
+              <p class="timeline-period" data-i18n="t1_period">2024 — Presente</p>
+              <h3 class="timeline-role" data-i18n="t1_role">Licenciatura en Sistemas de Información</h3>
+              <p class="timeline-institution" data-i18n="t1_inst">Facultad de Ciencias Exactas y Tecnología</p>
               <ul class="timeline-achievements">
-                <li>Formación troncal en arquitectura de software, bases de datos relacionales, ingeniería de requerimientos y metodologías ágiles.</li>
-                <li>Especialización en desarrollo web full-stack y modelado de datos enfocado en aplicaciones de alto impacto.</li>
+                <li data-i18n="t1_ach1">Formación troncal en arquitectura de software, bases de datos relacionales, ingeniería de requerimientos y metodologías ágiles.</li>
+                <li data-i18n="t1_ach2">Especialización en desarrollo web full-stack y modelado de datos enfocado en aplicaciones de alto impacto.</li>
               </ul>
             </article>
           </div>
 
-          <!-- Item 2: Cátedra UX/UI -->
+          <!-- Item 2: Cátedra UX/UI (Con Enlaces a Repo e Índice - Mod 4) -->
           <div class="timeline-item">
             <span class="timeline-node" aria-hidden="true"></span>
             <article class="timeline-card">
-              <p class="timeline-period">Ciclo 2026</p>
-              <h3 class="timeline-role">Diseño UX-UI Avanzado &amp; Prototipado</h3>
-              <p class="timeline-institution">Cátedra Mg. Ernesto Ledesma</p>
+              <p class="timeline-period" data-i18n="t2_period">Ciclo 2026</p>
+              <h3 class="timeline-role" data-i18n="t2_role">Diseño UX-UI Avanzado &amp; Prototipado</h3>
+              <p class="timeline-institution" data-i18n="t2_inst">Cátedra Mg. Ernesto Ledesma</p>
               <ul class="timeline-achievements">
-                <li>Desarrollo integral de sistemas de diseño en Figma con auto-layout, tokens semánticos, componentes dinámicos y variantes.</li>
-                <li>Implementación de flujos SPA reactivos accesibles bajo estándares internacionales WCAG 2.2 nivel AA.</li>
+                <li data-i18n="t2_ach1">Desarrollo integral de sistemas de diseño en Figma con auto-layout, tokens semánticos, componentes dinámicos y variantes.</li>
+                <li data-i18n="t2_ach2">Implementación de flujos SPA reactivos accesibles bajo estándares internacionales WCAG 2.2 nivel AA.</li>
               </ul>
+              <!-- Enlaces directos a las actividades y al índice de la materia -->
+              <div class="timeline-links-row">
+                <a href="https://github.com/C0rch1to/UXUI_SalaDante" class="timeline-link-btn" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span data-i18n="t2_link_repo">Repositorio Cátedra (actividades)</span>
+                  <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
+                </a>
+                <a href="https://c0rch1to.github.io/UXUI_SalaDante/index.html" class="timeline-link-btn" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                  <span data-i18n="t2_link_index">Índice de Trabajos Prácticos</span>
+                  <span class="sr-only" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);">(abre en una nueva pestaña)</span>
+                </a>
+              </div>
             </article>
           </div>
 
@@ -512,12 +555,12 @@
           <div class="timeline-item">
             <span class="timeline-node" aria-hidden="true"></span>
             <article class="timeline-card">
-              <p class="timeline-period">2025 — 2026</p>
-              <h3 class="timeline-role">Desarrollador Web &amp; Diseñador UI Independiente</h3>
-              <p class="timeline-institution">Clientes Gastronómicos &amp; Proyectos Personales</p>
+              <p class="timeline-period" data-i18n="t3_period">2025 — 2026</p>
+              <h3 class="timeline-role" data-i18n="t3_role">Desarrollador Web &amp; Diseñador UI Independiente</h3>
+              <p class="timeline-institution" data-i18n="t3_inst">Clientes Gastronómicos &amp; Proyectos Personales</p>
               <ul class="timeline-achievements">
-                <li>Diseño y despliegue del canal digital de Fatto Pizzeria, reduciendo tiempos de atención y coordinando pedidos automáticos por WhatsApp.</li>
-                <li>Optimización de accesibilidad y métricas Core Web Vitals (LCP, INP, CLS) en sitios estáticos alojados en GitHub Pages.</li>
+                <li data-i18n="t3_ach1">Diseño y maquetación del sitio web de Fatto Al Forno con catálogo digital y adaptación responsive para móviles.</li>
+                <li data-i18n="t3_ach2">Optimización de accesibilidad y métricas Core Web Vitals (LCP, INP, CLS) en sitios estáticos alojados en GitHub Pages.</li>
               </ul>
             </article>
           </div>
@@ -533,10 +576,10 @@
           <div class="contact-info">
             <span class="section-tag" style="align-self: flex-start;">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              Contacto
+              <span data-i18n="contact_tag">Contacto</span>
             </span>
-            <h2 id="contact-title" class="contact-headline">¿Tenés un proyecto o propuesta en mente?</h2>
-            <p>
+            <h2 id="contact-title" class="contact-headline" data-i18n="contact_title">¿Tenés un proyecto o propuesta en mente?</h2>
+            <p data-i18n="contact_desc">
               Estoy disponible para incorporarme a equipos de producto, realizar pasantías formativas o colaborar en proyectos desafiantes de diseño y maquetación web.
             </p>
 
@@ -569,22 +612,22 @@
             <div id="form-status" class="form-status"></div>
 
             <div class="form-group">
-              <label for="contact-name" class="form-label">Tu nombre *</label>
-              <input type="text" id="contact-name" name="name" class="form-input" placeholder="Ej: Sofía Valenzuela" required autocomplete="name">
+              <label for="contact-name" class="form-label" data-i18n="form_name_lbl">Tu nombre *</label>
+              <input type="text" id="contact-name" name="name" class="form-input" data-i18n-ph="form_name_ph" placeholder="Ej: Sofía Valenzuela" required autocomplete="name">
             </div>
 
             <div class="form-group">
-              <label for="contact-email" class="form-label">Correo electrónico *</label>
-              <input type="email" id="contact-email" name="email" class="form-input" placeholder="sofia@empresa.com" required autocomplete="email">
+              <label for="contact-email" class="form-label" data-i18n="form_email_lbl">Correo electrónico *</label>
+              <input type="email" id="contact-email" name="email" class="form-input" data-i18n-ph="form_email_ph" placeholder="sofia@empresa.com" required autocomplete="email">
             </div>
 
             <div class="form-group">
-              <label for="contact-message" class="form-label">Mensaje o propuesta *</label>
-              <textarea id="contact-message" name="message" class="form-textarea" placeholder="Contame sobre tu proyecto o búsqueda laboral..." required></textarea>
+              <label for="contact-message" class="form-label" data-i18n="form_msg_lbl">Mensaje o propuesta *</label>
+              <textarea id="contact-message" name="message" class="form-textarea" data-i18n-ph="form_msg_ph" placeholder="Contame sobre tu proyecto o búsqueda laboral..." required></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%;">
-              <span>Enviar Mensaje</span>
+              <span data-i18n="form_submit">Enviar Mensaje</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             </button>
           </form>
@@ -599,21 +642,21 @@
     <div class="container footer-content">
       <div>
         <p style="font-weight: 700; color: var(--text-primary);">Dante Sala Pascuccio</p>
-        <p class="footer-credits">Licenciatura en Sistemas de Información · Diseño UX-UI 2026</p>
+        <p class="footer-credits" data-i18n="footer_role">Licenciatura en Sistemas de Información · Diseño UX-UI 2026</p>
       </div>
 
       <nav aria-label="Navegación del pie de página">
         <ul class="footer-nav">
-          <li><a href="#about">Sobre mí</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Proyectos</a></li>
-          <li><a href="#experience">Experiencia</a></li>
-          <li><a href="#contact">Contacto</a></li>
-          <li><a href="https://github.com/C0rch1to/UXUI_SalaDante" target="_blank" rel="noopener noreferrer">Repositorio Cátedra</a></li>
+          <li><a href="#about" data-i18n="nav_about">Sobre mí</a></li>
+          <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+          <li><a href="#projects" data-i18n="nav_projects">Proyectos</a></li>
+          <li><a href="#experience" data-i18n="nav_experience">Experiencia</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contacto</a></li>
+          <li><a href="https://github.com/C0rch1to/UXUI_SalaDante" target="_blank" rel="noopener noreferrer" data-i18n="footer_repo">Repositorio Cátedra</a></li>
         </ul>
       </nav>
 
-      <p class="footer-credits">
+      <p class="footer-credits" data-i18n="footer_credit">
         © 2026 Dante Sala. Construido con HTML5 Semántico, CSS3 y JS Vanilla.
       </p>
     </div>
@@ -623,7 +666,7 @@
   <dialog id="case-study-modal" class="modal-overlay" aria-labelledby="modal-title">
     <div class="modal-window">
       <div class="modal-header">
-        <h3 id="modal-title" class="modal-title">Caso de Estudio: Cubrí Seguros</h3>
+        <h3 id="modal-title" class="modal-title" data-i18n="modal_title">Caso de Estudio: Cubrí Seguros</h3>
         <button id="modal-close-btn" class="modal-close-btn" type="button" aria-label="Cerrar ventana modal de caso de estudio">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
@@ -635,15 +678,15 @@
         </div>
 
         <section class="case-study-section">
-          <h4>1. El Problema &amp; Oportunidad</h4>
-          <p>
+          <h4 data-i18n="modal_sec1_title">1. El Problema &amp; Oportunidad</h4>
+          <p data-i18n="modal_sec1_p">
             La contratación de seguros automotores en Argentina tradicionalmente exige llamadas telefónicas de ventas, formularios con más de 20 campos obligatorios y falta de claridad en las coberturas. Esto generaba una tasa de abandono de cotización superior al 60% en usuarios menores de 35 años.
           </p>
         </section>
 
         <section class="case-study-section">
-          <h4>2. Investigación &amp; Arquitectura</h4>
-          <p>
+          <h4 data-i18n="modal_sec2_title">2. Investigación &amp; Arquitectura</h4>
+          <p data-i18n="modal_sec2_p">
             A través de un benchmarking de 4 aseguradoras líderes y el testeo de un proto-persona (conductor urbano joven que busca agilidad desde su teléfono), se diseñó un flujo de 5 pasos consecutivos:
           </p>
           <ul>
@@ -656,37 +699,37 @@
         </section>
 
         <section class="case-study-section">
-          <h4>3. Solución de Diseño &amp; Tokens</h4>
-          <p>
+          <h4 data-i18n="modal_sec3_title">3. Solución de Diseño &amp; Tokens</h4>
+          <p data-i18n="modal_sec3_p">
             El sistema se maquetó desde Figma utilizando un diseño responsivo asistido por tokens en Tailwind CSS y Basecoat UI. Se incorporó un stepper interactivo que informa el progreso en todo momento, reduciendo la ansiedad del usuario, y una barra resumen fija que actualiza el valor mensual en tiempo real.
           </p>
         </section>
 
         <section class="case-study-section">
-          <h4>4. Métricas &amp; Resultados Obtenidos</h4>
+          <h4 data-i18n="modal_sec4_title">4. Métricas &amp; Resultados Obtenidos</h4>
           <div class="case-study-stats-grid">
             <div class="case-stat-box">
               <p class="case-stat-num">50 seg</p>
-              <p class="case-stat-lbl">Tiempo promedio de cotización (vs 4 min previo)</p>
+              <p class="case-stat-lbl" data-i18n="modal_stat_1_lbl">Tiempo promedio de cotización (vs 4 min previo)</p>
             </div>
             <div class="case-stat-box">
               <p class="case-stat-num">100%</p>
-              <p class="case-stat-lbl">WCAG AA en contraste y teclado</p>
+              <p class="case-stat-lbl" data-i18n="modal_stat_2_lbl">WCAG AA en contraste y teclado</p>
             </div>
             <div class="case-stat-box">
               <p class="case-stat-num">88%</p>
-              <p class="case-stat-lbl">Tasa de completitud en test con usuarios</p>
+              <p class="case-stat-lbl" data-i18n="modal_stat_3_lbl">Tasa de completitud en test con usuarios</p>
             </div>
             <div class="case-stat-box">
               <p class="case-stat-num">0 ms</p>
-              <p class="case-stat-lbl">Sin recargas de página (Arquitectura SPA)</p>
+              <p class="case-stat-lbl" data-i18n="modal_stat_4_lbl">Sin recargas de página (Arquitectura SPA)</p>
             </div>
           </div>
         </section>
 
         <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
           <a href="../TP5_UXUI_Sala/index.html" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            <span>Abrir Proyecto en Pantalla Completa</span>
+            <span data-i18n="modal_btn_full">Abrir Proyecto en Pantalla Completa</span>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           </a>
         </div>

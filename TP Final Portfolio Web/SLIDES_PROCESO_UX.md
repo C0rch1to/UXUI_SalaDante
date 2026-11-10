@@ -65,7 +65,7 @@
 
 ### Slide 8: Casos Complementarios
 * **Coffea Specialty Coffee (TP4):** Maquetación Figma to Code de alta fidelidad, estructura `@layer`, carruseles nativos con `scroll-snap` y cero dependencias de JS.
-* **Fatto Pizzeria (Comercial):** Experiencia gastronómica enfocada en pedidos ágiles y catálogo visual.
+* **Fatto Al Forno (Comercial):** Landing page para pizzería artesanal con catálogo digital de productos (pizzas a la piedra, empanadas y tartas), información del local y horarios.
 * **Minimal Snake Game (Lógica):** Videojuego retro en Vanilla JS con bucle de juego y manipulación limpia del DOM.
 
 ---
