@@ -563,6 +563,14 @@ button, input, textarea {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1000;
+  }
+
+  .site-header .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 68px; /* Espacio reservado para el botón hamburguesa a la izquierda */
   }
 
   .site-header.is-scrolled {
@@ -572,26 +580,38 @@ button, input, textarea {
     border-bottom: none;
   }
 
-  /* Los botones de idioma y tema se trasladan adentro del menú drawer */
+  /* Los botones de idioma, tema y CTA de escritorio se ocultan en la barra móvil */
   .header-actions .lang-toggle-btn,
-  .header-actions .theme-toggle-btn {
+  .header-actions .theme-toggle-btn,
+  .header-actions .header-cta {
     display: none !important;
   }
 }
 
-/* Botón Hamburguesa Mobile en Header (Cuadrado con bordes redondeados) */
+/* Botón Hamburguesa Mobile: inicia arriba a la izquierda y es arrastrado hacia abajo durante el scroll */
 .mobile-menu-btn {
+  position: fixed;
+  top: 14px;
+  left: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px; /* Cuadrado con bordes redondeados */
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  z-index: 1060;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px; /* Cuadrado con bordes redondeados */
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-primary);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              left 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.3s ease,
+              height 0.3s ease,
+              box-shadow 0.3s ease,
+              background-color 0.3s ease,
+              border-color 0.3s ease;
 }
 
 .mobile-menu-btn:hover {
@@ -600,9 +620,29 @@ button, input, textarea {
   color: var(--color-accent);
 }
 
+/* Al scrollear hacia abajo en móvil, es arrastrado suavemente a la esquina inferior flotante */
+.mobile-menu-btn.is-scrolled-floating {
+  top: calc(100vh - 68px);
+  top: calc(100dvh - 68px);
+  left: 18px;
+  width: 46px;
+  height: 46px;
+  background-color: rgba(26, 35, 45, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-medium);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .mobile-menu-btn.is-scrolled-floating {
+  background-color: rgba(255, 255, 255, 0.96);
+  border-color: var(--border-medium);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.16);
+}
+
 @media (min-width: 900px) {
   .mobile-menu-btn {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -624,7 +664,7 @@ button, input, textarea {
   pointer-events: auto;
 }
 
-/* Menú Mobile Drawer: se despliega desde la derecha con ancho mínimo para el contenido */
+/* Menú Mobile Drawer: se despliega desde la derecha con ancho ajustado y estable */
 .mobile-nav {
   position: fixed;
   top: 0;
@@ -633,9 +673,8 @@ button, input, textarea {
   left: auto;
   height: 100vh;
   height: 100dvh;
-  width: max-content;
-  min-width: 280px;
-  max-width: min(85vw, 360px);
+  width: 310px;
+  max-width: 86vw;
   background-color: rgba(13, 19, 26, 0.98);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -675,8 +714,8 @@ button, input, textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px; /* Cuadrado con esquinas redondeadas */
   background-color: var(--bg-surface);
   border: 1px solid var(--border-subtle);
@@ -691,30 +730,33 @@ button, input, textarea {
   color: var(--color-accent);
 }
 
-/* Controles dentro del Drawer: Modo Noche e Idioma */
+/* Controles dentro del Drawer: Modo Noche e Idioma perfectamente encuadrados */
 .drawer-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-2);
+  gap: 10px;
+  width: 100%;
   margin-bottom: var(--space-5);
   padding-bottom: var(--space-4);
   border-bottom: 1px solid var(--border-subtle);
 }
 
 .drawer-control-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  height: 42px;
+  width: 100% !important;
+  height: 44px !important;
   padding: 0 var(--space-3);
-  border-radius: 10px; /* Cuadrado redondeado */
+  border-radius: 10px !important; /* Cuadrado con esquinas redondeadas */
   background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-medium);
   color: var(--text-primary);
   font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
   cursor: pointer;
   transition: all var(--transition-fast);
 }
@@ -728,41 +770,62 @@ button, input, textarea {
 .drawer-control-btn .lang-text {
   font-family: var(--font-mono);
   font-weight: 700;
+  font-size: 0.8125rem;
   color: var(--color-accent);
+  background-color: var(--color-accent-subtle);
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
 }
 
 .drawer-control-lbl {
-  font-size: 0.8125rem;
-  letter-spacing: 0.02em;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
 }
 
-/* Lista de Enlaces en Drawer */
+/* Lista de Enlaces en Drawer: Botones tipo tarjeta perfectamente encuadrados */
 .mobile-nav-list {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 8px;
   list-style: none;
   margin-bottom: var(--space-6);
 }
 
 .mobile-nav-link {
   font-family: var(--font-display);
-  font-size: 1.125rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-3) var(--space-3);
-  border-radius: 10px;
-  border-bottom: 1px solid var(--border-subtle);
+  padding: 12px 14px;
+  border-radius: 10px; /* Cuadrado con esquinas redondeadas */
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  text-decoration: none;
   transition: all var(--transition-fast);
 }
 
 .mobile-nav-link:hover, .mobile-nav-link:focus {
   color: var(--color-accent);
+  border-color: var(--color-accent);
   background-color: var(--bg-surface-elevated);
-  padding-left: var(--space-4);
+  transform: translateX(3px);
+}
+
+.mobile-nav-link .nav-arrow {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.mobile-nav-link:hover .nav-arrow {
+  color: var(--color-accent);
+  transform: translateX(2px);
 }
 
 .mobile-nav-footer {
@@ -774,7 +837,7 @@ button, input, textarea {
   border-top: 1px solid var(--border-subtle);
 }
 
-/* Dock Flotante Móvil: solo baja en mobile cuando el usuario scrollea */
+/* Dock Flotante Móvil: botón volver arriba en esquina inferior derecha */
 .mobile-floating-dock {
   position: fixed;
   bottom: 22px;
@@ -795,7 +858,7 @@ button, input, textarea {
   transform: translateY(0);
 }
 
-/* Botones Flotantes: estrictamente cuadrados con esquinas redondeadas (sin círculos) */
+/* Botón Flotante Subir: estrictamente cuadrado con esquinas redondeadas (sin círculos) */
 .floating-btn {
   display: inline-flex;
   align-items: center;

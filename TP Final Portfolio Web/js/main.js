@@ -326,9 +326,12 @@ const translations = {
 };
 
 function initLanguageToggle() {
-  const langBtns = document.querySelectorAll('.lang-toggle-btn');
-  const savedLang = localStorage.getItem('lang') || 'es';
+  const langBtns = [
+    document.getElementById('lang-toggle-btn'),
+    document.getElementById('drawer-lang-toggle-btn')
+  ].filter(Boolean);
 
+  const savedLang = localStorage.getItem('lang') || 'es';
   applyLanguage(savedLang);
 
   langBtns.forEach(btn => {
@@ -356,7 +359,12 @@ function initLanguageToggle() {
     // Sincronizar labels de botones de tema según idioma activo
     const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
     const isLight = activeTheme === 'light';
-    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+    const themeBtns = [
+      document.getElementById('theme-toggle-btn'),
+      document.getElementById('drawer-theme-toggle-btn')
+    ].filter(Boolean);
+
+    themeBtns.forEach(btn => {
       btn.setAttribute('aria-label', isLight ? dict.theme_btn_dark : dict.theme_btn_light);
       btn.title = isLight ? dict.theme_btn_dark : dict.theme_btn_light;
     });
@@ -383,7 +391,11 @@ function initLanguageToggle() {
    2. GESTOR DE TEMA (DARK / LIGHT MODE CON PERSISTENCIA Y SOPORTE MULTIBOTÓN)
    ========================================================================== */
 function initThemeToggle() {
-  const themeBtns = document.querySelectorAll('.theme-toggle-btn');
+  const themeBtns = [
+    document.getElementById('theme-toggle-btn'),
+    document.getElementById('drawer-theme-toggle-btn')
+  ].filter(Boolean);
+
   if (!themeBtns.length) return;
 
   const savedTheme = localStorage.getItem('theme');
@@ -444,21 +456,18 @@ function initHeaderScroll() {
    4. MENÚ MOBILE DRAWER DESDE LA DERECHA (ACCESIBLE Y CON BACKDROP)
    ========================================================================== */
 function initMobileMenu() {
-  const triggerBtns = [
-    document.getElementById('mobile-menu-btn'),
-    document.getElementById('floating-menu-btn')
-  ].filter(Boolean);
+  const menuBtn = document.getElementById('mobile-menu-btn');
   const closeBtn = document.getElementById('mobile-menu-close');
   const mobileNav = document.getElementById('mobile-nav');
   const backdrop = document.getElementById('mobile-nav-backdrop');
   const navLinks = mobileNav ? mobileNav.querySelectorAll('.mobile-nav-link') : [];
 
-  if (!mobileNav) return;
+  if (!mobileNav || !menuBtn) return;
 
   function openMenu() {
     mobileNav.classList.add('is-open');
     if (backdrop) backdrop.classList.add('is-open');
-    triggerBtns.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
+    menuBtn.setAttribute('aria-expanded', 'true');
     mobileNav.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     if (closeBtn) closeBtn.focus();
@@ -467,20 +476,18 @@ function initMobileMenu() {
   function closeMenu() {
     mobileNav.classList.remove('is-open');
     if (backdrop) backdrop.classList.remove('is-open');
-    triggerBtns.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    menuBtn.setAttribute('aria-expanded', 'false');
     mobileNav.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   }
 
-  triggerBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.contains('is-open');
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.contains('is-open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
 
   if (closeBtn) {
@@ -498,26 +505,32 @@ function initMobileMenu() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
       closeMenu();
-      const firstBtn = triggerBtns[0];
-      if (firstBtn) firstBtn.focus();
+      menuBtn.focus();
     }
   });
 }
 
 /* ==========================================================================
-   4b. CONTROLES FLOTANTES MÓVILES (BOTÓN HAMBURGUESA Y VOLVER ARRIBA)
+   4b. CONTROLES FLOTANTES MÓVILES (ARRASTRE DE MENÚ Y VOLVER ARRIBA)
    ========================================================================== */
 function initFloatingControls() {
+  const menuBtn = document.getElementById('mobile-menu-btn');
   const dock = document.getElementById('mobile-floating-dock');
   const topBtn = document.getElementById('floating-top-btn');
-  if (!dock) return;
 
   const handleScroll = () => {
-    // Solo se activa en pantallas móviles (< 900px) cuando el usuario baja en la página
-    if (window.innerWidth < 900 && window.scrollY > 120) {
-      dock.classList.add('is-visible');
+    // Solo activo en móviles (< 900px): arrastra el botón hamburguesa y muestra botón subir
+    if (window.innerWidth < 900) {
+      if (window.scrollY > 80) {
+        if (menuBtn) menuBtn.classList.add('is-scrolled-floating');
+        if (dock) dock.classList.add('is-visible');
+      } else {
+        if (menuBtn) menuBtn.classList.remove('is-scrolled-floating');
+        if (dock) dock.classList.remove('is-visible');
+      }
     } else {
-      dock.classList.remove('is-visible');
+      if (menuBtn) menuBtn.classList.remove('is-scrolled-floating');
+      if (dock) dock.classList.remove('is-visible');
     }
   };
 
