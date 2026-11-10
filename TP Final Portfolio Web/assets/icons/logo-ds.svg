@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40" fill="none">
+  <!-- Subtle minimal container -->
+  <rect x="0.5" y="0.5" width="119" height="39" rx="8" fill="#12181F" stroke="#253041" stroke-width="1"/>
+  <!-- Minimalist code brackets and letters -->
+  <text x="60" y="26" font-family="'JetBrains Mono', 'Fira Code', ui-monospace, monospace" font-size="18" font-weight="700" text-anchor="middle" letter-spacing="1">
+    <tspan fill="#00F5B8">&lt;</tspan>
+    <tspan fill="#F8FAFC" font-weight="800">DS</tspan>
+    <tspan fill="#64748B">/</tspan>
+    <tspan fill="#00F5B8">&gt;</tspan>
+  </text>
+</svg>
