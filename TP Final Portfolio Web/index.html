@@ -63,12 +63,12 @@
 
       <!-- Botonera de Acciones (Selector Idioma + Theme Toggle + CTA + Mobile Menu) -->
       <div class="header-actions">
-        <!-- Botón de Traducción ES / EN (Mod 5) -->
+        <!-- Botón de Traducción ES / EN (Visible en Desktop) -->
         <button id="lang-toggle-btn" class="lang-toggle-btn" type="button" aria-label="Cambiar a inglés" title="Switch to English">
           <span class="lang-text" aria-hidden="true">EN</span>
         </button>
 
-        <!-- Toggle Dark/Light Mode (Bonus +10) -->
+        <!-- Toggle Dark/Light Mode (Visible en Desktop) -->
         <button id="theme-toggle-btn" class="theme-toggle-btn" type="button" aria-pressed="false" aria-label="Cambiar a modo claro" title="Cambiar a modo claro">
           <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -77,7 +77,7 @@
         <!-- CTA Principal del Header -->
         <a href="#contact" class="btn btn-primary header-cta" data-i18n="nav_cta">Hablemos</a>
 
-        <!-- Botón Menú Mobile Hamburguesa -->
+        <!-- Botón Menú Mobile Hamburguesa (Cuadrado con bordes redondeados) -->
         <button id="mobile-menu-btn" class="mobile-menu-btn" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Abrir menú de navegación">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         </button>
@@ -85,7 +85,10 @@
     </div>
   </header>
 
-  <!-- Menú Mobile Drawer / Overlay Accesible -->
+  <!-- Backdrop con desenfoque para Menú Mobile Drawer -->
+  <div id="mobile-nav-backdrop" class="mobile-nav-backdrop" aria-hidden="true"></div>
+
+  <!-- Menú Mobile Drawer desde la derecha con ancho ajustado al contenido -->
   <nav id="mobile-nav" class="mobile-nav" aria-label="Menú mobile" aria-hidden="true">
     <div class="mobile-nav-header">
       <div class="logo">
@@ -94,10 +97,25 @@
         </span>
         <span class="logo-name">Dante Sala</span>
       </div>
-      <button id="mobile-menu-close" class="modal-close-btn" type="button" aria-label="Cerrar menú de navegación">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      <button id="mobile-menu-close" class="drawer-close-btn" type="button" aria-label="Cerrar menú de navegación">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
     </div>
+
+    <!-- Controles en Drawer: Modo Noche e Idioma -->
+    <div class="drawer-controls" role="group" aria-label="Ajustes de visualización e idioma">
+      <button id="drawer-theme-toggle-btn" class="drawer-control-btn theme-toggle-btn" type="button" aria-pressed="false" aria-label="Cambiar a modo claro" title="Cambiar a modo claro">
+        <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <span class="drawer-control-lbl" data-i18n="drawer_theme_lbl">Tema</span>
+      </button>
+
+      <button id="drawer-lang-toggle-btn" class="drawer-control-btn lang-toggle-btn" type="button" aria-label="Cambiar a inglés" title="Switch to English">
+        <span class="lang-text" aria-hidden="true">EN</span>
+        <span class="drawer-control-lbl" data-i18n="drawer_lang_lbl">Idioma</span>
+      </button>
+    </div>
+
     <ul class="mobile-nav-list">
       <li><a href="#about" class="mobile-nav-link"><span data-i18n="nav_about">Sobre mí</span> <span aria-hidden="true">→</span></a></li>
       <li><a href="#skills" class="mobile-nav-link"><span data-i18n="nav_skills">Skills</span> <span aria-hidden="true">→</span></a></li>
@@ -105,11 +123,22 @@
       <li><a href="#experience" class="mobile-nav-link"><span data-i18n="nav_experience">Experiencia</span> <span aria-hidden="true">→</span></a></li>
       <li><a href="#contact" class="mobile-nav-link"><span data-i18n="nav_contact">Contacto</span> <span aria-hidden="true">→</span></a></li>
     </ul>
+
     <div class="mobile-nav-footer">
-      <a href="#contact" class="btn btn-primary" style="width: 100%;" data-i18n="nav_cta">Hablemos</a>
+      <a href="#contact" class="btn btn-primary" style="width: 100%; border-radius: 10px;" data-i18n="nav_cta">Hablemos</a>
       <p style="font-size: 0.8125rem; color: var(--text-muted); text-align: center;">Buenos Aires, Argentina (GMT-3)</p>
     </div>
   </nav>
+
+  <!-- Dock Flotante Móvil: Botón Menú Hamburguesa y Volver Arriba (Botones cuadrados con esquinas redondeadas) -->
+  <div id="mobile-floating-dock" class="mobile-floating-dock" aria-label="Acciones flotantes de navegación">
+    <button id="floating-menu-btn" class="floating-btn" type="button" aria-label="Abrir menú de navegación" title="Menú">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
+    <button id="floating-top-btn" class="floating-btn" type="button" aria-label="Volver al inicio" title="Volver arriba">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+    </button>
+  </div>
 
   <!-- Contenido Principal -->
   <main id="main-content">

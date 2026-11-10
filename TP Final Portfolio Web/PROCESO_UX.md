@@ -210,6 +210,7 @@ Se convocó a 3 participantes para evaluar el prototipo interactivo en sesiones 
 | **Detalle de Proyectos** | Marcos intentó hacer clic en la imagen del proyecto esperando que abriera el sitio o más información, pero la tarjeta sólo tenía un enlace pequeño al pie. | Se convirtió toda la tarjeta en un contenedor clickeable con foco visible accesible, además de agregar el botón explícito "Caso de Estudio". |
 | **Contraste Modo Claro** | En la prueba de modo claro, Valentina notó que los textos de color gris secundario (`#94A3B8`) resultaban difíciles de leer sobre fondo blanco (`#FFFFFF`). | Se configuró una variable diferenciada en `[data-theme="light"]`: `--text-secondary: #475569`, alcanzando un ratio de contraste de 6.4:1 (cumple WCAG AAA para texto normal). |
 | **Navegación Móvil** | Al abrir el menú hamburguesa en mobile, al tocar un enlace el menú se quedaba abierto tapando la sección destino. | Se agregó un handler en JavaScript que cierra automáticamente el menú mobile al hacer clic en cualquier enlace ancla. |
+| **Ergonomía Móvil (Thumb Zone)** | En smartphones, estirar el pulgar para alcanzar la barra superior fija durante lecturas prolongadas causaba incomodidad física y saturación de pantalla. | Se fijó la barra superior al inicio y se implementó un dock flotante inferior con botones cuadrados de esquinas redondeadas (menú y volver arriba). El menú se despliega desde la derecha como drawer con ancho mínimo y reúne los controles de tema e idioma. |
 
 ---
 

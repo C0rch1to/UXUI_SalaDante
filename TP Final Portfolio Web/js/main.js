@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   initHeaderScroll();
   initMobileMenu();
+  initFloatingControls();
   initActiveNavObserver();
   initProjectsCarousel();
   initCaseStudyModal();
@@ -32,6 +33,8 @@ const translations = {
     lang_btn_text: "EN",
     theme_btn_light: "Cambiar a modo claro",
     theme_btn_dark: "Cambiar a modo oscuro",
+    drawer_theme_lbl: "Modo",
+    drawer_lang_lbl: "Idioma",
 
     // Hero
     hero_status: "Disponible para nuevos desafíos",
@@ -182,6 +185,8 @@ const translations = {
     lang_btn_text: "ES",
     theme_btn_light: "Switch to light mode",
     theme_btn_dark: "Switch to dark mode",
+    drawer_theme_lbl: "Theme",
+    drawer_lang_lbl: "Language",
 
     // Hero
     hero_status: "Available for new challenges",
@@ -340,12 +345,20 @@ function initLanguageToggle() {
     const dict = translations[lang];
     if (!dict) return;
 
-    // Actualizar botones de idioma
+    // Actualizar botones de idioma (Header y Drawer)
     langBtns.forEach(btn => {
       const textSpan = btn.querySelector('.lang-text');
       if (textSpan) textSpan.textContent = dict.lang_btn_text;
       btn.setAttribute('aria-label', dict.lang_btn_label);
       btn.title = dict.lang_btn_title;
+    });
+
+    // Sincronizar labels de botones de tema según idioma activo
+    const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const isLight = activeTheme === 'light';
+    document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+      btn.setAttribute('aria-label', isLight ? dict.theme_btn_dark : dict.theme_btn_light);
+      btn.title = isLight ? dict.theme_btn_dark : dict.theme_btn_light;
     });
 
     // Actualizar elementos con atributo data-i18n
@@ -367,11 +380,11 @@ function initLanguageToggle() {
 }
 
 /* ==========================================================================
-   2. GESTOR DE TEMA (DARK / LIGHT MODE CON PERSISTENCIA)
+   2. GESTOR DE TEMA (DARK / LIGHT MODE CON PERSISTENCIA Y SOPORTE MULTIBOTÓN)
    ========================================================================== */
 function initThemeToggle() {
-  const toggleBtn = document.getElementById('theme-toggle-btn');
-  if (!toggleBtn) return;
+  const themeBtns = document.querySelectorAll('.theme-toggle-btn');
+  if (!themeBtns.length) return;
 
   const savedTheme = localStorage.getItem('theme');
   const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
@@ -379,11 +392,13 @@ function initThemeToggle() {
 
   applyTheme(currentTheme);
 
-  toggleBtn.addEventListener('click', () => {
-    const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-    const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
+  themeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const activeTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
   });
 
   window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
@@ -398,9 +413,11 @@ function initThemeToggle() {
     const lang = document.documentElement.getAttribute('lang') || 'es';
     const dict = translations[lang] || translations.es;
     
-    toggleBtn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
-    toggleBtn.setAttribute('aria-label', isLight ? dict.theme_btn_dark : dict.theme_btn_light);
-    toggleBtn.title = isLight ? dict.theme_btn_dark : dict.theme_btn_light;
+    themeBtns.forEach(btn => {
+      btn.setAttribute('aria-pressed', isLight ? 'true' : 'false');
+      btn.setAttribute('aria-label', isLight ? dict.theme_btn_dark : dict.theme_btn_light);
+      btn.title = isLight ? dict.theme_btn_dark : dict.theme_btn_light;
+    });
   }
 }
 
@@ -424,19 +441,24 @@ function initHeaderScroll() {
 }
 
 /* ==========================================================================
-   4. MENÚ MOBILE ACCESIBLE (DRAWER / OVERLAY)
+   4. MENÚ MOBILE DRAWER DESDE LA DERECHA (ACCESIBLE Y CON BACKDROP)
    ========================================================================== */
 function initMobileMenu() {
-  const menuBtn = document.getElementById('mobile-menu-btn');
+  const triggerBtns = [
+    document.getElementById('mobile-menu-btn'),
+    document.getElementById('floating-menu-btn')
+  ].filter(Boolean);
   const closeBtn = document.getElementById('mobile-menu-close');
   const mobileNav = document.getElementById('mobile-nav');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
   const navLinks = mobileNav ? mobileNav.querySelectorAll('.mobile-nav-link') : [];
 
-  if (!menuBtn || !mobileNav) return;
+  if (!mobileNav) return;
 
   function openMenu() {
     mobileNav.classList.add('is-open');
-    menuBtn.setAttribute('aria-expanded', 'true');
+    if (backdrop) backdrop.classList.add('is-open');
+    triggerBtns.forEach(btn => btn.setAttribute('aria-expanded', 'true'));
     mobileNav.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
     if (closeBtn) closeBtn.focus();
@@ -444,23 +466,29 @@ function initMobileMenu() {
 
   function closeMenu() {
     mobileNav.classList.remove('is-open');
-    menuBtn.setAttribute('aria-expanded', 'false');
+    if (backdrop) backdrop.classList.remove('is-open');
+    triggerBtns.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
     mobileNav.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    menuBtn.focus();
   }
 
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileNav.classList.contains('is-open');
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+  triggerBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.contains('is-open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
   });
 
   if (closeBtn) {
     closeBtn.addEventListener('click', closeMenu);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeMenu);
   }
 
   navLinks.forEach(link => {
@@ -470,8 +498,41 @@ function initMobileMenu() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) {
       closeMenu();
+      const firstBtn = triggerBtns[0];
+      if (firstBtn) firstBtn.focus();
     }
   });
+}
+
+/* ==========================================================================
+   4b. CONTROLES FLOTANTES MÓVILES (BOTÓN HAMBURGUESA Y VOLVER ARRIBA)
+   ========================================================================== */
+function initFloatingControls() {
+  const dock = document.getElementById('mobile-floating-dock');
+  const topBtn = document.getElementById('floating-top-btn');
+  if (!dock) return;
+
+  const handleScroll = () => {
+    // Solo se activa en pantallas móviles (< 900px) cuando el usuario baja en la página
+    if (window.innerWidth < 900 && window.scrollY > 120) {
+      dock.classList.add('is-visible');
+    } else {
+      dock.classList.remove('is-visible');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', handleScroll, { passive: true });
+  handleScroll();
+
+  if (topBtn) {
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 }
 
 /* ==========================================================================
